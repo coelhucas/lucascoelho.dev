@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: NexT
+title: lcrabbit's blog
 subtitle:
 description:
-author: John Doe
+author: Lucas Coelho
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
 date_format: '%Y-%m-%d'
@@ -78,7 +78,7 @@ plugins:
 favicon: /assets/favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Jekyll, NexT"
+keywords: "lcrabbit, blog, developer, gamedev, indiedev"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -225,9 +225,9 @@ social_icons:
   enable: true
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
-  GitHub: github
-  Twitter: twitter
-  Weibo: weibo
+  GitHub: lcrabbit
+  Twitter: lucascrabbit
+#  Weibo: weibo
 
 
 # Sidebar Avatar
