@@ -14,7 +14,7 @@ My answer will probably be: How can you even think about making a bigger game if
 
 You can access the project repository [clicking here](https://github.com/lcrabbit/FAETERJ-Simple-Pong-Project)
 This is the main screen:
-![Game Title Screen](www.lcrabbit.com/img/pong/pong_title.png)
+![Game Title Screen](http://www.lcrabbit.com/img/pong/pong_title.png)
 
 ## What's the problem?
 I've noticed that mostly *ever*, people think about using a code that sets the CPU's paddle Y axis to the ball Y axis. But there's a problem: It would make the AI invencible, and that's not the point. So I've played a little a Player vs Player at my own pong and I've realized: 
@@ -31,7 +31,7 @@ The main idea of this consists in a fake invisible ball that's making the same p
 Based in it, we made the AI paddle reproduce always the fake ball's vertical axis, which is work, because the balls will ***almost*** ever be at the same position, and *that's* the point! This ***almost***. It means like some times they won't be synchronized, and that will be the "semi human fail" made by the cpu.
 
 Here you can see clearly the two balls (original as the gray, and the red one is the fake. usually, the fake will be invisible, of course. I've made this to explain what's going on)
-![Pong Fake Ball](www.lcrabbit.com/img/pong/pong_fakeb.png)
+![Pong Fake Ball](http://www.lcrabbit.com/img/pong/pong_fakeb.png)
 
 ### What could be possible wrong?
 So far there's only two things that I've seem that could make problems, and how I handled it:
