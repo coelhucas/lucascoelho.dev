@@ -8,7 +8,7 @@ tags: Godot-Game-Engine
 
 # Introduction
 
-   Hello! Today I'm gonna talk about part of the creation process of a simple pong game using the open-source *Godot Game Engine* for my 
+<p> Hello! Today I'm gonna talk about part of the creation process of a simple pong game using the open-source *Godot Game Engine* for my 
 presentation and lessons called *Introduction to game programming*, where I take a short presentation about the *Godot's* organization, 
 nodes, scenes, GDScript and stuff, followed by the practices, seeing some of the interface and quickly going to the code. And here's when 
 the thing start. The idea is to create a simple pong game to explain how each (some of) node type works, how to use correctly the syntax 
@@ -23,17 +23,17 @@ This is the main screen:
 ![Game Title Screen](http://www.lcrabbit.com/img/pong/pong_title.png)
 
 ## What's the problem?
-   I've noticed that mostly *ever*, people think about using a code that sets the CPU's paddle Y axis to the ball Y axis. But there's a
+I've noticed that mostly *ever*, people think about using a code that sets the CPU's paddle Y axis to the ball Y axis. But there's a
 problem: It would make the AI invencible, and that's not the point. So I've played a little a Player vs Player at my own pong and I've realized: 
-   We (at least me and me) are always trying to predict where the ball is going to quickly set our paddle prepared to the goal, and it's 
+We (at least me and me) are always trying to predict where the ball is going to quickly set our paddle prepared to the goal, and it's 
 exactly the same thing that almost of the time have made me lost the ball.
 
 ### A thin line between an idiot and an invencible
-   As I said, we didn't want a invencible AI. And still less an idiot that goes to the opposite direction of the ball, so... how to handle it?
+<p> As I said, we didn't want a invencible AI. And still less an idiot that goes to the opposite direction of the ball, so... how to handle it?
 Reading about it in the internet, I've found many solutions. I was almost surrendering to the solutions that choose some randomless positions based on the surroundings of the ball's vertical axis. But almost all of then seems so strange, and to be honest, probably what I'm going to show are still strange, but at least, I like it.
 
 ## The explanation
-   First of all, it's not my credits this way of doing this. While I was searching, I found [in this gamedev stack exchange page] (https://gamedev.stackexchange.com/questions/57352/imperfect-pong-ai), so, credits to **DDR**. :smile:
+First of all, it's not my credits this way of doing this. While I was searching, I found [in this gamedev stack exchange page](https://gamedev.stackexchange.com/questions/57352/imperfect-pong-ai), so, credits to **DDR**. :smile:
 The main idea makes a perfect representation about what I was thinking of an AI that tries to predict the ball's path to get prepared before it comes, like we (at least me, again) usually do, making almost a just match. A good player, but imperfect. That's kinda human, right? Well, I think so.
    The main idea of this consists in a fake invisible ball that's making the same path of the real one, excepting that this fake is a little 
 slower than the real one.
