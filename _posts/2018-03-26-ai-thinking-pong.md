@@ -1,6 +1,6 @@
 ---
 title: Thinking basic AIs with pong
-description: This article is about a [game made to my presentation at FAETERJ](https://github.com/lcrabbit/FAETERJ-Simple-Pong-Project) (Faculdade de Educação Tecnológica do Rio de Janeiro)
+description: This article is about a game made to my presentation at FAETERJ (Faculdade de Educação Tecnológica do Rio de Janeiro)
 categories: gamedev
 
 tags: godot-game-engine
@@ -12,6 +12,7 @@ Hello! Today I'm gonna talk about part of the creation process of a simple pong 
 Probably you're gonna think: Why should I remake this trash old game when hundreds of people made it?
 My answer will probably be: How can you even think about making a bigger game if you can't remake the simple ones? Unless you already know things like how to create a functional player vs cpu hash game? Most of the time people want to make a "billion dollar idea" when they can't just remake the first Contra mechanics... Well, this text it's not to talk about it.
 
+You can access the project repository [clicking here](https://github.com/lcrabbit/FAETERJ-Simple-Pong-Project)
 This is the main screen:
 ![Game Title Screen](www.lcrabbit.com/img/pong/pong_title.png)
 
