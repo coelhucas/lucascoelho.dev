@@ -6,7 +6,7 @@ categories: gamedev
 tags: godot-game-engine
 ---
 
-## Introduction
+# Introduction
 
 Hello! Today I'm gonna talk about part of the creation process of a simple pong game using the open-source *Godot Game Engine* for my presentation and lessons called *Introduction to game programming*, where I take a short presentation about the *Godot's* organization, nodes, scenes, GDScript and stuff, followed by the practices, seeing some of the interface and quickly going to the code. And here's when the thing start. The idea is to create a simple pong game to explain how each (some of) node type works, how to use correctly the syntax and thinking about logic solutions for each problem. I'm going to approach specifically my problem: How to make an useful pong AI?
 Probably you're gonna think: Why should I remake this trash old game when hundreds of people made it?
@@ -20,7 +20,7 @@ This is the main screen:
 I've noticed that mostly *ever*, people think about using a code that sets the CPU's paddle Y axis to the ball Y axis. But there's a problem: It would make the AI invencible, and that's not the point. So I've played a little a Player vs Player at my own pong and I've realized: 
 We (at least me and me) are always trying to predict where the ball is going to quickly set our paddle prepared to the goal, and it's exactly the same thing that almost of the time have made me lost the ball.
 
-## The thin line between an idiot and an expert CPU
+### A thin line between an idiot and an invencible
 As I said, we didn't want a invencible AI. And still less an idiot that goes to the opposite direction of the ball, so... how to handle it?
 Reading about it in the internet, I've found many solutions. I was almost surrendering to the solutions that choose some randomless positions based on the surroundings of the ball's vertical axis. But almost all of then seems so strange, and to be honest, probably what I'm going to show are still strange, but at least, I like it.
 
@@ -33,7 +33,7 @@ Based in it, we made the AI paddle reproduce always the fake ball's vertical axi
 Here you can see clearly the two balls (original as the gray, and the red one is the fake. usually, the fake will be invisible, of course. I've made this to explain what's going on)
 ![Pong Fake Ball](www.lcrabbit.com/img/pong/pong_fakeb.png)
 
-## What could be possible wrong?
+### What could be possible wrong?
 So far there's only two things that I've seem that could make problems, and how I handled it:
 
 1 - Sometimes during the game, the player probably will touch only the real ball, while the fake one keep going away and "breaking" the AI in some situations. It could be solved by adding some collisions to reflect the ball at the horizontal sides, so if it happens, the ball is just going to keep a different way from the real one, making the AI lose it.
