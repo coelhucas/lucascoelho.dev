@@ -1,5 +1,5 @@
 ---
-title: Learning basic AI with pong
+title: Thinking basic AIs with pong
 description: This article is about a [game made to my presentation at FAETERJ](https://github.com/lcrabbit/FAETERJ-Simple-Pong-Project) (Faculdade de Educação Tecnológica do Rio de Janeiro)
 categories: gamedev
 
@@ -7,7 +7,10 @@ tags: godot-game-engine
 ---
 
 Hello! Today I'm gonna talk about part of the creation process of a simple pong game using the open-source *Godot Game Engine* for my presentation and lessons called *Introduction to game programming*, where I take a short presentation about the *Godot's* organization, nodes, scenes, GDScript and stuff, followed by the practices, seeing some of the interface and quickly going to the code. And here's when the thing start. The idea is to create a simple pong game to explain how each (some of) node type works, how to use correctly the syntax and thinking about logic solutions for each problem. I'm going to approach specifically my problem: How to make an useful pong AI?
+Probably you're gonna think: Why should I remake this trash old game when hundreds of people made it?
+My answer will probably be: How can you even think about making a bigger game if you can't remake the simple ones? Unless you already know things like how to create a functional player vs cpu hash game? Most of the time people want to make a "billion dollar idea" when they can't just remake the first Contra mechanics... Well, this text it's not to talk about it.
 
+This is the main screen:
 ![Game Title Screen](img/pong/pong_title.png)
 
 # What's the problem?
