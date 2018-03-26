@@ -12,7 +12,3 @@ Hello! I'm Lucas. And if you're seeing that, probably this site is still in deve
 
 [My github](http://github.com/lcrabbit/)
 
-## Test
-
-```rafael is gay
-```
