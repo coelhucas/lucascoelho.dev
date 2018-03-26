@@ -1,9 +1,9 @@
 ---
 title: Thinking basic AIs with pong
 description: This article is about a game made to my presentation at FAETERJ (Faculdade de Educação Tecnológica do Rio de Janeiro)
-categories: gamedev
+categories: GameDev
 
-tags: godot-game-engine
+tags: Godot-Game-Engine
 ---
 
 # Introduction
