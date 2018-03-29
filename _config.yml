@@ -226,7 +226,7 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: lcrabbit
-  Twitter: lucascrabbit
+  lucascrabbit: Twitter 
 #  Weibo: weibo
 
 
