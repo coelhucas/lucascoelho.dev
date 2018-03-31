@@ -32,16 +32,16 @@ Now we need the JSON files. This is an example of one JSON file:
 *For english*
 {% highlight json linenos %}
 {
-	"Title": "Title!",
-	"Message": "Hello! How you doing? \nThis is an example of what you can do using a JSON file."
+   "Title": "Title!",
+   "Message": "Hello! How you doing? \nThis is an example of what you can do using a JSON file."
 }
 {% endhighlight %}
 
 *And portuguese*
 {% highlight json linenos %}
 {
-	"Title": "Título!",
-	"Message": "Olá! Tudo bem com você? \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
+   "Title": "Título!",
+   "Message": "Olá! Tudo bem com você? \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
 }
 {% endhighlight %}
 
@@ -86,8 +86,8 @@ Remember the *localizable* group made before? Now we need to do a for that's goi
 
 {% highlight python linenos %}
 for child in get_children():
-	if child.is_in_group("localizable"):
-		child.text = json[str(child.get_name())]
+   if child.is_in_group("localizable"):
+      child.text = json[str(child.get_name())]
 {% endhighlight %}
 
 *Observations:*
