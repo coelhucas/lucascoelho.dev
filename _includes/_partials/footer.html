@@ -3,8 +3,6 @@
   {% assign since = site.since | downcase %}
   &copy; {% if site.since and since != current %} {{ since }} - {% endif %}
 
-  <script src="{{ "/assets/js/prism.js" | prepend: site.baseurl }}"></script>
-
   <span itemprop="copyrightYear">{{ current }}</span>
   <span class="with-love">
     <i class="fa fa-{{ site.authoricon }}"></i>
