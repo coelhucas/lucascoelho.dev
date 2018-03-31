@@ -80,9 +80,11 @@ This *get_as_text()* is a built-in function that returns the value as a text(str
 
 Remember the *localizable* group made before? Now we need to do a for that's going to change the object text for each localizable object.
 
-```for child in get_children():
+{% highlight python linenos %}
+for child in get_children():
 	if child.is_in_group("localizable"):
-		child.text = json[str(child.get_name())] ```
+		child.text = json[str(child.get_name())]
+{% endhighlight %}
 
 *Observations:*
 1. `for child in get_children():` Considering that all the objects are childs of this manager
