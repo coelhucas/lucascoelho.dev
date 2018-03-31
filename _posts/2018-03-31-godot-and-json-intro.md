@@ -1,5 +1,5 @@
 ---
-title: Introduction to JSON + Godot Engine
+title: Introduction to Godot Engine + JSON
 description: Today we're going to see how to use JSON to serialize information to our games using Godot Engine.
 categories: GameDev Tutorial
 
