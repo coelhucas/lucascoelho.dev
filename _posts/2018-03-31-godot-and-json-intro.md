@@ -15,10 +15,6 @@ JavaScript Object Notation (JSON), is a minimal, readable format for structuring
 2. Localization/Multi Language support
 
 ## Project Setup
-{% prism javascript highlight="1-5,7,10-13" %}
-// ...
-for batata
-{% endprism %}
 
 To skip some steps, I made a base project, which you can [get here](https://github.com/lcrabbit/Godot-Site-Projects/tree/master/Base-JSON). But all I'm using is: 
 1. One button for each language (in my case, english and portuguese)
