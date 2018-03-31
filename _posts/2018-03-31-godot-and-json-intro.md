@@ -22,7 +22,10 @@ To skip some steps, I made a base project, which you can [get here](https://gith
 4. A function called set_language() which receives the argument *lang_prefix*.
 5. A group called "localizable" with all localizable scenes.
 
-# Mão na massa
+# Result:
+![Localization system gif](https://i.imgur.com/N5pjS1H.gif)
+
+# Hands-On!
 Now we need the JSON files. This is an example of one JSON file:
 
 *For english*
