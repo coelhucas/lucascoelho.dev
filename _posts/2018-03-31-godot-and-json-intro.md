@@ -96,7 +96,11 @@ See ya!
 # Bibliography
 
 [Godot's "File" docs](http://docs.godotengine.org/en/3.0/classes/class_file.html)
+
 [JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse_json)
+
 [A brief overview of JSON](https://msdn.microsoft.com/en-us/library/hh923971(v=vs.85).aspx)
+
 [What is JSON](https://developers.squarespace.com/what-is-json/)
+
 [Serialization](https://en.wikipedia.org/wiki/Serialization)
