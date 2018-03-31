@@ -72,7 +72,9 @@ In Godot, we need to use a built-in function using the File, one of the Godot's 
 Then, we have to Open our file, and for this we'll concatenate the lang_prefix with the path. 
 *Observation: My **.json** files are located at "Resources/" folder that I made, you need to set the code bellow according with your own file's path.*
 
-`file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're openning the file and saying to the engine to read it, and not to write.`
+{% highlight python linenos %}
+file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're openning the file and saying to the engine to read it, and not to write.
+{% endhighlight %}
 
 You may notice that I've not used the str() to the lang_prefix, and this is because we already set it as a string (when we've used the quotation marks).
 
