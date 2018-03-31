@@ -30,16 +30,20 @@ To skip some steps, I made a base project, which you can [get here](https://gith
 Now we need the JSON files. This is an example of one JSON file:
 
 *For english*
-```{
+{% highlight json linenos %}
+{
 	"Title": "Title!",
 	"Message": "Hello! How you doing? \nThis is an example of what you can do using a JSON file."
-}```
+}
+{% endhighlight %}
 
 *And portuguese*
-```{
+{% highlight json linenos %}
+{
 	"Title": "Título!",
 	"Message": "Olá! Tudo bem com você? \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
-}```
+}
+{% endhighlight %}
 
 I'm using this in my finished project, which you can see [*here*](https://github.com/lcrabbit/Godot-Site-Projects/tree/master/Complete-JSON).
 I'm going to call this files **en-texts.json** and **pt-texts.json**, respectively, to easily check the language later.
@@ -61,11 +65,13 @@ I'm using the lang_prefix as a string because we're using this language prefixes
 ## Parsing JSON Files with Godot
 Now we start working at our *set_language()* function!
 In Godot, we need to use a built-in function using the File, one of the Godot's Objects, which is used to manage file reading and writing. We can create a variable to our file like this:
+
 `var file = File.new() # Makes our "new file"
 `
 
 Then, we have to Open our file, and for this we'll concatenate the lang_prefix with the path. 
 *Observation: My **.json** files are located at "Resources/" folder that I made, you need to set the code bellow according with your own file's path.*
+
 `file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're openning the file and saying to the engine to read it, and not to write.`
 
 You may notice that I've not used the str() to the lang_prefix, and this is because we already set it as a string (when we've used the quotation marks).
@@ -75,12 +81,6 @@ Done that, we can finally parse our info into a dictionary.
 This *get_as_text()* is a built-in function that returns the value as a text(string), and we're parsing to the json var directly from this function.
 
 Remember the *localizable* group made before? Now we need to do a for that's going to change the object text for each localizable object.
-
-{% highlight ruby %}
-def foo
-  puts 'foo'
-end
-{% endhighlight %}
 
 {% highlight python linenos %}
 for child in get_children():
