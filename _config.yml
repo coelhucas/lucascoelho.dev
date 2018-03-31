@@ -45,8 +45,12 @@ highlighter: rouge
 ## 'redcarpet' is unsupported on GitHub Pages now.
 markdown: kramdown
 kramdown:
-   syntax_highlighter_opts:
-      disable : true
+    input: GFM
+    syntax_highliter_opts:
+      span:
+        line_numbers: false
+      block:
+        line_numbers: true
 
 # Default Attributes
 ## Docs: https://jekyllrb.com/docs/configuration/#front-matter-defaults
