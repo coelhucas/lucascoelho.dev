@@ -29,16 +29,16 @@ To skip some steps, I made a base project, which you can [get here](https://gith
 Now we need the JSON files. This is an example of one JSON file:
 
 *For english*
-`{
+```{
 	"Title": "Title!",
 	"Message": "Hello! How you doing? \nThis is an example of what you can do using a JSON file."
-}`
+}```
 
 *And portuguese*
-`{
+```{
 	"Title": "Título!",
 	"Message": "Olá! Tudo bem com você? \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
-}`
+}```
 
 I'm using this in my finished project, which you can see [*here*](https://github.com/lcrabbit/Godot-Site-Projects/tree/master/Complete-JSON).
 I'm going to call this files **en-texts.json** and **pt-texts.json**, respectively, to easily check the language later.
