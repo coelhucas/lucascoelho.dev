@@ -72,7 +72,7 @@ In Godot, we need to use a built-in function using the File, one of the Godot's 
 Then, we have to Open our file, and for this we'll concatenate the lang_prefix with the path. 
 *Observation: My **.json** files are located at "Resources/" folder that I made, you need to set the code bellow according with your own file's path.*
 
-{% highlight python linenos %}
+{% highlight swift linenos %}
 file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're openning the file and saying to the engine to read it, and not to write.
 {% endhighlight %}
 
@@ -84,7 +84,7 @@ This *get_as_text()* is a built-in function that returns the value as a text(str
 
 Remember the *localizable* group made before? Now we need to do a for that's going to change the object text for each localizable object.
 
-{% highlight python linenos %}
+{% highlight swift linenos %}
 for child in get_children():
    if child.is_in_group("localizable"):
       child.text = json[str(child.get_name())]
