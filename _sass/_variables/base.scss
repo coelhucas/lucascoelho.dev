@@ -24,7 +24,7 @@ $blue         : #0684bd;
 $blue-deep    : #262a30;
 $orange       : #fc6423;
 $red-bright   : #ea8f8f;
-$red          : #874f4f;
+$red-normal   : #874f4f;
 $red-deep     : #6d3f3f;
 
 
@@ -37,7 +37,7 @@ $red-deep     : #6d3f3f;
 $text-color                   : white;
 
 // Global link color.
-$link-color                   : $red;
+$link-color                   : $red-normal;
 $link-hover-color             : $red-deep;
 $link-decoration-color        : $grey-light;
 $link-decoration-hover-color  : $black-deep;
@@ -159,7 +159,7 @@ $code-background                : $gainsboro;
 $btn-font-weight                : normal;
 
 $btn-default-radius             : 5;
-$btn-default-bg                 : $red-;
+$btn-default-bg                 : $red-normal;
 $btn-default-color              : white;
 $btn-default-font-size          : 14px;
 $btn-default-border-width       : 2px;
