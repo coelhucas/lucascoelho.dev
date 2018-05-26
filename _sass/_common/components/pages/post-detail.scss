@@ -4,3 +4,11 @@
 
   .comments { overflow: hidden; }
 }
+
+#disqus_thread {
+  overflow: hidden;
+
+  iframe {
+    margin-bottom: -54px;
+  }
+}
