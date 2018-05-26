@@ -6,10 +6,11 @@ categories: GameDev Tutorial AI
 tags: Godot-Game-Engine
 ---
 
-# Introduction
 Quick note: I've integrated the DISQUS here, so now you can comment below. 
 
-Well, there's almost 2 months since the last post, and I apologize for this, althought that I think that very few people are reading these "articles". Btw, today I'm going to talk about the FSM (Finite State Machine) implementation to games. It's based in my own experience since I've started learning Game Maker (where I've used this concept for the first time) until today.
+# Introduction
+
+Today I'm going to talk about the FSM (Finite State Machine) implementation to games. It's based in my own experience since I've started learning Game Maker (where I've used this concept for the first time) until today.
 
 A brief description of finite state machines for games would be something like an AI prepared to do X action in Y moment, or maybe player states to make everything work fluently.
 Imagine that you have a platform movement, and you want to implement a vertical ladder which you can climb it, how you're going to do that? I can think about some ways to do it, but just quick fixes or some jerry-rigged system. With states, you can separate two controllers, one for the player "common" platform movement, and other that handle separated with the climbing (up and down) state, and so you're not going to have problems, because your states work individually, preventing player from receive gravity during the climbing, or not making an enemy hitting the air while player is away.
