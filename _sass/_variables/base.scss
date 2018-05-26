@@ -23,7 +23,8 @@ $blue-bright  : #87daff;
 $blue         : #0684bd;
 $blue-deep    : #262a30;
 $orange       : #fc6423;
-$red-light    : #874f4f;
+$red-bright   : #ea8f8f;
+$red          : #874f4f;
 $red-deep     : #6d3f3f;
 
 
@@ -36,7 +37,7 @@ $red-deep     : #6d3f3f;
 $text-color                   : white;
 
 // Global link color.
-$link-color                   : $red-light;
+$link-color                   : $red;
 $link-hover-color             : $red-deep;
 $link-decoration-color        : $grey-light;
 $link-decoration-hover-color  : $black-deep;
@@ -48,7 +49,7 @@ $border-color                 : $grey-light;
 $body-bg-color                : $black-deep;
 
 // Selection
-$selection-bg                 : $blue-deep;
+$selection-bg                 : $red-deep;
 $selection-color              : white;
 
 
@@ -158,12 +159,12 @@ $code-background                : $gainsboro;
 $btn-font-weight                : normal;
 
 $btn-default-radius             : 0;
-$btn-default-bg                 : $black-deep;
+$btn-default-bg                 : $red-;
 $btn-default-color              : white;
 $btn-default-font-size          : 14px;
 $btn-default-border-width       : 2px;
 $btn-default-border-color       : $black-deep;
-$btn-default-hover-bg           : white;
+$btn-default-hover-bg           : $red-deep;
 $btn-default-hover-color        : $black-deep;
 $btn-default-hover-border-color : $black-deep;
 
@@ -271,7 +272,7 @@ $read-more-border-radius        : 0;
 // --------------------------------------------------
 $sidebar-nav-color                    : $black-light;
 $sidebar-nav-hover-color              : $whitesmoke;
-$sidebar-highlight                    : $blue-bright;
+$sidebar-highlight                    : $red-bright;
 
 $site-author-image-padding            : 2px;
 $site-author-image-width              : 96px;
