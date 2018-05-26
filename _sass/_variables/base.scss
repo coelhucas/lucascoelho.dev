@@ -158,7 +158,7 @@ $code-background                : $gainsboro;
 
 $btn-font-weight                : normal;
 
-$btn-default-radius             : 0;
+$btn-default-radius             : 5;
 $btn-default-bg                 : $red-;
 $btn-default-color              : white;
 $btn-default-font-size          : 14px;
@@ -229,9 +229,9 @@ $brand-bg                       : $black-deep;
 $logo-font-size                 : 20px;
 $logo-font-size                 : if(type-of(jekyll-config('font.logo.size')) == 'number', jekyll-config('font.logo.size') + px, $logo-font-size);
 
-$site-subtitle-color            : $grey-dark;
+$site-subtitle-color            : white;
 $subtitle-font-size             : 13px;
-$subtitle-color                 : $grey-dark;
+$subtitle-color                 : white;
 
 // Menu
 $menu-link-border               : transparent;
