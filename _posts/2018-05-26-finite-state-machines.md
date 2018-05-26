@@ -23,12 +23,17 @@ There's some ways to do a state, it could be just a string, for example(in GDScr
 var state
 
 {% highlight swift linenos %}
-func _physics_process(delta): // in other places, this is called as fixed update function/void
+func _physics_process(delta):
 	if state == "moving":
-		_moving(delta) // calling an example function that will be update the moving state 
+		_moving(delta) 
 	elif state == "climbing":
-		_climbing(delta) // calling an example function that will be update the climbing state
+		_climbing(delta)
 {% endhighlight %}
+
+Some notes:
+*_physics_process(delta):* - in other places, this is called as fixed update function/void
+*_moving(delta)* - calling an example function that will be update the moving state 
+*_climbing(delta)* -  calling an example function that will be update the climbing state
 
 it's good to read, but in large scale, it could be confusing and consumes more processing. Instead this, we can did also:
 
