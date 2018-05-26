@@ -23,26 +23,22 @@ There's some ways to do a state, it could be just a string, for example(in GDScr
 var state
 
 {% highlight swift linenos %}
-{
 func _physics_process(delta): // in other places, this is called as fixed update function/void
 	if state == "moving":
 		_moving(delta) // calling an example function that will be update the moving state 
 	elif state == "climbing":
 		_climbing(delta) // calling an example function that will be update the climbing state
-}
 {% endhighlight %}
 
 it's good to read, but in large scale, it could be confusing and consumes more processing. Instead this, we can did also:
 
 {% highlight swift linenos %}
-{
 var state
 func _physics_process(delta): 
 	if state == 0:
 		_moving(delta)  
 	elif state == 1:
 		_climbing(delta) 
-}
 {% endhighlight %}
 
 
@@ -50,17 +46,14 @@ It'll be faster to proccess, but much less readable. What can we do now?
 Well, in my opinion, the better way is to use an Enumerator (enum). I'm not going to teach you what's is an enumerator, but if you want, [this article](https://www.thoughtco.com/what-is-an-enum-958326) will give you a hand. All you need to know is that using an enum you can represent integer values using an user-defined type, for example:
 
 {% highlight swift linenos %}
-{
 enum states {
 	moving,
 	climbing
-}
 }
 {% endhighlight %}
 
 or even
 {% highlight swift linenos %}
-{
 enum states { moving, climbing }
 }
 {% endhighlight %}
@@ -69,12 +62,10 @@ Yes, you can pass your own values using for example:
 {% highlight swift linenos %}
 {
 enum example { number = 42, gasoline_in_brazil = 9 }
-}
 {% endhighlight %}
 
 But getting this concept, you can make this:
 {% highlight swift linenos %}
-{
 enum states { moving, climbing }
 var state = states.moving
 
@@ -83,7 +74,6 @@ func _physics_process(delta):
 		_moving(delta)
 	elif state == states.climbing:
 		_climbing(delta)
-}
 {% endhighlight %}
 
 get the idea?
@@ -92,7 +82,7 @@ get the idea?
 
 Using this you just need to define your states and how you're going to work. For example:
 ![Example gif](http://www.lcrabbit.com/img/fsm/gif2.gif)
-In this "enemy", he has 3 states: idle, chasing and attacking. If character's Y axis is greater (in Godot, lesser) than enemy Y + some_value, the enemy state are going to be idle, if it's not will gonna be chasing and if the player's collision shape enter on the green rectangle, the state will be attacking (consequently, if the player leaves this area, the enemy will follow the player again).
+In this "enemy", I made 3 states: idle, chasing and attacking. If character's Y axis is greater (in Godot, lesser) than enemy Y + some_value, the enemy state are going to be idle, if it's not will gonna be chasing and if the player's collision shape enter on the green rectangle, the state will be attacking (consequently, if the player leaves this area, the enemy will follow the player again).
 
 I hope this lecture is helpful to someone, I have no idea if I'm being didactic in this texts, so leave your feedback about it bellow, so I can see where I can improve this.
 
