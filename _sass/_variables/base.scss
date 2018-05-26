@@ -15,7 +15,7 @@ $grey-light   : #ccc;
 $grey         : #bbb;
 $grey-dark    : #999;
 $grey-dim     : #666;
-$black-light  : #555;
+$black-light  : #555  ;
 $black-dim    : #333;
 $black-deep   : #222;
 $red          : #ff2a2a;
@@ -23,6 +23,8 @@ $blue-bright  : #87daff;
 $blue         : #0684bd;
 $blue-deep    : #262a30;
 $orange       : #fc6423;
+$red-light    : #874f4f;
+$red-deep     : #6d3f3f;
 
 
 
@@ -31,11 +33,11 @@ $orange       : #fc6423;
 // --------------------------------------------------
 
 // Global text color on <body>
-$text-color                   : $black-light;
+$text-color                   : white;
 
 // Global link color.
-$link-color                   : $black-light;
-$link-hover-color             : $black-deep;
+$link-color                   : $red-light;
+$link-hover-color             : $red-deep;
 $link-decoration-color        : $grey-light;
 $link-decoration-hover-color  : $black-deep;
 
@@ -43,7 +45,7 @@ $link-decoration-hover-color  : $black-deep;
 $border-color                 : $grey-light;
 
 // Background color for <body>
-$body-bg-color                : white;
+$body-bg-color                : $black-deep;
 
 // Selection
 $selection-bg                 : $blue-deep;
