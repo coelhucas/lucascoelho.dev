@@ -33,7 +33,8 @@ Now we need the JSON files. This is an example of one JSON file:
 {% highlight json linenos %}
 {
    "Title": "Title!",
-   "Message": "Hello! How you doing? \nThis is an example of what you can do using a JSON file."
+   "Message": "Hello! How you doing? 
+   \nThis is an example of what you can do using a JSON file."
 }
 {% endhighlight %}
 
@@ -41,7 +42,8 @@ Now we need the JSON files. This is an example of one JSON file:
 {% highlight json linenos %}
 {
    "Title": "Título!",
-   "Message": "Olá! Tudo bem com você? \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
+   "Message": "Olá! Tudo bem com você? 
+   \nEsse é um exemplo do que pode ser feito usando um arquivo JSON."
 }
 {% endhighlight %}
 
@@ -72,7 +74,8 @@ Then, we have to Open our file, and for this we'll concatenate the lang_prefix w
 *Observation: My **.json** files are located at "Resources/" folder that I made, you need to set the code bellow according with your own file's path.*
 
 {% highlight swift linenos %}
-file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're openning the file and saying to the engine to read it, and not to write.
+file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) 
+//We're openning the file and saying to the engine to read it, and not to write.
 {% endhighlight %}
 
 You may notice that I've not used the str() to the lang_prefix, and this is because we already set it as a string (when we've used the quotation marks).
