@@ -60,7 +60,6 @@ enum states { moving, climbing }
 it's the same. And to call some value you need to use states.name (states.moving/states.climbing). Internally, states.moving are going to be 0 and states.climbing = 1.
 Yes, you can pass your own values using for example:
 {% highlight swift linenos %}
-{
 enum example { number = 42, gasoline_in_brazil = 9 }
 {% endhighlight %}
 
