@@ -23,7 +23,8 @@ $highlight_theme : jekyll-config("highlight_theme");
 @if $highlight_theme == "night" {
   //$highlight-background   : #1d1f21 !global;
   $highlight-background   : #222 !global;
-  $highlight-current-line : #282a2e !global;
+  $highlight-current-line : #222 !global;
+ // $highlight-current-line : #282a2e !global;
   $highlight-selection    : #373b41 !global;
   $highlight-foreground   : #c5c8c6 !global;
   $highlight-comment      : #969896 !global;
