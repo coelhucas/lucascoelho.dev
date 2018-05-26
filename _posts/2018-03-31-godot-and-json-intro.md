@@ -55,10 +55,10 @@ Also, I'm going to set this keys as the same name of the nodes, which brings a w
 ## Calling the "set_language" function
 We need to call the set_language (which I made at the base project) for each button clicked signal. I'm going to do this way:
 *for the portuguese language's button:*
-`set_language("pt")`
+{% highlight swift %}set_language("pt"){% endhighlight %}
 
 *and the english:*
-`set_language("en")`
+{% highlight swift %}set_language("en"){% endhighlight %}
 
 I'm using the lang_prefix as a string because we're using this language prefixes at our files (**en-texts.json**, for example), and it'll make easier to manage our files on the function.
 
@@ -66,8 +66,7 @@ I'm using the lang_prefix as a string because we're using this language prefixes
 Now we start working at our *set_language()* function!
 In Godot, we need to use a built-in function using the File, one of the Godot's Objects, which is used to manage file reading and writing. We can create a variable to our file like this:
 
-`var file = File.new() # Makes our "new file"
-`
+{% highlight swift %}var file = File.new() # Makes our "new file"{% endhighlight %}
 
 Then, we have to Open our file, and for this we'll concatenate the lang_prefix with the path. 
 *Observation: My **.json** files are located at "Resources/" folder that I made, you need to set the code bellow according with your own file's path.*
@@ -79,7 +78,7 @@ file.open("res://Resources/" + lang_prefix + "-texts.json", file.READ) # We're o
 You may notice that I've not used the str() to the lang_prefix, and this is because we already set it as a string (when we've used the quotation marks).
 
 Done that, we can finally parse our info into a dictionary.
-`var json = parse_json(file.get_as_text())`
+{% highlight swift %}var json = parse_json(file.get_as_text()){% endhighlight %}
 This *get_as_text()* is a built-in function that returns the value as a text(string), and we're parsing to the json var directly from this function.
 
 Remember the *localizable* group made before? Now we need to do a for that's going to change the object text for each localizable object.
@@ -91,11 +90,11 @@ for child in get_children():
 {% endhighlight %}
 
 *Observations:*
-1. `for child in get_children():` Considering that all the objects are childs of this manager
-2. `if child.is_in_group("localizable"):` And are part of the "localizable" group
-3. `child.text = json[str(child.get_name())]` Notice that here I'm using the Node name and turning into a string, which is equals the json's respective key.
+1. {% highlight swift %}for child in get_children():{% endhighlight %} Considering that all the objects are childs of this manager
+2. {% highlight swift %}if child.is_in_group("localizable"):{% endhighlight %} And are part of the "localizable" group
+3. {% highlight swift %}child.text = json[str(child.get_name())]{% endhighlight %} Notice that here I'm using the Node name and turning into a string, which is equals the json's respective key.
 
-Our localization system is already working. Now, we just need to use after this *for* a ``file.close()``, because we didn't need this processing anymore unless we set the language again.
+Our localization system is already working. Now, we just need to use after this *for* a {% highlight swift %}file.close(){% endhighlight %}, because we didn't need this processing anymore unless we set the language again.
 
 Well, I think it's way better the *CSV* files. What do you think?
 
