@@ -60,7 +60,11 @@ body {
 
 span {
 	font-family: monospace;
-	color: rgb(201, 200, 203)
+	color: rgb(201, 200, 203);
+}
+
+a {
+	color: rgb(239, 230, 188);
 }
 
 a:visited{
