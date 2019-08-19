@@ -1,65 +1,88 @@
 <html>
-<head>
-	<title>Lucas Coelho</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>   
-<body>
-	<div class="header-container">
-		<span class=" top-text">Lucas Coelho</span>
-		<span>software developer</span>
-		<span class="profile-link"><a href="https://github.com/lcrabbit" target="_blank">github</a></span>
-		<!--<span class="profile-link"><a href="https://github.com/lcrabbit">blog</a></span>-->
-		<span class="profile-link"><a href="https://www.linkedin.com/in/lucas-coelho-3b285b153/" target="_blank">linkedin</a></span>
-		<span class="profile-link"><a href="mailto:lucascoelhodacosta@gmail.com" target="_blank">contact</a></span>
-	</div>
-	<div class="main-container">
-		<div class="col">
-			<span class="top-text">work</span>
-			<div class="card"
-				onclick="window.open('https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en_US')"
-				id="card-box">
-				<span class="project-title">
-					Clube de Fidelidade Odin
-				</span>
-				<br />
-				<div class="card-description-container">
-					<span class="card-description-text">&nbsp&nbspFidelity mobile application system. Through
-						gamification, the client
-						can complete tasks, and earn points which can be traded for brand products, such as shirts and
-						beers. Also have an AR experience.
-						<span class="tags">[<span class="javascript">javascript/react-native</span>][<span class="cs">unity/c#</span>]</span>
-				</div>
-				</span>
-			</div>
-		</div>
-		<div class="col">
-			<span class="top-text">personal</span>
-			<div class="card" onclick="window.open('https://github.com/lcrabbit/unity-room-creator')" id="card-box">
-				<span class="project-title">
-					Unity RGB Level Generator
-				</span>
-				<br />
-				<div class="card-description-container">
-					<span class="card-description-text">&nbsp&nbsp Simple script which using a source sprite, can
-						convert it pixels to Game Objects from it previously set-up colors.
-						<span class="tags">[<span class="cs">unity/c#</span>]</span>
-				</div>
-				</span>
-			</div>
-			<div class="card" onclick="window.open('https://github.com/lcrabbit/Godot-Runtime-Console')" id="card-box">
-				<span class="project-title">
-					In-Game Console [Godot]
-				</span>
-				<br />
-				<div class="card-description-container">
-					<span class="card-description-text">&nbsp&nbsp Simple script which using a source sprite, can
-						convert it pixels to Game Objects from it previously set-up colors.
-						<span class="tags">[<span class="gdscript">godot/gdscript</span>]</span>
-				</div>
-				</span>
-			</div>
-		</div>
-	</div>
-</body>
-
+  <head>
+    <title>Lucas Coelho (dot) me</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div>
+      <div class="header">
+        <div class="column">
+          <span class="name">Lucas Coelho</span>
+          <span class="headline">Software Developer</span>
+        </div>
+        <div class="links">
+          <!-- Mobile Icons -->
+          <a target="_blank" href="https://github.com/coelhucas">
+            <img class="icon" src="img/github-svgrepo-com.svg" />
+          </a>
+          <a target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/">
+            <img class="icon" src="img/linkedin-svgrepo-com.svg" />
+          </a>
+          <a target="_blank" href="mailto:lucascoelhodacosta@gmail.com">
+            <img class="icon" src="img/email-svgrepo-com.svg" />
+          </a>
+          <!-- Desktop Options -->
+          <a target="_blank" href="https://github.com/coelhucas" class="link">Github</a>
+          <a target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/" class="link">LinkedIn</a>
+          <a target="_blank" href="mailto:lucascoelhodacosta@gmail.com" class="link">Contact</a>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <div class="row projects">
+        <div class="project-card" onclick="window.open('https://apps.apple.com/us/app/mesa-tool/id1432109902?ls=1')"">
+          <img class="project-picture" src="img/mesa.png" />
+          <span class="project-title">
+              MESA.Tool
+              <div class="tag">
+                <div class="tag-background">
+                  <span class="tag-text">React Native</span>
+                </div>
+                <div class="arrow"></div>
+              </div>
+            </span>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="project-card" onclick="window.open('https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en')"">
+          <img class="project-picture" src="img/odin.png" />
+          <span class="project-title">
+            Clube de Fidelidade Odin
+            <div class="tag">
+                <div class="tag-background">
+                  <span class="tag-text">React Native</span>
+                </div>
+                <div class="arrow"></div>
+              </div>
+            </span>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="project-card" onclick="window.open('https://github.com/coelhucas/unity-rgba-level-generator')"">
+          <img class="project-picture" src="img/unity-rgba-generator.png" />
+          <span class="project-title">
+            Unity RGBA Map Creator
+            <div class="tag">
+                <div class="tag-background">
+                  <span class="tag-text">Unity</span>
+                </div>
+                <div class="arrow"></div>
+              </div>
+            </span>
+          <div class="card-overlay"></div>
+        </div>
+        <div class="project-card" onclick="window.open('https://github.com/coelhucas/Godot-Runtime-Console')"">
+            <img class="project-picture" src="img/godot-console.png" />
+            <span class="project-title">
+              Godot run-time console
+              <div class="tag">
+                  <div class="tag-background">
+                    <span class="tag-text">Godot</span>
+                  </div>
+                  <div class="arrow"></div>
+                </div>
+              </span>
+            <div class="card-overlay"></div>
+        </div>
+      </div>
+  </body>
 </html>

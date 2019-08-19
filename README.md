@@ -1,2 +1,2 @@
-# lcrabbit.github.io
+# coelhucas.github.io / lucascoelho.me
 Public blog/portfolio
