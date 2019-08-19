@@ -81,9 +81,9 @@ p {
 
 .projects {
     display: flex;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 50%;
 }
 
 .project-card {
@@ -182,11 +182,24 @@ p {
     }
 
     .projects {
+        margin-right: 48px;
         justify-content: center;
     }
 
     .project-card {
         margin-bottom: 32px;
+        width: 256px;
+        height: 148px;
+    }
+
+    .project-picture {
+        width: 256px;
+        height: 148px;
+    }
+
+    .card-overlay {
+        width: 256px;
+        height: 148px;
     }
 
     .separator {
