@@ -58,11 +58,6 @@ p {
     height: 24px;
 }
 
-.icon path {
-    fill: white;
-    color: red;
-}
-
 .name {
     font-size: 28px;
     font-weight: 600;
@@ -81,7 +76,6 @@ p {
 
 .projects {
     display: flex;
-    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -169,6 +163,7 @@ p {
 
 @media (max-width: 790px) {
     body {
+        padding: 24px;
         justify-content: center;
     }
     .header {
@@ -178,11 +173,10 @@ p {
     .links {
         align-self: center;
         margin: 32px 0;
-        min-width: 300px;
+        min-width: 152px;
     }
 
     .projects {
-        margin-right: 48px;
         justify-content: center;
     }
 
