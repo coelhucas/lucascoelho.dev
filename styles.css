@@ -85,8 +85,9 @@ p {
     position: relative;
     width: 320px;
     height: 180px;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    margin: 8px 8px 0 0;
+    border-radius: 4px;
+    overflow: hidden;
     color: transparent;
     transition: all 0.4s ease-in-out;
     align-items: flex-end;
