@@ -42,7 +42,8 @@ p {
     color: #7C7C7C;
     font-size: 18px;
     text-decoration: none;
-    transition: all 0.2s ease-in-out;
+    outline: none;
+    transition: border-bottom 0.2s ease-out;
     border-bottom: 2px solid transparent;
 }
 
@@ -50,17 +51,26 @@ p {
     border-bottom: 2px solid #7C7C7C;
 }
 
+.link:focus {
+    border-bottom: 2px solid #7C7C7C;
+}
+
+.card-link {
+    text-decoration: none;
+}
+
 .icon {
-    display: none;
-    fill: #2B303A;
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .name {
     font-size: 28px;
     font-weight: 600;
+}
+
+.name:focus{
+    border: 2px solid black;
 }
 
 .headline {
@@ -89,13 +99,8 @@ p {
     border-radius: 4px;
     overflow: hidden;
     color: transparent;
-    transition: all 0.4s ease-in-out;
     align-items: flex-end;
-}
-
-.project-card:hover {
-    color: #EFF1ED;
-    cursor: pointer;
+    background-color: black;
 }
 
 .project-title {
@@ -103,6 +108,7 @@ p {
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    pointer-events: none;
     flex-direction: row;
     z-index: 2;
     font-size: 14px;
@@ -111,7 +117,9 @@ p {
 
 .project-picture {
     position: absolute;
+    object-fit: cover;
     width: 320px;
+    height: 100%;
 }
 
 .tag {
@@ -145,20 +153,45 @@ p {
     color: white;
     font-size: 10px;
 }
-
+/*
 .card-overlay {
     top: 0;
     left: 0;
     position: absolute;
-    opacity: 0.1;
-    transition: all .2s ease-in-out;
+    opacity: 0;
     width: 320px;
     height: 180px;
-
     background-color: #2B303A;
+}*/
+
+.card-link:focus {
+    outline: none;
+}
+
+.card-link:focus .project-card {
+    transition: color 0.4s ease-out;
+    color: #EFF1ED;
+    cursor: pointer;
+}
+
+.card-link:hover .project-card {
+    transition: color 0.4s ease-out;
+    color: #EFF1ED;
+    cursor: pointer;
+}
+
+.card-link:focus .project-picture {
+    transition: opacity 0.4s ease-out;
+    opacity: 0.6;
+}
+
+.card-link:hover .project-picture {
+    transition: opacity 0.4s ease-out;
+    opacity: 0.6;
 }
 
 .card-overlay:hover {
+    transition: opacity .2s ease-out;
     opacity: 0.7;
 }
 
@@ -206,6 +239,10 @@ p {
     }
 
     .icon {
-        display: block;
+        visibility: visible;
+        fill: #2B303A;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
     }
 }

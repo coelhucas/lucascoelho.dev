@@ -1,120 +1,105 @@
 <html>
-  <head>
-    <title>Lucas Coelho (dot) dev</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div>
-      <div class="header">
-        <div class="column">
-          <span class="name">Lucas Coelho</span>
-          <span class="headline">Software Developer</span>
-          <span class="headline">lucascoelhodacosta@gmail.com</span>
-        </div>
-        <div class="links">
-          <!-- Mobile Icons -->
-          <a target="_blank" href="https://github.com/coelhucas">
-            <img alt="Github" class="icon" src="img/github-svgrepo-com.svg" />
-          </a>
-          <a target="_blank" href="https://github.com/coelhucas/blog">
-            <img alt="blog" class="icon" src="img/blog-svgrepo-com.svg" />
-          </a>
-          <a target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/">
-            <img alt="linkedin" class="icon" src="img/linkedin-svgrepo-com.svg" />
-          </a>
-          <a target="_blank" href="mailto:lucascoelhodacosta@gmail.com">
-            <img alt="email" class="icon" src="img/email-svgrepo-com.svg" />
-          </a>
-          <!-- Desktop Options -->
-          <a target="_blank" href="https://github.com/coelhucas" class="link">Github</a>
-          <a target="_blank" href="https://github.com/coelhucas/blog" class="link">Blog</a>
-          <a target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/" class="link">LinkedIn</a>
-          <a target="_blank" href="mailto:lucascoelhodacosta@gmail.com" class="link">Contact</a>
-        </div>
+
+<head>
+  <title>Lucas Coelho (dot) dev</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div>
+    <div class="header">
+      <div class="column">
+        <span class="name">Lucas Coelho</span>
+        <span class="headline">Software Developer</span>
+        <span class="headline">lucascoelhodacosta@gmail.com</span>
       </div>
-      <div class="separator"></div>
-      <div class="row projects">
-        <figure class="project-card" onclick="window.open('https://loja.mrv.com.br/')">
-          <img class="project-picture" src="img/project-thumbnail/mrv-plataforma.png" />
-          <figcaption class="project-title">
-              MRV Platform
-              <div class="tag">
-                <div class="tag-background">
-                  <figcaption class="tag-text">React</figcaption>
-                </div>
-                <div class="arrow"></div>
-              </div>
-            </figcaption>
-          <div class="card-overlay"></div>
-        </figure>
-        <figure class="project-card" onclick="window.open('https://github.com/coelhucas/hitbox-editor')">
-          <img class="project-picture" src="img/project-thumbnail/hbox-editor.png" />
-          <figcaption class="project-title">
-              Hitbox Editor
-              <div class="tag">
-                <div class="tag-background">
-                  <figcaption class="tag-text">Godot</figcaption>
-                </div>
-                <div class="arrow"></div>
-              </div>
-            </figcaption>
-          <div class="card-overlay"></div>
-        </figure>
-        <figure class="project-card" onclick="window.open('https://apps.apple.com/us/app/mesa-tool/id1432109902?ls=1')">
-          <img class="project-picture" src="img/project-thumbnail/mesa.png" />
-          <figcaption class="project-title">
-              MESA.Tool
-              <div class="tag">
-                <div class="tag-background">
-                  <figcaption class="tag-text">React, React Native</figcaption>
-                </div>
-                <div class="arrow"></div>
-              </div>
-            </figcaption>
-          <div class="card-overlay"></div>
-        </figure>
-        <figure class="project-card" onclick="window.open('https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en')">
-          <img class="project-picture" src="img/project-thumbnail/odin.png" />
-          <figcaption class="project-title">
-            Clube de Fidelidade Odin
-            <div class="tag">
-                <div class="tag-background">
-                  <figcaption class="tag-text">React Native/Unity</figcaption>
-                </div>
-                <div class="arrow"></div>
-            </div>
-            </figcaption>
-          <div class="card-overlay"></div>
-        </figure>
-        <figure class="project-card" onclick="window.open('https://github.com/coelhucas/unity-rgba-level-generator')">
-          <img class="project-picture" src="img/project-thumbnail/unity-rgba-generator.png" />
-          <figcaption class="project-title">
-            Unity RGBA Map Creator
-            <div class="tag">
-                <div class="tag-background">
-                  <figcaption class="tag-text">Unity</figcaption>
-                </div>
-                <div class="arrow"></div>
-              </div>
-            </figcaption>
-          <div class="card-overlay"></div>
-        </figure>
-        <figure class="project-card" onclick="window.open('https://github.com/coelhucas/Godot-Runtime-Console')">
-            <img class="project-picture" src="img/project-thumbnail/godot-console.png" />
-            <figcaption class="project-title">
-              Godot run-time console
-              <div class="tag">
-                  <div class="tag-background">
-                    <figcaption class="tag-text">Godot</figcaption>
-                  </div>
-                  <div class="arrow"></div>
-                </div>
-              </figcaption>
-            <div class="card-overlay"></div>
-        </figure>
+      <div class="links">
+        <!-- Mobile Icons -->
+        <a tabindex="-1" target="_blank" href="https://github.com/coelhucas">
+          <img alt="Github" class="icon" src="img/github-svgrepo-com.svg" />
+        </a>
+        <a tabindex="-1" target="_blank" href="https://github.com/coelhucas/blog">
+          <img alt="blog" class="icon" src="img/blog-svgrepo-com.svg" />
+        </a>
+        <a tabindex="-1" target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/">
+          <img alt="linkedin" class="icon" src="img/linkedin-svgrepo-com.svg" />
+        </a>
+        <a tabindex="-1" target="_blank" href="mailto:lucascoelhodacosta@gmail.com">
+          <img alt="email" class="icon" src="img/email-svgrepo-com.svg" />
+        </a>
+        <!-- Desktop Options -->
+        <a target="_blank" href="https://github.com/coelhucas" class="link">Github</a>
+        <a target="_blank" href="https://github.com/coelhucas/blog" class="link">Blog</a>
+        <a target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/" class="link">LinkedIn</a>
+        <a target="_blank" href="mailto:lucascoelhodacosta@gmail.com" class="link">Contact</a>
       </div>
-  </body>
+    </div>
+    <div class="separator"></div>
+    <div class="row projects">
+      <a target="_blank" class="card-link" href="https://google.com/">
+        <figure class="project-card">
+          <img class="project-picture" src="https://github.com/coelhucas/simple-physics-handler/raw/master/sample.gif" />
+          <figcaption class="project-title">
+            [LUA] Simple physics handler
+          </figcaption>
+        </figure>
+      </a>
+      <a target="_blank" class="card-link" href="https://loja.mrv.com.br/">
+      <figure class="project-card">
+        <img class="project-picture" src="img/project-thumbnail/mrv-plataforma.png" />
+        <figcaption class="project-title">
+          [JS] MRV Platform
+        </figcaption>
+      </figure>
+    </a>
+    <a target="_blank" class="card-link" href='https://github.com/coelhucas/hitbox-editor'>
+      <figure class="project-card">
+        <img class="project-picture" src="img/project-thumbnail/hbox-editor.png" />
+        <figcaption class="project-title">
+          [GDScript] Hitbox Editor
+        </figcaption>
+      </figure>
+    </a>
+    <a target="_blank" class="card-link" href='https://apps.apple.com/us/app/mesa-tool/id1432109902?ls=1'>
+      <figure class="project-card">
+        <img class="project-picture" src="img/project-thumbnail/mesa.png" />
+        <figcaption class="project-title">
+          [JS] MESA.Tool
+        </figcaption>
+        <div class="card-overlay"></div>
+      </figure>
+    </a>
+    <a target="_blank" class="card-link" href='https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en'>
+      <figure class="project-card">
+        <img class="project-picture" src="img/project-thumbnail/odin.png" />
+        <figcaption class="project-title">
+          [JS/C#] Clube de Fidelidade Odin
+        </figcaption>
+        <div class="card-overlay"></div>
+      </figure>
+    </a>
+    <a target="_blank" class="card-link" href='https://github.com/coelhucas/unity-rgba-level-generator'>
+      <figure class="project-card">
+        <img class="project-picture" src="img/project-thumbnail/unity-rgba-generator.png" />
+        <figcaption class="project-title">
+          [C#] Unity RGBA Map Creator
+        </figcaption>
+        <div class="card-overlay"></div>
+      </figure>
+    </a>
+    <a target="_blank" class="card-link" href='https://github.com/coelhucas/Godot-Runtime-Console'>
+      <figure class="project-card"">
+        <img class="project-picture" src="img/project-thumbnail/godot-console.png" />
+        <figcaption class="project-title">
+          [GDScript] Godot run-time console
+        </figcaption>
+        <div class="card-overlay"></div>
+      </figure>
+    </a>
+    </div>
+</body>
+
 </html>
