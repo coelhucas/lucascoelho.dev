@@ -183,6 +183,10 @@ button {
         display: none;
     }
 
+    .project-link {
+        display: inline;
+    }
+
     .icon {
         visibility: visible;
         fill: #2B303A;
