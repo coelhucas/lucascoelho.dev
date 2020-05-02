@@ -118,15 +118,15 @@
       </div>
     </div>
   </div>
+  <script>
+    const accordionElements = document.getElementsByClassName("accordion");
+  
+    for (let accordion of accordionElements) {
+      accordion.addEventListener('click', () => {
+        let accordionContent = accordion.nextElementSibling;
+        accordionContent.classList.toggle('active');
+      });
+    }
+  </script>
 </body>
-<script>
-  const accordionElements = document.getElementsByClassName("accordion");
-
-  for (let accordion of accordionElements) {
-    accordion.addEventListener('click', () => {
-      let accordionContent = accordion.nextElementSibling;
-      accordionContent.classList.toggle('active');
-    });
-  }
-</script>
 </html>
