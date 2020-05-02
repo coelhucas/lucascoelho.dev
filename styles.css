@@ -1,13 +1,17 @@
 body {
-    padding: 48px;
     font-family: 'Montserrat', sans-serif;
-    background-color: #EFF1ED;
+    background-color: #edeef1;
     color: #2B303A;
     font-weight: normal;
 }
 
-p {
-    font-weight: 600;
+button {
+    background-color: transparent;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 48px auto;
 }
 
 .row {
@@ -34,7 +38,6 @@ p {
     align-self: flex-end;
     justify-content: space-between;
     margin-left: 24px;
-    margin-right: 24px;
     max-width: 420px;
 }
 
@@ -55,26 +58,21 @@ p {
     border-bottom: 2px solid #7C7C7C;
 }
 
-.card-link {
-    text-decoration: none;
-}
-
 .icon {
     visibility: hidden;
     pointer-events: none;
 }
 
 .name {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
-}
-
-.name:focus{
-    border: 2px solid black;
+    margin: 0;
 }
 
 .headline {
+    font-weight: normal;
     font-size: 12px;
+    margin: 0;
 }
 
 .separator {
@@ -86,113 +84,69 @@ p {
 
 .projects {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between
 }
 
-.project-card {
+.picture-container {
     display: flex;
-    position: relative;
-    width: 320px;
-    height: 180px;
-    margin: 8px 8px 0 0;
-    border-radius: 4px;
-    overflow: hidden;
-    color: transparent;
-    align-items: flex-end;
-    background-color: black;
-}
-
-.project-title {
-    display: flex;
-    align-items: center;
     width: 100%;
-    justify-content: space-between;
-    pointer-events: none;
-    flex-direction: row;
-    z-index: 2;
-    font-size: 14px;
-    padding: 8px;
+    height: 256px;
 }
 
 .project-picture {
-    position: absolute;
     object-fit: cover;
-    width: 320px;
-    height: 100%;
+    width: 100%;
 }
 
-.tag {
+.project-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    max-width: 512px;
+    flex-direction: column;
+    margin-bottom: 16px;
 }
 
-.arrow {
-    width: 0;
-    height: 0;
-    border-right: 10px solid transparent;
-    border-radius: 1px;
-    border-left: 10px solid #2B303A;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
-.tag-background {
-    display: flex;
-    align-items: center;
-    border-radius: 2px;
-    padding: 2px;
-    padding-left: 6px;
-    width: auto;
-    background-color: #2B303A;
-    height: 18px;
-}
-
-.tag-text {
-    color: white;
-    font-size: 10px;
-}
-/*
-.card-overlay {
-    top: 0;
-    left: 0;
-    position: absolute;
-    opacity: 0;
-    width: 320px;
-    height: 180px;
-    background-color: #2B303A;
-}*/
-
-.card-link:focus {
+.accordion {
+    text-decoration: none;
+    width: fit-content;
     outline: none;
+    border: none;
+    color: #2B303A;
+    font-weight: 600;
+    opacity: 1;
+    margin: 0;
+    padding: 4px;
+    transition: background-color 0.4s ease-out, color 0.4s ease-out;
 }
 
-.card-link:focus .project-card {
-    transition: color 0.4s ease-out;
-    color: #EFF1ED;
+.accordion:hover {
+    background-color: #2B303A;
+    color: #f6f5fa;
     cursor: pointer;
 }
 
-.card-link:hover .project-card {
-    transition: color 0.4s ease-out;
-    color: #EFF1ED;
+.accordion:focus {
+    background-color: #2B303A;
+    color: #f6f5fa;
     cursor: pointer;
 }
 
-.card-link:focus .project-picture {
-    transition: opacity 0.4s ease-out;
-    opacity: 0.6;
+.accordion-item {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out, padding 0.2s ease-in-out;
 }
 
-.card-link:hover .project-picture {
-    transition: opacity 0.4s ease-out;
-    opacity: 0.6;
+.accordion-item.active {
+    display: block;
+    max-height: 640px;
 }
 
-.card-overlay:hover {
-    transition: opacity .2s ease-out;
-    opacity: 0.7;
+.project-link {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 @media (max-width: 790px) {
@@ -200,6 +154,7 @@ p {
         padding: 24px;
         justify-content: center;
     }
+
     .header {
         flex-direction: column;
     }
@@ -211,21 +166,11 @@ p {
     }
 
     .projects {
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .project-card {
         margin-bottom: 32px;
-        width: 256px;
-        height: 148px;
-    }
-
-    .project-picture {
-        width: 256px;
-        height: 148px;
-    }
-
-    .card-overlay {
         width: 256px;
         height: 148px;
     }

@@ -9,26 +9,26 @@
 </head>
 
 <body>
-  <div>
+  <div class="wrapper">
     <div class="header">
       <div class="column">
-        <span class="name">Lucas Coelho</span>
-        <span class="headline">Software Developer</span>
-        <span class="headline">lucascoelhodacosta@gmail.com</span>
+        <h1 class="name">Lucas Coelho</h1>
+        <p class="headline">Software Developer</p>
+        <p class="headline">lucascoelhodacosta@gmail.com</p>
       </div>
       <div class="links">
         <!-- Mobile Icons -->
         <a tabindex="-1" target="_blank" href="https://github.com/coelhucas">
-          <img alt="Github" class="icon" src="img/github-svgrepo-com.svg" />
+          <img alt="Github icon" class="icon" src="img/github-svgrepo-com.svg" />
         </a>
         <a tabindex="-1" target="_blank" href="https://github.com/coelhucas/blog">
-          <img alt="blog" class="icon" src="img/blog-svgrepo-com.svg" />
+          <img alt="blog icon" class="icon" src="img/blog-svgrepo-com.svg" />
         </a>
         <a tabindex="-1" target="_blank" href="https://www.linkedin.com/in/lucas-coelho-3b285b153/">
-          <img alt="linkedin" class="icon" src="img/linkedin-svgrepo-com.svg" />
+          <img alt="linkedin icon" class="icon" src="img/linkedin-svgrepo-com.svg" />
         </a>
         <a tabindex="-1" target="_blank" href="mailto:lucascoelhodacosta@gmail.com">
-          <img alt="email" class="icon" src="img/email-svgrepo-com.svg" />
+          <img alt="email icon" class="icon" src="img/email-svgrepo-com.svg" />
         </a>
         <!-- Desktop Options -->
         <a target="_blank" href="https://github.com/coelhucas" class="link">Github</a>
@@ -38,68 +38,95 @@
       </div>
     </div>
     <div class="separator"></div>
-    <div class="row projects">
-      <a target="_blank" class="card-link" href="https://github.com/coelhucas/simple-physics-handler/">
-        <figure class="project-card">
-          <img class="project-picture" src="https://github.com/coelhucas/simple-physics-handler/raw/master/sample.gif" />
-          <figcaption class="project-title">
-            [LUA] Simple physics handler
-          </figcaption>
-        </figure>
-      </a>
-      <a target="_blank" class="card-link" href="https://loja.mrv.com.br/">
-      <figure class="project-card">
-        <img class="project-picture" src="img/project-thumbnail/mrv-plataforma.png" />
-        <figcaption class="project-title">
-          [JS] MRV Platform
-        </figcaption>
-      </figure>
-    </a>
-    <a target="_blank" class="card-link" href='https://github.com/coelhucas/hitbox-editor'>
-      <figure class="project-card">
-        <img class="project-picture" src="img/project-thumbnail/hbox-editor.png" />
-        <figcaption class="project-title">
-          [GDScript] Hitbox Editor
-        </figcaption>
-      </figure>
-    </a>
-    <a target="_blank" class="card-link" href='https://apps.apple.com/us/app/mesa-tool/id1432109902?ls=1'>
-      <figure class="project-card">
-        <img class="project-picture" src="img/project-thumbnail/mesa.png" />
-        <figcaption class="project-title">
-          [JS] MESA.Tool
-        </figcaption>
-        <div class="card-overlay"></div>
-      </figure>
-    </a>
-    <a target="_blank" class="card-link" href='https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en'>
-      <figure class="project-card">
-        <img class="project-picture" src="img/project-thumbnail/odin.png" />
-        <figcaption class="project-title">
-          [JS/C#] Clube de Fidelidade Odin
-        </figcaption>
-        <div class="card-overlay"></div>
-      </figure>
-    </a>
-    <a target="_blank" class="card-link" href='https://github.com/coelhucas/unity-rgba-level-generator'>
-      <figure class="project-card">
-        <img class="project-picture" src="img/project-thumbnail/unity-rgba-generator.png" />
-        <figcaption class="project-title">
-          [C#] Unity RGBA Map Creator
-        </figcaption>
-        <div class="card-overlay"></div>
-      </figure>
-    </a>
-    <a target="_blank" class="card-link" href='https://github.com/coelhucas/Godot-Runtime-Console'>
-      <figure class="project-card"">
-        <img class="project-picture" src="img/project-thumbnail/godot-console.png" />
-        <figcaption class="project-title">
-          [GDScript] Godot run-time console
-        </figcaption>
-        <div class="card-overlay"></div>
-      </figure>
-    </a>
+      <div class="row projects">
+        <div class="column">
+          <div class="project-container">
+            <a href="#proj7" class="accordion">
+              [LUA] Simple Physics Handler
+            </a>
+          <div class="accordion-item">
+            <p>Module made in LUA to handle collisions and overlapping in Löve 2D.</p>
+            <a class="link project-link" href="https://github.com/coelhucas/simple-physics-handler/">Github Page »</a>
+            <div class="picture-container">
+              <img class="project-picture" alt="Gif showing a demonstration of the project" src="https://github.com/coelhucas/simple-physics-handler/raw/master/sample.gif" />
+            </div>
+          </div>
+        </div>
+      <div class="project-container">
+        <a href="#proj6" class="accordion">
+          [GDSCRIPT] Hitbox Editor
+        </a>
+        <div class="accordion-item">
+          <p>Hitbox Editor utility to help creating hitbox and hurtbox related configuration for fighting games.</p>
+          <a class="link project-link" href="https://github.com/coelhucas/hitbox-editor/">Github Page »</a>
+          <div class="picture-container">
+            <img class="project-picture" alt="Gif showing a demonstration of the project" src="img/project-thumbnail/hbox-editor.png" />
+          </div>
+        </div>
+      </div>
+      <div class="project-container">
+        <a href="#proj5" class="accordion">
+          [REACT NATIVE | UNITY] Clube de Fidelidade Odin
+        </a>
+        <div class="accordion-item">
+          <p>Gamified fidelity system with VR integrations.</p>
+          <a class="link project-link" href="https://play.google.com/store/apps/details?id=digital.dvida.odinapp&hl=en">Github Page »</a>
+          <div class="picture-container">
+            <img class="project-picture" alt="Gif showing a demonstration of the project" src="img/project-thumbnail/odin.png" />
+          </div>
+        </div>
+      </div>
+      <div class="project-container">
+        <a href="#proj4" class="accordion">
+          [GDSCRIPT] Godot runtime console
+        </a>
+        <div class="accordion-item">
+          <p>Simple utility to help debugging games made in Godot Engine.</p>
+          <a class="link project-link" href="https://github.com/coelhucas/godot-runtime-console/">Github Page »</a>
+        </div>
+      </div>
     </div>
+    <div class="column">
+      <div class="project-container">
+        <a href="#proj3" class="accordion">
+          [REACT] MRV Platform
+        </a>
+        <div class="accordion-item">
+          <p>MRV product responsible for the 100% digital Real Estate shop, where I was one of the maintainers of our Design System library shared across multiple squads, PR approvals and creation of new pages and components.</p>
+          <a class="link project-link" href="https://loja.mrv.com.br/">Official Page »</a>
+      </div>
+    </div>
+    <div class="project-container">
+      <a href="#proj2" class="accordion">
+        [REACT NATIVE] Mesa.tool
+      </a>
+      <div class="accordion-item">
+        <p>Mesa.tool is an app for the new MESA platform, being responsible for the organization of your MESA, where I was responsible for the development of some interfaces, components, and part of the Realm implementation.</p>
+        <a class="link project-link" href="https://mesa.tools/">Official Page »</a>
+      </div>
+    </div>
+    <div class="project-container">
+      <a href="#proj1" class="accordion">
+        [UNITY] Unity RGBA Map Creator
+      </a>
+      <div class="accordion-item">
+        <p>Simple tool made in a few minutes to help game designers prototype or even development an entire game based on a color-driven sketch.</p>
+        <a class="link project-link" href="https://github.com/coelhucas/unity-rgba-level-generator">Github Page »</a>
+        <div class="picture-container">
+          <img class="project-picture" alt="Gif showing a demonstration of the project" src="img/project-thumbnail/unity-rgba-generator.png" />
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+<script>
+  const accordionElements = document.getElementsByClassName("accordion");
 
+  for (let accordion of accordionElements) {
+    accordion.addEventListener('click', () => {
+      let accordionContent = accordion.nextElementSibling;
+      accordionContent.classList.toggle('active');
+    });
+  }
+</script>
 </html>
