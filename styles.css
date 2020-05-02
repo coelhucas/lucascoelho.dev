@@ -1,13 +1,17 @@
 body {
-    padding: 48px;
     font-family: 'Montserrat', sans-serif;
-    background-color: #EFF1ED;
+    background-color: #f6f5fa;
     color: #2B303A;
     font-weight: normal;
 }
 
-p {
-    font-weight: 600;
+button {
+    background-color: transparent;
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 48px auto;
 }
 
 .row {
@@ -34,7 +38,6 @@ p {
     align-self: flex-end;
     justify-content: space-between;
     margin-left: 24px;
-    margin-right: 24px;
     max-width: 420px;
 }
 
@@ -65,16 +68,21 @@ p {
 }
 
 .name {
-    font-size: 28px;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.aka {
+    margin-left: 8px;
+    font-size: 16px;
     font-weight: 600;
 }
 
-.name:focus{
-    border: 2px solid black;
-}
-
 .headline {
+    font-weight: normal;
     font-size: 12px;
+    margin: 0;
 }
 
 .separator {
@@ -86,8 +94,85 @@ p {
 
 .projects {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.project-container {
+    display: flex;
+    width: 100%;
+    padding: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-container:hover .banner-cover {
+    display: block;
+    height: 96px;
+}
+
+.project-container:hover .banner {
+}
+
+.picture-container {
+    display: flex;
+    width: 100%;
+    height: 256px;
+}
+
+.project-picture {
+    object-fit: cover;
+    width: 100%;
+}
+
+.project-container {
+    display: flex;
+    max-width: 512px;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.accordion {
+    text-decoration: none;
+    width: fit-content;
+    outline: none;
+    border: none;
+    color: #2B303A;
+    font-weight: 600;
+    opacity: 1;
+    margin: 0;
+    padding: 4px;
+    transition: background-color 0.4s ease-out, color 0.4s ease-out;
+}
+
+.accordion:hover {
+    background-color: #2B303A;
+    color: #f6f5fa;
+    cursor: pointer;
+}
+
+.accordion:focus {
+    background-color: #2B303A;
+    color: #f6f5fa;
+    cursor: pointer;
+}
+
+.accordion-item {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.accordion-item.active {
+    display: block;
+    max-height: 640px;
+}
+
+.project-link {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .project-card {
@@ -95,31 +180,11 @@ p {
     position: relative;
     width: 320px;
     height: 180px;
-    margin: 8px 8px 0 0;
     border-radius: 4px;
     overflow: hidden;
     color: transparent;
     align-items: flex-end;
     background-color: black;
-}
-
-.project-title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    pointer-events: none;
-    flex-direction: row;
-    z-index: 2;
-    font-size: 14px;
-    padding: 8px;
-}
-
-.project-picture {
-    position: absolute;
-    object-fit: cover;
-    width: 320px;
-    height: 100%;
 }
 
 .tag {
@@ -180,16 +245,6 @@ p {
     cursor: pointer;
 }
 
-.card-link:focus .project-picture {
-    transition: opacity 0.4s ease-out;
-    opacity: 0.6;
-}
-
-.card-link:hover .project-picture {
-    transition: opacity 0.4s ease-out;
-    opacity: 0.6;
-}
-
 .card-overlay:hover {
     transition: opacity .2s ease-out;
     opacity: 0.7;
@@ -211,7 +266,7 @@ p {
     }
 
     .projects {
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .project-card {
@@ -220,10 +275,6 @@ p {
         height: 148px;
     }
 
-    .project-picture {
-        width: 256px;
-        height: 148px;
-    }
 
     .card-overlay {
         width: 256px;
