@@ -1,2 +1,2 @@
-# coelhucas.github.io / lucascoelho.me
+# coelhucas.github.io / lucascoelho.dev
 Public blog/portfolio
