@@ -78,11 +78,11 @@ a:hover {
     /* defaults to dark theme */
     body {
         color: #f9fbff;
-        background-color: black;
+        background-color: #313131;
     }
 
     h1 {
-        color: #f9fbff;
+        color: #313131;
     }
 
     a {
