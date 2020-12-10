@@ -1,197 +1,105 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #edeef1;
-    color: #2B303A;
-    font-weight: normal;
+    color: #313131;
+    padding: 32px;
+    background-color: #f9fbff;
+    font-family: 'Cutive Mono';
 }
 
-button {
-    background-color: transparent;
+h1 {
+    text-transform: capitalize;
 }
 
-.wrapper {
-    max-width: 1280px;
-    margin: 48px auto;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.links {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    align-self: flex-end;
-    justify-content: space-between;
-    margin-left: 24px;
-    max-width: 420px;
-}
-
-.link {
-    color: #7C7C7C;
-    font-size: 18px;
-    text-decoration: none;
-    outline: none;
-    transition: border-bottom 0.2s ease-out;
-    border-bottom: 2px solid transparent;
-}
-
-.link:hover {
-    border-bottom: 2px solid #7C7C7C;
-}
-
-.link:focus {
-    border-bottom: 2px solid #7C7C7C;
-}
-
-.icon {
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.name {
-    font-size: 32px;
-    font-weight: 600;
+h2 {
     margin: 0;
-}
-
-.headline {
-    font-weight: normal;
-    font-size: 12px;
-    margin: 0;
-}
-
-.separator {
-    width: 48px;
-    height: 2px;
-    background-color: #2B303A;
-    margin: 24px 0;
-}
-
-.projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between
-}
-
-.picture-container {
-    display: flex;
-    width: 100%;
-    height: 256px;
-}
-
-.project-picture {
-    object-fit: cover;
-    width: 100%;
-}
-
-.project-container {
-    display: flex;
-    max-width: 512px;
-    flex-direction: column;
-    margin-bottom: 16px;
-}
-
-.accordion {
-    text-decoration: none;
-    width: fit-content;
-    outline: none;
-    border: none;
-    color: #2B303A;
-    font-weight: 600;
-    opacity: 1;
-    margin: 0;
-    padding: 4px;
-    transition: background-color 0.4s ease-out, color 0.4s ease-out;
-}
-
-.accordion:hover {
-    background-color: #2B303A;
-    color: #f6f5fa;
-    cursor: pointer;
-}
-
-.accordion:focus {
-    background-color: #2B303A;
-    color: #f6f5fa;
-    cursor: pointer;
-}
-
-.accordion-item {
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-in-out, padding 0.2s ease-in-out;
-}
-
-.accordion-item.active {
-    display: block;
-    max-height: 640px;
-}
-
-.project-link {
-    display: inline-block;
     font-size: 14px;
-    margin-bottom: 8px;
 }
 
-@media (max-width: 790px) {
+p {
+    margin: 4px;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    margin-left: 32px;
+    padding: 2px 0;
+}
+
+a {
+    color: #313131;
+    padding: 0 4px;
+    text-decoration: none;
+    border-bottom: 2px solid #313131;
+}
+
+a:hover {
+    color: white;
+    background-color: #313131;
+}
+
+.tech-title {
+    width: min-content;
+}
+
+.tech-content {
+    display: flex;
+    margin-top: 16px;
+    flex-direction: column;
+    border: 2px solid #313131;
+}
+
+.tech {
+    font-weight: bold;
+}
+
+.js {
+    color: #bdab1a;
+}
+
+.react {
+    color: #845482;
+}
+
+.lua {
+    color: #34348d;
+}
+
+.go {
+    color: #007cff;
+}
+
+.c {
+    color: #454b4c;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* defaults to dark theme */
     body {
-        padding: 24px;
-        justify-content: center;
+        color: #f9fbff;
+        background-color: black;
     }
 
-    .header {
-        flex-direction: column;
+    h1 {
+        color: #f9fbff;
     }
 
-    .links {
-        align-self: center;
-        margin: 32px 0;
-        min-width: 152px;
+    a {
+        color: #f9fbff;
+        border-bottom: 2px solid #f9fbff;
     }
 
-    .projects {
-        justify-content: space-between;
+    a:hover {
+        color: #313131;
+        background-color: #f9fbff;
     }
 
-    .project-card {
-        margin-bottom: 32px;
-        width: 256px;
-        height: 148px;
+    .c {
+        color: #95a3a0;
     }
 
-    .separator {
-        display: none;
-    }
-
-    .link {
-        display: none;
-    }
-
-    .project-link {
-        display: inline;
-    }
-
-    .icon {
-        visibility: visible;
-        fill: #2B303A;
-        cursor: pointer;
-        width: 24px;
-        height: 24px;
+    .lua {
+        color: #9e9eff;
     }
 }
