@@ -1,6 +1,7 @@
 body {
     color: #313131;
     padding: 32px;
+    line-height: 1.4;
     background-color: #f9fbff;
     font-family: 'Cutive Mono';
 }
@@ -96,10 +97,14 @@ a:hover {
     }
 
     .c {
-        color: #95a3a0;
+        color: #affdec;
     }
 
     .lua {
         color: #9e9eff;
+    }
+    
+    .react {
+        color: #ff4ff8;
     }
 }
