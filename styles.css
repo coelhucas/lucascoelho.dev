@@ -75,6 +75,10 @@ a:hover {
     color: #454b4c;
 }
 
+.kop-content {
+    max-width: 640px;
+}
+
 @media (prefers-color-scheme: dark) {
     /* defaults to dark theme */
     body {
