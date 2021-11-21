@@ -1,118 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #555354;
+  --color-dark: #252525;
+}
+
+html {
+  height: 100vh;
+}
+
 body {
-    color: #313131;
-    padding: 32px;
-    line-height: 1.4;
-    background-color: #f9fbff;
-    font-family: 'Cutive Mono';
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 48px 24px;
+  padding-bottom: 0;
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1240px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+section:first-child {
+  margin-bottom: 24px;
 }
 
 h1 {
-    text-transform: capitalize;
+  line-height: 1.5;
+  font-size: 4rem;
+  margin: 0;
 }
 
 h2 {
-    margin: 0;
-    font-size: 14px;
+  font-weight: 400;
+  margin-top: 0;
 }
 
 p {
-    margin: 4px;
-}
-
-ul {
-    padding: 0;
-}
-
-li {
-    margin-left: 32px;
-    padding: 2px 0;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
 a {
-    color: #313131;
-    padding: 0 4px;
-    text-decoration: none;
-    border-bottom: 2px solid #313131;
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: underline;text-decoration-thickness: 0.125rem;
 }
 
-a:hover {
-    color: white;
-    background-color: #313131;
+a:hover, a:focus-visible {
+  text-decoration: none;
 }
 
-.tech-title {
-    width: min-content;
+a:focus-visible {
+  outline-width: 2px;
+  outline-offset: 2px;
+  outline-style: solid;
 }
 
-.tech-content {
-    display: flex;
-    margin-top: 16px;
-    flex-direction: column;
-    border: 2px solid #313131;
+hr {
+  margin: 24px 0;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.tech {
-    font-weight: bold;
+footer {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1240px;
 }
 
-.js {
-    color: #bdab1a;
+footer > p {
+  margin: 0;
+  padding: 24px 0;
+  font-weight: 300;
 }
 
-.react {
-    color: #845482;
+.projects-container {
+  max-width: 320px;
+  width: 100%;
 }
 
-.lua {
-    color: #34348d;
+.projects-container > ul {
+  padding: 0;
+  list-style-type: none;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.go {
-    color: #007cff;
+.js::after {
+  content: '[JS]';
+  position: absolute;
+  font-weight: 300;
+  margin-left: 4px;
+  font-size: 0.65rem;
 }
 
-.rust {
-    color: #c53129;
+.cs::after {
+  content: '[C#]';
+  position: absolute;
+  font-weight: 300;
+  margin-left: 4px;
+  font-size: 0.65rem;
 }
 
-.c {
-    color: #454b4c;
+.gd::after {
+  content: '[GDScript]';
+  position: absolute;
+  font-weight: 300;
+  margin-left: 4px;
+  font-size: 0.65rem;
 }
 
-.kop-content {
-    max-width: 640px;
+.icon-anchor {
+  width: min-content;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-right: 18px;
+  vertical-align: middle;
+  text-decoration: underline;
+  color: var(--color-dark);
 }
 
-@media (prefers-color-scheme: dark) {
-    /* defaults to dark theme */
-    body {
-        color: #f9fbff;
-        background-color: #242626;
-    }
+.icon-anchor:hover {
+  text-decoration: none;
+}
 
-    h1 {
-        color: #f9fbff;
-    }
+.icon-anchor > svg {
+  width: 18px;
+  margin-right: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  fill: var(--color-dark);
+}
 
-    a {
-        color: #f9fbff;
-        border-bottom: 2px solid #f9fbff;
-    }
+.icon-anchor::after {
+  content: url(link.svg);
+  width: 14px;
+  height: 12px;
+  display: inline-block;
+}
 
-    a:hover {
-        color: #313131;
-        background-color: #f9fbff;
-    }
+.media-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
 
-    .c {
-        color: #affdec;
-    }
+.media-links > li {
+  display: inline-block;
+  padding: 8px 0;
+}
 
-    .lua {
-        color: #9e9eff;
-    }
-    
-    .react {
-        color: #ff4ff8;
-    }
+li > a {
+  line-height: 1.8;
+}
+
+@media (min-width: 600px) {
+  body {
+    padding: 48px 64px;
+    padding-bottom: 0;
+  }
+
+  .media-links {
+    justify-content: flex-start;
+  }
 }
