@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/$slug.tsx?browser", "../../../../app/routes/posts/$slug.tsx"],
-  "sourcesContent": ["export { default } from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/$slug.tsx\";", "import { useLoaderData } from \"remix\";\nimport type { LoaderFunction } from \"remix\";\n\n\nexport const loader: LoaderFunction = async ({\n  params\n }) => {\n  return params.slug;\n};\n\nexport default function PostSlug() {\n  const slug = useLoaderData();\n  return (\n    <div>\n      <h1>Some Post: {slug}</h1>\n    </div>\n  );\n}\n"],
-  "mappings": ";;;;;;;;;AAAA;;;ACAA;AAUe,oBAAoB;AACjC,QAAM,OAAO;AACb,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI,eAAY;AAAA;",
-  "names": []
-}

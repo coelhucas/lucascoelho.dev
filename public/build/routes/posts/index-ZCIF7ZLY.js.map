@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx?browser", "../../../../app/routes/posts/index.tsx"],
-  "sourcesContent": ["export { default } from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx\";", "export default function Posts() {\n  return (\n    <div>\n      <h1>Posts</h1>\n    </div>\n  );\n}\n"],
-  "mappings": ";;;;;;AAAA;;;ACAA;AAAe,iBAAiB;AAC9B,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI;AAAA;",
-  "names": []
-}

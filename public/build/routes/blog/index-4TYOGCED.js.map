@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/blog/index.tsx?browser", "../../../../app/routes/blog/index.tsx"],
-  "sourcesContent": ["export { default, links } from \"/Users/lucascosta/hacking/remix-blog/app/routes/blog/index.tsx\";", "import { Link, useLoaderData } from \"remix\";\nimport type { LinksFunction } from \"remix\";\nimport { getPosts } from \"~/post\";\nimport type { Post } from \"~/post\";\nimport stylesUrl from \"~/styles/blog/index.css\";\n\nexport let links: LinksFunction = () => {\n  return [{ rel: \"stylesheet\", href: stylesUrl }];\n};\n\nexport const loader = () => {\n  const sortedPosts = [...getPosts()].sort((a, b) => a.date > b.date ? -1 : 1);\n};\n\nexport default function Posts() {\n  const posts = useLoaderData<Post[]>();\n  console.log(posts);\n  return (\n    <div>\n      <h1>Posts</h1>\n      <ul>\n        {posts.map(post => (\n          <li key={post.slug}>\n            <Link to={post.slug}>{post.title}</Link>\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}\n"],
-  "mappings": ";;;;;;;;;;;;;AAAA;;;ACAA;AAMO,IAAI,QAAuB,MAAM;AACtC,SAAO,CAAC,EAAE,KAAK,cAAc,MAAM;AAAA;AAOtB,iBAAiB;AAC9B,QAAM,QAAQ;AACd,UAAQ,IAAI;AACZ,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI,UACJ,oCAAC,MAAD,MACG,MAAM,IAAI,UACT,oCAAC,MAAD;AAAA,IAAI,KAAK,KAAK;AAAA,KACZ,oCAAC,MAAD;AAAA,IAAM,IAAI,KAAK;AAAA,KAAO,KAAK;AAAA;",
-  "names": []
-}
