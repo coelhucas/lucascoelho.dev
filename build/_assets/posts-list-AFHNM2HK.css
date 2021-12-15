@@ -1,0 +1,7 @@
+ul::marker {
+  display: none;
+}
+
+li {
+  display: none;
+}

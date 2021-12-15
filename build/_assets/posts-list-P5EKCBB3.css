@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.list-item {
+  margin: 16px 0;
+  text-decoration: none;
+}
+
+a {
+  display: flex;
+  padding: 8px;
+  width: 100%;
+  border: 2px solid;
+}

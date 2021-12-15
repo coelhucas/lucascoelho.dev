@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/blog/$slug.tsx?browser", "../../../../app/routes/blog/$slug.tsx"],
+  "sourcesContent": ["export { default, links } from \"/Users/lucascosta/hacking/remix-blog/app/routes/blog/$slug.tsx\";", "import { useLoaderData } from \"remix\";\nimport type { LoaderFunction } from \"remix\";\nimport { getPost } from \"~/post\";\nimport invariant from \"tiny-invariant\";\nimport type { LinksFunction } from \"remix\";\n\n\nimport stylesUrl from \"~/styles/blog/index.css\";\n\nexport let links: LinksFunction = () => {\n  return [{ rel: \"stylesheet\", href: stylesUrl }];\n};\n\nexport const loader: LoaderFunction = async ({\n  params\n}) => {\n  invariant(params.slug, \"expected params.slug\");\n  return getPost(params.slug);\n};\n\nexport default function PostSlug() {\n  const post = useLoaderData();\n  return (\n    <div dangerouslySetInnerHTML={{ __html: post.html }} />\n  );\n}\n"],
+  "mappings": ";;;;;;;;;AAAA;;;ACAA;;;;;;AASO,IAAI,QAAuB,MAAM;AACtC,SAAO,CAAC,EAAE,KAAK,cAAc,MAAM;AAAA;AAUtB,oBAAoB;AACjC,QAAM,OAAO;AACb,SACE,oCAAC,OAAD;AAAA,IAAK,yBAAyB,EAAE,QAAQ,KAAK;AAAA;AAAA;",
+  "names": []
+}

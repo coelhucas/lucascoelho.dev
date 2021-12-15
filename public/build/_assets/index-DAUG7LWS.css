@@ -1,0 +1,15 @@
+img {
+  width: 90%;
+  display: block;
+  margin: 30px auto;
+  height: auto;
+  background: #F5F5F5;
+  border: 1px #dddddd solid;
+  padding: 1%;
+}
+
+.post-date {
+  margin-top: 24px;
+  margin-bottom: 0;
+  color: gray;
+}

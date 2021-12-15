@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx?browser", "../../../../app/routes/posts/index.tsx"],
+  "sourcesContent": ["export { default } from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx\";", "import { useLoaderData } from \"remix\";\n\nexport const loader = () => {\n  return [\n    {\n      slug: 'my-post',\n      title: 'my post'\n    },\n    {\n      slug: 'batatinha',\n      title: 'i have no idea'\n    }\n  ];\n};\n\nexport default function Posts() {\n  const posts = useLoaderData();\n  console.log(posts);\n  return (\n    <div>\n      <h1>Posts</h1>\n    </div>\n  );\n}\n"],
+  "mappings": ";;;;;;;;;AAAA;;;ACAA;AAee,iBAAiB;AAC9B,QAAM,QAAQ;AACd,UAAQ,IAAI;AACZ,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI;AAAA;",
+  "names": []
+}

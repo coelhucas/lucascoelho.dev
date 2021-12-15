@@ -1,0 +1,13 @@
+:root {
+  --color-primary: #ffc107;
+}
+
+img {
+  max-width: 256px;
+  border: 8px solid gray;
+  width: 100%;
+  height: auto;
+}
+
+body {
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx?browser", "../../../../app/routes/posts/index.tsx"],
+  "sourcesContent": ["export { default } from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx\";", "import { Link, useLoaderData } from \"remix\";\n\ntype Post = {\n  slug: string;\n  title: string;\n}\n\nexport const loader = (): Post[] => {\n  return [\n    {\n      slug: 'my-post',\n      title: 'my post'\n    },\n    {\n      slug: 'batatinha',\n      title: 'i have no idea'\n    }\n  ];\n};\n\nexport default function Posts() {\n  const posts = useLoaderData();\n  console.log(posts);\n  return (\n    <div>\n      <h1>Posts</h1>\n      <ul>\n        {posts.map(post => (\n          <li key={post.slug}>\n            <Link to={post.slug}>{post.title}</Link>\n          </li>\n        ))}\n      </ul>\n    </div>\n  );\n}\n"],
+  "mappings": ";;;;;;;;;;AAAA;;;ACAA;AAoBe,iBAAiB;AAC9B,QAAM,QAAQ;AACd,UAAQ,IAAI;AACZ,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI,UACJ,oCAAC,MAAD,MACG,MAAM,IAAI,UACT,oCAAC,MAAD;AAAA,IAAI,KAAK,KAAK;AAAA,KACZ,oCAAC,MAAD;AAAA,IAAM,IAAI,KAAK;AAAA,KAAO,KAAK;AAAA;",
+  "names": []
+}

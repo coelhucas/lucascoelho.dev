@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx?browser"],
+  "sourcesContent": ["export * from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/index.tsx\";"],
+  "mappings": ";;;;;AAAA;",
+  "names": []
+}

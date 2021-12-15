@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["browser-route-module:/Users/lucascosta/hacking/remix-blog/app/routes/posts/$slug.tsx?browser", "../../../../app/routes/posts/$slug.tsx"],
+  "sourcesContent": ["export { default } from \"/Users/lucascosta/hacking/remix-blog/app/routes/posts/$slug.tsx\";", "export default function PostSlug() {\n  return (\n    <div>\n      <h1>Some Post</h1>\n    </div>\n  );\n}\n"],
+  "mappings": ";;;;;;AAAA;;;ACAA;AAAe,oBAAoB;AACjC,SACE,oCAAC,OAAD,MACE,oCAAC,MAAD,MAAI;AAAA;",
+  "names": []
+}

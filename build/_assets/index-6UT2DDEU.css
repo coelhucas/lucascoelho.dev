@@ -1,0 +1,8 @@
+:root {
+  --color-primary: #ffc107;
+}
+
+body {
+  margin: inherit 200px;
+  background-color: red;
+}
