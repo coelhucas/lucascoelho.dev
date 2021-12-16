@@ -1,7 +1,8 @@
-import { Link, useLoaderData } from "remix";
+import { useLoaderData } from "remix";
 import type { LoaderFunction, LinksFunction, MetaFunction } from "remix";
 import { getPost } from "~/post";
 import invariant from "tiny-invariant";
+import Link from "~/components/Link";
 
 import stylesUrl from "~/styles/blog/shared.css";
 
@@ -33,7 +34,7 @@ export default function PostSlug() {
     </nav>
     <h1>{post.title}</h1>
     <p className="post-date">Published in {post.date}</p>
-    <div className="test" dangerouslySetInnerHTML={{ __html: post.html }} />
+    <div className="post-container" dangerouslySetInnerHTML={{ __html: post.html }} />
     </>
   );
 }

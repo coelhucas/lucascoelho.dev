@@ -11,6 +11,7 @@ import {
 import type { LinksFunction } from "remix";
 
 import globalStylesUrl from "~/styles/global.css";
+import sharedStylesUrl from "~/styles/shared.css";
 import darkStylesUrl from "~/styles/dark.css";
 import highlightStyles from 'highlight.js/styles/github.css';
 
@@ -25,6 +26,10 @@ export let links: LinksFunction = () => {
     }, {
       rel: "stylesheet",
       href: highlightStyles,
+    },
+    {
+      rel: "stylesheet",
+      href: sharedStylesUrl,
     }
   ];
 };

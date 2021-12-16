@@ -1,9 +1,10 @@
-import { Link, useLoaderData } from "remix";
+import { useLoaderData } from "remix";
 import type { LinksFunction, MetaFunction } from "remix";
 import { getPosts } from "~/post";
 import type { Post } from "~/post";
 import sharedStylesUrl from "~/styles/blog/shared.css";
 import stylesUrl from "~/styles/blog/posts-list.css";
+import Link from '~/components/Link';
 
 export let meta: MetaFunction = () => {
   return {
@@ -23,10 +24,18 @@ export const loader = () => {
 type PostCardProps = {
   slug: string;
   title: string;
+  date: string;
 }
 
-function PostCard ({ slug, title }: PostCardProps) {
-  return <Link className="post-card" to={slug}>{title}</Link>;
+function PostCard ({ slug, title, date }: PostCardProps) {
+  return (
+    <Link omitUnderline to={slug}>
+      <div className="post-card">
+        {title}
+      <span className="date">{date}</span>
+      </div>
+    </Link>
+  );
 };
 
 export default function Posts() {
@@ -40,8 +49,11 @@ export default function Posts() {
       <ul className="list">
         {[...posts].sort((a, b) => a.date > b.date ? -1 : 1).map(post => (
           <li className="list-item" key={post.slug}>
-            <PostCard slug={post.slug} title={post.title} />
-            {/* <Link to={post.slug}>{post.title}</Link> */}
+            <PostCard
+              slug={post.slug}
+              title={post.title}
+              date={post.date}
+            />
           </li>
         ))}
       </ul>

@@ -24,13 +24,15 @@ renderer.heading = (text: string, level: number) => {
 
   return `
           <h${level}>
-            <a name="${escapedText}" class="anchor" href="#${escapedText}">
+            <a name="${escapedText}" class="anchor anchor--no-decoration" href="#${escapedText}">
               <span class="header-link">#</span>
             </a>
             ${text}
           </h${level}>`;
 
 };
+
+renderer.link = (href: string, title: string, text: string) => `<a class="anchor" href=${href}>${text}</a>`;
 
 renderer.image = (href: string, _, text: string) => {
   return `<img class="post-image" src=${href} alt=${text} />`;
@@ -83,7 +85,6 @@ export async function getPost(slug: string) {
 
   marked.use({ renderer });
   const html = marked.parse(body, options);
-  console.log(html);
   return { slug, title: attributes.title, date: attributes.date, html };
 }
 
