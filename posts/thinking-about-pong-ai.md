@@ -37,7 +37,7 @@ You basically add a fake invisible ball with a different (greater or smaller) sp
 Here you can clearly see what's happening. The red square is the fake one, which the "AI" follows.
 
 ### What you must observe?
-  If you don't have the screen edges as collisions to make the ball be reflected, your fake ball will eventually be "ignored" by the player, as he can't see it, and go off the screen making your AI enemy going to the direction of the fake one which will be completely different than the reflected one.
+  If you don't have the screen edges as collisions to make the ball be reflected, your fake ball will eventually be "ignored" by the player, as they can't see it, and go off the screen making your AI enemy going to the direction of the fake one which will be completely different than the reflected one.
 
   There's no magic values. You need to tweak it as it suits better your case. It depends on resolution, and that's why in my case a value of `speed - 2` was fine. You must test and see how far can your enemy go to be it's looks nice. I think it's a good beginner reflection to start thinking about AI decisions.
 

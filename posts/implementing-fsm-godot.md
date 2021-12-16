@@ -11,7 +11,7 @@ date: "2018-05-26"
   In games, there's several uses of state machines. Here's some examples:
 - To define how an entity will act based in its states, which are changed accordingly to some conditions: An enemy, by default, does a patrol movement. If the player enters its fov, the state becomes engage, for when the enemy gets closer, its state will change to attack, where the enemy behaviour are completely different.
 
-- Game State: in your game state you save every relevant data, as the player position, his items in inventory, in which map he is, what areas he already unlocked. It's what your emulator saves and loads in the game state section, in fact. This is a common way to make a save/load system.
+- Game State: in your game state you save every relevant data, as the player position, their items in inventory, in which map they are, what areas they already unlocked. It's what your emulator saves and loads in the game state section, in fact. This is a common way to make a save/load system.
 
 ## Implementation
   You can implement this the way you want, even a simple string to define your state.
