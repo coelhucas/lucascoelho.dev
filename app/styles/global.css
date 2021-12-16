@@ -9,6 +9,8 @@
 :root {
   --color-primary: #555354;
   --color-dark: #252525;
+  --color-bright: rgb(113, 127, 128);
+  --color-blog-anchor: deeppink;
 }
 
 html {
@@ -56,22 +58,6 @@ p {
   line-height: 1.5;
 }
 
-a {
-  color: var(--color-primary);
-  font-weight: 700;
-  text-decoration: underline;text-decoration-thickness: 0.125rem;
-}
-
-a:hover, a:focus-visible {
-  text-decoration: none;
-}
-
-a:focus-visible {
-  outline-width: 2px;
-  outline-offset: 2px;
-  outline-style: solid;
-}
-
 hr {
   margin: 24px 0;
   border: 0;
@@ -93,7 +79,6 @@ footer > p {
 }
 
 .projects-container {
-  max-width: 320px;
   width: 100%;
 }
 
@@ -102,30 +87,6 @@ footer > p {
   list-style-type: none;
   line-height: 1.5;
   margin: 0;
-}
-
-.js::after {
-  content: '[JS]';
-  position: absolute;
-  font-weight: 300;
-  margin-left: 4px;
-  font-size: 0.65rem;
-}
-
-.cs::after {
-  content: '[C#]';
-  position: absolute;
-  font-weight: 300;
-  margin-left: 4px;
-  font-size: 0.65rem;
-}
-
-.gd::after {
-  content: '[GDScript]';
-  position: absolute;
-  font-weight: 300;
-  margin-left: 4px;
-  font-size: 0.65rem;
 }
 
 .icon-anchor {
@@ -137,18 +98,6 @@ footer > p {
   vertical-align: middle;
   text-decoration: underline;
   color: var(--color-dark);
-}
-
-.icon-anchor:hover {
-  text-decoration: none;
-}
-
-.icon-anchor > svg {
-  width: 18px;
-  margin-right: 4px;
-  display: inline-block;
-  vertical-align: middle;
-  fill: var(--color-dark);
 }
 
 .media-links {
@@ -164,7 +113,7 @@ footer > p {
   padding: 8px 0;
 }
 
-li > a {
+li {
   line-height: 1.8;
 }
 
@@ -181,12 +130,22 @@ li > a {
 
 .anchor {
   display: inline-flex;
-  text-decoration: none;
 }
 
 .anchor:hover {
-  text-decoration: underline;
+  text-decoration: none;
+}
 
+.anchor--no-decoration {
+  text-decoration: none;
+}
+
+.anchor--no-decoration:visited {
+  color: var(--color-blog-anchor);
+}
+
+.anchor--no-decoration:hover {
+  text-decoration: underline;
 }
 
 .post-image {
@@ -201,6 +160,6 @@ li > a {
   max-height: 512px;
 }
 
-.test {
-  color: inherit;
+.post-container {
+  max-width: 100%;
 }

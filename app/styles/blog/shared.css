@@ -32,6 +32,10 @@ footer {
   max-width: 720px;
 }
 
+.anchor {
+  color: var(--color-blog-anchor);
+}
+
 .post-date {
   margin-top: 0;
   margin-bottom: 32px;
