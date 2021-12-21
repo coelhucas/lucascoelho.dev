@@ -1,5 +1,5 @@
 import path from "path";
-import { promises as fs } from "fs";
+import fs from "fs/promises";
 import parseFrontMatter from "front-matter";
 import invariant from "tiny-invariant";
 import { marked, Renderer } from "marked";
