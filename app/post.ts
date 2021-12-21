@@ -16,7 +16,7 @@ export type PostMarkdownAttributes = {
   date: string;
 };
 
-const postsPath =
+const postsPath = process.env.NETLIFY ? path.join(__dirname, '../../../', 'posts') :
   path.join(process.cwd(), 'posts');
 
 const renderer = new Renderer();
