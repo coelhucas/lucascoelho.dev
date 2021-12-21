@@ -43,12 +43,12 @@ export let loader: LoaderFunction = () => {
       },
       {
         title: 'LinkedIn',
-        path: 'https://github.com/coelhucas',
+        path: 'https://www.linkedin.com/in/lucascoelhoc',
         icon: 'linkedin',
       },
       {
         title: 'Youtube',
-        path: 'https://github.com/coelhucas',
+        path: 'https://youtube.com/c/cucadevs',
         icon: 'youtube',
       },
 
