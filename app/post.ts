@@ -16,8 +16,8 @@ export type PostMarkdownAttributes = {
   date: string;
 };
 
-const postsPath = process.env.NETLIFY ? path.join(__dirname, '../../../', 'posts') :
-  path.join(process.cwd(), 'posts');
+const postsPath = process.env.NETLIFY ?
+  path.join(__dirname, '../../../..', 'posts') : path.join(process.cwd(), 'posts');
 
 const renderer = new Renderer();
 renderer.heading = (text: string, level: number) => {
