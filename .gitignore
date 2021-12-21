@@ -1,6 +1,7 @@
 node_modules/
-build/
-public/build
 dist
-.cache
 .idea/
+.vercel
+/.cache/
+/build/
+/public/build/
