@@ -1,0 +1,44 @@
+.link--thin {
+  font-weight: 300;
+}
+
+.link--regular {
+  font-weight: 400;
+}
+
+.link--bold {
+  font-weight: 600;
+}
+
+.link::after {
+  position: relative;
+  left: 4px;
+  bottom: 4px;
+  content: attr(data-tags);
+  font-weight: 300;
+  font-size: 0.6rem;
+}
+
+.link {
+  color: var(--color-primary);
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.link > svg {
+  width: 18px;
+  margin-right: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  fill: var(--color-primary);
+}
+
+.highlight:hover {
+  color: var(--color-bright);
+}

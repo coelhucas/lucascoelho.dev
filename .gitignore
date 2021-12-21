@@ -1,3 +1,7 @@
-dist
+node_modules
+
 .cache
-.idea/
+.output
+
+public/build
+api/_build
