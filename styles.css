@@ -9,6 +9,7 @@
 
 :root {
   --color-primary: #555354;
+  --color-bright: rgb(32, 32, 255);
   --color-dark: #252525;
 }
 
@@ -129,27 +130,11 @@ footer > p {
   font-size: 0.65rem;
 }
 
-.icon-anchor {
-  width: min-content;
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 500;
-  margin-right: 18px;
-  vertical-align: middle;
-  text-decoration: underline;
-  color: var(--color-dark);
-}
-
-.icon-anchor:hover {
-  text-decoration: none;
-}
-
-.icon-anchor > svg {
+svg {
   width: 18px;
   margin-right: 4px;
   display: inline-block;
   vertical-align: middle;
-  fill: var(--color-dark);
 }
 
 .icon-anchor::after {

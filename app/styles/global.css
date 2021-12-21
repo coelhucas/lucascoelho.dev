@@ -148,6 +148,11 @@ li {
   text-decoration: underline;
 }
 
+.hljs {
+  border: 1px solid #f8f7fd;
+  border-radius: 8px;
+}
+
 .post-image {
   display: block;
   margin: 24px auto;

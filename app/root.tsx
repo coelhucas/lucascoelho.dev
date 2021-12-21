@@ -1,5 +1,4 @@
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -14,6 +13,7 @@ import globalStylesUrl from "~/styles/global.css";
 import sharedStylesUrl from "~/styles/shared.css";
 import darkStylesUrl from "~/styles/dark.css";
 import highlightStyles from 'highlight.js/styles/github.css';
+import Link from "~/components/Link";
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
@@ -82,7 +82,7 @@ export function CatchBoundary() {
       break;
     case 404:
       message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
+        <p>Oops! Looks like you tried to visit a page that does not exist. 🙈</p>
       );
       break;
 
@@ -97,6 +97,7 @@ export function CatchBoundary() {
           {caught.status}: {caught.statusText}
         </h1>
         {message}
+        <Link to="/">Return home</Link>
       </Layout>
     </Document>
   );

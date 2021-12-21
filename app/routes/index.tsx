@@ -76,7 +76,7 @@ export let loader: LoaderFunction = () => {
       },
       {
         title: 'king of parties',
-        path: 'https://remix.run',
+        path: '/kop',
         anchor: false,
         tags: ['GDScript'],
       },

@@ -14,7 +14,7 @@ export let meta: MetaFunction = () => {
 };
 
 export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: sharedStylesUrl }, { rel: 'stylesheet', href: stylesUrl}];
+  return [{ rel: "stylesheet", href: sharedStylesUrl }, { rel: 'stylesheet', href: stylesUrl }];
 };
 
 export const loader = () => {
@@ -27,12 +27,12 @@ type PostCardProps = {
   date: string;
 }
 
-function PostCard ({ slug, title, date }: PostCardProps) {
+function PostCard({ slug, title, date }: PostCardProps) {
   return (
     <Link omitUnderline to={slug}>
       <div className="post-card">
         {title}
-      <span className="date">{date}</span>
+        <span className="date">{date}</span>
       </div>
     </Link>
   );
