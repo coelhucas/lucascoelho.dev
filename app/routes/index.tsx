@@ -121,14 +121,12 @@ export default function Index() {
    <>
     <section>
       <h1>Lucas Coelho</h1>
-      <h2>Software Engineer at <Link anchor highlight weight="bold" to="https://gympass.com/">Gympass</Link></h2>
-      <p>I've been working on <Link anchor highlight weight="regular" to="https://github.com/gympass/yoga">Yoga</Link>, Gympass' open source
-        design system,
-        as well as some other DX initiatives inside our Platform Engineering Experience Team. I'm interested in learning
-        how some stuff works under the covers and creating tools for other developers.
+      
+      <h2>Software Engineer at <Link anchor highlight weight="bold" to="https://z1.app/">Z1</Link></h2>
+      <p>Besides that I've being a Game Developer in my spare time in <Link anchor highlight weight="bold" to="https://patreon.com/softwool">Softwool</Link>.
         <br />
         <br />
-        Been studying Rust lately 🦀
+        Check out <Link anchor highlight to="https://cuca.itch.io/">my games</Link> as well..
       </p>
       <hr />
       <nav>
