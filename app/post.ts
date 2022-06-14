@@ -84,7 +84,7 @@ export async function getPost(slug: string) {
     `Post ${filepath} is missing attributes`
   );
 
-  marked.use({ renderer });
+  marked.use({ renderer, gfm: true });
   const html = marked.parse(body, options);
   return { slug, title: attributes.title, date: attributes.date, html };
 }
