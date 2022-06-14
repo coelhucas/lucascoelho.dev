@@ -168,3 +168,8 @@ li {
 .post-container {
   max-width: 100%;
 }
+
+.footnote {
+  text-decoration: none;
+  font-size: 0.6rem;
+}

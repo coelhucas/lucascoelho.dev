@@ -22,11 +22,11 @@ const postsPath = process.env.NETLIFY ?
 const renderer = new Renderer();
 const footnoteMatch = /^\[\^([^\]]+)\]:([\s\S]*)$/;
 const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
-const referencePrefix = "marked-fnref";
-const footnotePrefix = "marked-fn";
+const referencePrefix = "footnote-ref";
+const footnotePrefix = "footnote";
 
 const footnoteTemplate = (ref: string, text: string) => {
-  return `<sup id="${footnotePrefix}:${ref}">${ref}</sup>${text} <a class="anchor" href="${referencePrefix}:${ref}">⏎</a>`;
+  return `<sup id="${footnotePrefix}:${ref}"><a class="anchor" href="#${referencePrefix}:${ref}">${ref}</a></sup><p> class="footnote">${text} </p><a class="anchor footnote" href="#${referencePrefix}:${ref}">⏎</a>`;
 };
 
 const referenceTemplate = (ref: string) => {
