@@ -26,11 +26,11 @@ const referencePrefix = "marked-fnref";
 const footnotePrefix = "marked-fn";
 
 const footnoteTemplate = (ref: string, text: string) => {
-  return `<sup id="${footnotePrefix}:${ref}"><a href="${referencePrefix}:${ref}">${ref}</a></sup>${text} <a href="${referencePrefix}:${ref}">⏎</a>`;
+  return `<sup id="${footnotePrefix}:${ref}">${ref}</sup>${text} <a class="anchor" href="${referencePrefix}:${ref}">⏎</a>`;
 };
 
 const referenceTemplate = (ref: string) => {
-  return `<sup id="${referencePrefix}:${ref}"><a href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
+  return `<sup id="${referencePrefix}:${ref}"><a class="anchor" href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
 };
 
 const interpolateReferences = (text: string) => {
