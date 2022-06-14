@@ -1,8 +1,7 @@
-import { useLoaderData } from "remix";
 import type { LinksFunction, MetaFunction } from "remix";
-import sharedStylesUrl from "~/styles/blog/shared.css";
-import stylesUrl from "~/styles/blog/posts-list.css";
 import Link from '~/components/Link';
+import stylesUrl from "~/styles/blog/posts-list.css";
+import sharedStylesUrl from "~/styles/blog/shared.css";
 
 export let meta: MetaFunction = () => {
   return {

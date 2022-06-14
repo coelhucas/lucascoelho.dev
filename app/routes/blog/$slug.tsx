@@ -1,8 +1,8 @@
+import type { LinksFunction, LoaderFunction, MetaFunction } from "remix";
 import { useLoaderData } from "remix";
-import type { LoaderFunction, LinksFunction, MetaFunction } from "remix";
-import { getPost } from "~/post";
 import invariant from "tiny-invariant";
 import Link from "~/components/Link";
+import { getPost } from "~/post";
 
 import stylesUrl from "~/styles/blog/shared.css";
 

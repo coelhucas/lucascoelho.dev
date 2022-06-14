@@ -1,8 +1,8 @@
-import type { MetaFunction, LoaderFunction } from "remix";
-import { useLoaderData, json } from "remix";
-import Link from "~/components/Link";
-import Icon from "~/components/Icon";
+import type { LoaderFunction, MetaFunction } from "remix";
+import { json, useLoaderData } from "remix";
 import type { IconNames } from "~/components/Icon";
+import Icon from "~/components/Icon";
+import Link from "~/components/Link";
 
 type NavigationLink = {
   title: string;
@@ -18,10 +18,6 @@ type IndexData = {
   projects: NavigationLink[];
 };
 
-// Loaders provide data to components and are only ever called on the server, so
-// you can connect to a database or run any server side code you want right next
-// to the component that renders it.
-// https://remix.run/api/conventions#loader
 export let loader: LoaderFunction = () => {
   let data: IndexData = {
     navLinks: [

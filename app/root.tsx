@@ -1,20 +1,11 @@
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useCatch
-} from "remix";
-import type { LinksFunction } from "remix";
-
-import globalStylesUrl from "~/styles/global.css";
-import sharedStylesUrl from "~/styles/shared.css";
-import darkStylesUrl from "~/styles/dark.css";
 import highlightStyles from 'highlight.js/styles/github.css';
-import Link from "~/components/Link";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from 'remix';
+import Link from '~/components/Link';
+import darkStylesUrl from '~/styles/dark.css';
+import globalStylesUrl from '~/styles/global.css';
+import sharedStylesUrl from '~/styles/shared.css';
 
+import type { LinksFunction } from "remix";
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },

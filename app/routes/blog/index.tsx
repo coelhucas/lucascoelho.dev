@@ -1,10 +1,10 @@
-import { useLoaderData } from "remix";
 import type { LinksFunction, MetaFunction } from "remix";
-import { getPosts } from "~/post";
-import type { Post } from "~/post";
-import sharedStylesUrl from "~/styles/blog/shared.css";
-import stylesUrl from "~/styles/blog/posts-list.css";
+import { useLoaderData } from "remix";
 import Link from '~/components/Link';
+import type { Post } from "~/post";
+import { getPosts } from "~/post";
+import stylesUrl from "~/styles/blog/posts-list.css";
+import sharedStylesUrl from "~/styles/blog/shared.css";
 
 export let meta: MetaFunction = () => {
   return {
