@@ -1,9 +1,9 @@
-import path from "path";
-import { promises as fs } from "fs";
 import parseFrontMatter from "front-matter";
-import invariant from "tiny-invariant";
-import { marked, Renderer } from "marked";
+import { promises as fs } from "fs";
 import hljs from 'highlight.js';
+import { marked, Renderer } from "marked";
+import path from "path";
+import invariant from "tiny-invariant";
 
 export type Post = {
   slug: string;
@@ -26,7 +26,7 @@ const referencePrefix = "marked-fnref";
 const footnotePrefix = "marked-fn";
 
 const footnoteTemplate = (ref: string, text: string) => {
-  return `<sup id="${footnotePrefix}:${ref}">${ref}</sup>${text}`;
+  return `<sup id="${footnotePrefix}:${ref}"><a href="${referencePrefix}:${ref}">${ref}</a></sup>${text} <a href="${referencePrefix}:${ref}">⏎</a>`;
 };
 
 const referenceTemplate = (ref: string) => {
@@ -60,13 +60,12 @@ renderer.heading = (text: string, level: number) => {
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
 
   return `
-          <h${level}>
-            <a name="${escapedText}" class="anchor anchor--no-decoration" href="#${escapedText}">
-              <span class="header-link">#</span>
-            </a>
-            ${text}
-          </h${level}>`;
-
+    <h${level}>
+      <a name="${escapedText}" class="anchor anchor--no-decoration" href="#${escapedText}">
+        <span class="header-link">#</span>
+      </a>
+      ${text}
+    </h${level}>`;
 };
 
 renderer.link = (href: string, _: string, text: string) => `<a class="anchor" href=${href}>${text}</a>`;
