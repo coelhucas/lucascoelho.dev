@@ -1067,7 +1067,7 @@
   dependencies:
     json-parse-even-better-errors "^2.3.1"
 
-"@remix-run/dev@^1.1.1":
+"@remix-run/dev@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@remix-run/dev/-/dev-1.6.0.tgz#82c73bff2e80d6c278e00f2cad3f3f2097c8fb60"
   integrity sha512-HkyLzALaxOvOAzdG79U1PqU3rE3RUka2XYSus/qHNcHxujjkeiCbhjx2aIkxRFStTpC8pa2gWZGyNPr+IoJCpg==
@@ -1111,7 +1111,7 @@
     ws "^7.4.5"
     xdm "^2.0.0"
 
-"@remix-run/netlify@^1.1.1":
+"@remix-run/netlify@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@remix-run/netlify/-/netlify-1.6.0.tgz#acc4ef76c499b880802e9727b372c438d235905e"
   integrity sha512-hiB2Vzd23rr7J3anWT+1Mj+R686vIyoyzjSEOQktoWiZNDawJut7NY696TgAawIbtZnNDoTPUIgJAczXWoiZiw==
@@ -1133,7 +1133,7 @@
     source-map-support "^0.5.21"
     stream-slice "^0.1.2"
 
-"@remix-run/react@^1.1.1":
+"@remix-run/react@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@remix-run/react/-/react-1.6.0.tgz#17acee7d970fde447f013d5350a578d92622c6d5"
   integrity sha512-fyCKGm0q7HvPmxNcSi1J79+5KCAAtAJwgMJU0swO0gVhHfOuV26YBTuEi4uJOFwunBIGE0bVqZCCvYpmi6ZN9w==
@@ -4909,7 +4909,7 @@ remark-rehype@^9.0.0:
     mdast-util-to-hast "^11.0.0"
     unified "^10.0.0"
 
-remix@^1.1.1:
+remix@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/remix/-/remix-1.6.0.tgz#0ccc5ac0fd79ab28a7973d583daa46214c71b7b7"
   integrity sha512-9Nc15t/mUPGgGIPfmBNUgXgfzcUc/EjaJ/vJAV5eEoEmuR8fymPRjhIIBsCmGKdL0wrkXYnlvKdhHX2Fqu0JgA==
