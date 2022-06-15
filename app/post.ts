@@ -26,7 +26,7 @@ const referencePrefix = "footnote-ref";
 const footnotePrefix = "footnote";
 
 const footnoteTemplate = (ref: string, text: string) => {
-  return `<sup id="${footnotePrefix}:${ref}"><a class="anchor" href="#${referencePrefix}:${ref}">${ref}</a></sup><p class="footnote">${text} </p><a class="anchor footnote" href="#${referencePrefix}:${ref}">⏎</a>`;
+  return `<p class="footnote"><sup id="${footnotePrefix}:${ref}"><a class="anchor" href="#${referencePrefix}:${ref}">${ref}</a></sup>${text} <a class="anchor" href="#${referencePrefix}:${ref}">⏎</a></p>`;
 };
 
 const referenceTemplate = (ref: string) => {
