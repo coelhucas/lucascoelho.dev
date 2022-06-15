@@ -1,5 +1,5 @@
 import parseFrontMatter from "front-matter";
-import { promises as fs } from "fs";
+import fs from "fs/promises";
 import hljs from 'highlight.js';
 import { marked, Renderer } from "marked";
 import path from "path";
