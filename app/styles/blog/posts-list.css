@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  padding: 8px 0;
+  border-top: 2px solid rgba(0, 0, 0, .1);
+  text-decoration: none;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.post-card:hover {
+  background-color: #f0f0f0;
+}
+
+.list-item:first-child {
+  border-top: none;
+}
+
+.date {
+  text-decoration: none;
+  font-size: 0.8rem;
+  border: none;
+  margin: 0;
+  font-weight: 300;
+}
