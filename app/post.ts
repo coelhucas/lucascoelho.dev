@@ -1,5 +1,6 @@
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
+import getReadingTime from "getReadingTime";
 import hljs from 'highlight.js';
 import { marked, Renderer } from "marked";
 import path from "path";
@@ -9,6 +10,7 @@ export type Post = {
   slug: string;
   title: string;
   date: string;
+  readingTime: number;
 };
 
 export type PostMarkdownAttributes = {
@@ -92,24 +94,36 @@ function isValidPostAttributes(
   return attributes?.title;
 }
 
-export async function getPosts() {
+interface IBlogPost {
+  title: string;
+  date: string;
+  slug: string;
+  readingTime: number;
+}
+
+export async function getPosts(): Promise<IBlogPost[]> {
   const dir = await fs.readdir(postsPath);
   return Promise.all(
     dir.map(async filename => {
       const file = await fs.readFile(
         path.join(postsPath, filename)
       );
-      const { attributes } = parseFrontMatter(
+      const { attributes, body } = parseFrontMatter(
         file.toString()
       );
+
+      const readingTime = getReadingTime(body);
+
       invariant(
         isValidPostAttributes(attributes),
         `${filename} has bad meta data!`
       );
+
       return {
         slug: filename.replace(/\.md$/, ""),
         title: attributes.title,
         date: attributes.date,
+        readingTime,
       };
     })
   );
@@ -119,6 +133,7 @@ export async function getPost(slug: string) {
   const filepath = path.join(postsPath, slug + ".md");
   const file = await fs.readFile(filepath);
   const { attributes, body } = parseFrontMatter(file.toString());
+  const readingTime = getReadingTime(body);
   invariant(
     isValidPostAttributes(attributes),
     `Post ${filepath} is missing attributes`
@@ -126,6 +141,6 @@ export async function getPost(slug: string) {
 
   marked.use({ renderer, gfm: true });
   const html = marked.parse(body, options);
-  return { slug, title: attributes.title, date: attributes.date, html };
+  return { slug, title: attributes.title, date: attributes.date, html, readingTime };
 }
 

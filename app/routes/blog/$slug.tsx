@@ -33,8 +33,8 @@ export default function PostSlug() {
       <Link to="/blog">all posts</Link>
     </nav>
     <h1>{post.title}</h1>
-    <p className="post-date">Published in {post.date}</p>
-    <div className="post-container" dangerouslySetInnerHTML={{ __html: post.html }} />
+    <p className="post-date">Published in {post.date} ({post.readingTime} minute read)</p>
+    <article className="post-container" dangerouslySetInnerHTML={{ __html: post.html }} />
     </>
   );
 }

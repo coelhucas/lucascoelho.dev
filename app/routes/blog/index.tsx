@@ -21,18 +21,12 @@ export const loader = () => {
   return getPosts();
 };
 
-type PostCardProps = {
-  slug: string;
-  title: string;
-  date: string;
-}
-
-function PostCard({ slug, title, date }: PostCardProps) {
+function PostCard({ slug, title, date, readingTime }: Post) {
   return (
     <Link omitUnderline to={slug}>
       <div className="post-card">
         {title}
-        <span className="date">{date}</span>
+        <span className="date">{date} ({readingTime} minute read)</span>
       </div>
     </Link>
   );
@@ -53,6 +47,7 @@ export default function Posts() {
               slug={post.slug}
               title={post.title}
               date={post.date}
+              readingTime={post.readingTime}
             />
           </li>
         ))}
