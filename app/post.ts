@@ -44,6 +44,11 @@ const interpolateFootnotes = (text: string) => {
     return footnoteTemplate(value, text);
   });
 }
+
+renderer.blockquote = (text: string) => {
+  return `<blockquote class="quote">${text}</blockquote>`;
+}
+
 renderer.paragraph = (text: string) => {
   return marked.Renderer.prototype.paragraph.apply(renderer, [
     interpolateReferences(interpolateFootnotes(text))

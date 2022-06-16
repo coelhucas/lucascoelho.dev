@@ -11,6 +11,7 @@
   --color-dark: #252525;
   --color-bright: rgb(113, 127, 128);
   --color-blog-anchor: deeppink;
+  --color-quote-marker: rgb(217, 204, 213);
 }
 
 html {
@@ -172,4 +173,10 @@ li {
 .footnote {
   text-decoration: none;
   font-size: 0.8rem;
+}
+
+.quote {
+  padding-left: 24px;
+  margin-left: 8px;
+  border-left: 4px solid var(--color-quote-marker);
 }

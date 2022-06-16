@@ -118,11 +118,10 @@ export default function Index() {
     <section>
       <h1>Lucas Coelho</h1>
       
-      <h2>Software Engineer at <Link anchor highlight weight="bold" to="https://z1.app/">Z1</Link></h2>
-      <p>Besides that I've being a Game Developer in my spare time in <Link anchor highlight weight="bold" to="https://patreon.com/softwool">Softwool</Link>.
+      <h2>Software Engineer @ <Link anchor highlight weight="bold" to="https://z1.app/">Z1</Link></h2>
+      <p>Besides that I do game development in my spare time @ <Link anchor highlight weight="bold" to="https://softwool.co">Softwool</Link>.
         <br />
-        <br />
-        Check out <Link anchor highlight to="https://cuca.itch.io/">my games</Link> as well..
+        Check out <Link anchor highlight to="https://cuca.itch.io/">my games</Link> as well.
       </p>
       <hr />
       <nav>
