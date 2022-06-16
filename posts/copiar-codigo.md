@@ -54,7 +54,7 @@ Esse problema costuma mostrar sinais durante os code reviews, quando alguém que
 
 > {{ Pessoa }} que fez, só usei de referência.
 
-Isso é um argumento totalmente válido, principalmente se você está num momento mais de início de carreira, mas pode ser extremamente frustrante vindo de uma pessoa mais sênior, principalmente quando há dedos sendo apontados[^1] sobre a pessoa "responsável" pelo código.
+Isso é um argumento totalmente válido, principalmente se você está num momento mais de início de carreira, mas pode ser extremamente frustrante vindo de uma pessoa mais sênior, principalmente quando há dedos sendo apontados[^2] sobre a pessoa "responsável" pelo código.
 
 E o maior problema é que quanto mais fazemos esse tipo de coisa, mais acabamos nos inclinando pro lado de ter menos senso crítico e apenas aceitar as coisas como estão, o que é ruim para sua evolução técnica.
 
