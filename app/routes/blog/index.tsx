@@ -22,11 +22,13 @@ export const loader = () => {
 };
 
 function PostCard({ slug, title, date, readingTime }: Post) {
+  /** e.g.: Jun 24, 2022 */
+  const formatedDate = new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
   return (
     <Link omitUnderline to={slug}>
       <div className="post-card">
-        {title}
-        <span className="date">{date} ({readingTime} minute read)</span>
+        <p>{title}</p>
+        <span className="date">{formatedDate} <br />{readingTime} min read</span>
       </div>
     </Link>
   );
