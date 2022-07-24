@@ -5,6 +5,7 @@ import darkStylesUrl from '~/styles/dark.css';
 import globalStylesUrl from '~/styles/global.css';
 import sharedStylesUrl from '~/styles/shared.css';
 
+import React from 'react';
 import type { LinksFunction } from "remix";
 export let links: LinksFunction = () => {
   return [
@@ -123,7 +124,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer>
-        <p>SyntaxError: Unexpected EOF</p>
+        <p>The footer is a lie.</p>
       </footer>
     </>
   );
