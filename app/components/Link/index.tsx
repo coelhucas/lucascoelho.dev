@@ -1,18 +1,18 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Link as RemixLink } from "remix";
-import type { ReactNode } from 'react';
 
 type FontWeight = 'thin' | 'regular' | 'bold';
 
-type LinkProps = {
+export type ReusedLinkProps = {
   weight?: FontWeight;
   omitUnderline?: boolean;
   anchor?: boolean;
   tags?: string[];
-  to: string;
-  className?: string;
   highlight?: boolean;
-  children: ReactNode;
+}
+
+export type LinkProps = ReusedLinkProps & React.HTMLAttributes<HTMLAnchorElement> & {
+  to: string;
 }
 
 type ClassOptions = {
@@ -44,8 +44,8 @@ function Link({
   className,
   highlight = false,
   tags,
-  to
-}: LinkProps & React.HTMLAttributes<HTMLAnchorElement>) {
+  to,
+}: LinkProps) {
   const resolvedTags = tags ? `[${tags.join(', ')}]` : '';
   const sharedProps = {
     className: getClassNames({ weight, omitUnderline, className, highlight }),

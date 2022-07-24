@@ -2,6 +2,7 @@ import type { LoaderFunction, MetaFunction } from "remix";
 import { json, useLoaderData } from "remix";
 import type { IconNames } from "~/components/Icon";
 import Icon from "~/components/Icon";
+import type { ReusedLinkProps } from "~/components/Link";
 import Link from "~/components/Link";
 
 type NavigationLink = {
@@ -10,7 +11,7 @@ type NavigationLink = {
   anchor?: boolean;
   tags?: string[];
   icon?: IconNames;
-  props?: any;
+  props?: ReusedLinkProps;
 }
 
 type IndexData = {
