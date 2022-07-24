@@ -1,6 +1,5 @@
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
-import getReadingTime from "getReadingTime";
 import hljs from 'highlight.js';
 import { marked, Renderer } from "marked";
 import path from "path";
@@ -13,7 +12,7 @@ export type Post = {
   readingTime: number;
 };
 
-export type PostMarkdownAttributes = {
+type PostMarkdownAttributes = {
   title: string;
   date: string;
 };
@@ -89,26 +88,26 @@ const highlight = (code: string, lang: string) => {
 const options = { renderer, langPrefix: 'hljs language-', highlight };
 
 function isValidPostAttributes(
-  attributes: any
-): attributes is PostMarkdownAttributes {
-  return attributes?.title;
+  attributes: PostMarkdownAttributes
+) {
+  return attributes.title;
 }
 
-interface IBlogPost {
-  title: string;
-  date: string;
-  slug: string;
-  readingTime: number;
+function getReadingTime(body: string): number {
+  const wpm = 225;
+  const words = body.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  return time;
 }
 
-export async function getPosts(): Promise<IBlogPost[]> {
+export async function getPosts(): Promise<Post[]> {
   const dir = await fs.readdir(postsPath);
   return Promise.all(
     dir.map(async filename => {
       const file = await fs.readFile(
         path.join(postsPath, filename)
       );
-      const { attributes, body } = parseFrontMatter(
+      const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
         file.toString()
       );
 
@@ -132,7 +131,7 @@ export async function getPosts(): Promise<IBlogPost[]> {
 export async function getPost(slug: string) {
   const filepath = path.join(postsPath, slug + ".md");
   const file = await fs.readFile(filepath);
-  const { attributes, body } = parseFrontMatter(file.toString());
+  const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(file.toString());
   const readingTime = getReadingTime(body);
   invariant(
     isValidPostAttributes(attributes),
