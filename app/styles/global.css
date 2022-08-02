@@ -10,7 +10,7 @@
   --color-primary: #555354;
   --color-dark: #252525;
   --color-bright: rgb(113, 127, 128);
-  --color-blog-anchor: deeppink;
+  --color-blog-anchor: #ff4aa4;
   --color-quote-marker: rgb(217, 204, 213);
 }
 
@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 48px 24px;
+  padding: 0 24px;
   padding-bottom: 0;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
@@ -95,7 +95,7 @@ footer > p {
   text-align: center;
   font-size: 0.95rem;
   font-weight: 500;
-  margin-right: 18px;
+  margin-right: 12px;
   vertical-align: middle;
   text-decoration: underline;
   color: var(--color-dark);

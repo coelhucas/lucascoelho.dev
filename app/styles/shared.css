@@ -10,9 +10,19 @@
   font-weight: 600;
 }
 
-.link::after {
+.link > svg {
+  opacity: 0.6;
+  transition: all 300ms;
+}
+
+.link:hover > svg, .link:focus > svg {
+  opacity: 1;
+}
+
+
+.link-w-tags::after {
   position: relative;
-  left: 4px;
+  padding-left: 4px;
   bottom: 4px;
   content: attr(data-tags);
   font-weight: 300;
@@ -32,9 +42,8 @@
 }
 
 .link > svg {
-  width: 18px;
-  margin-right: 4px;
-  display: inline-block;
+  width: 28px;
+  height: 28px;
   vertical-align: middle;
   fill: var(--color-primary);
 }
