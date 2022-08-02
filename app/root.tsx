@@ -1,5 +1,5 @@
 import highlightStyles from 'highlight.js/styles/github.css';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from 'remix';
+import { json, Links, LiveReload, LoaderFunction, Meta, Outlet, Scripts, ScrollRestoration, useCatch, useLoaderData } from 'remix';
 import Link from '~/components/Link';
 import darkStylesUrl from '~/styles/dark.css';
 import globalStylesUrl from '~/styles/global.css';
@@ -7,6 +7,7 @@ import sharedStylesUrl from '~/styles/shared.css';
 
 import React from 'react';
 import type { LinksFunction } from "remix";
+import Icon from './components/Icon';
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
@@ -25,7 +26,26 @@ export let links: LinksFunction = () => {
   ];
 };
 
+const navLinks = [
+  {
+    title: 'GitHub',
+    path: 'https://github.com/coelhucas',
+    icon: 'github',
+  },
+  {
+    title: 'Twitter',
+    path: 'https://twitter.com/coelhucass',
+    icon: 'twitter',
+  },
+  {
+    title: 'LinkedIn',
+    path: 'https://www.linkedin.com/in/lucascoelhoc',
+    icon: 'linkedin',
+  },
+] as const;
+
 export default function App() {
+  let data = useLoaderData();
   return (
     <Document>
       <Layout>
@@ -121,9 +141,27 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <main>
+        <nav>
+          <div className="navigation-links">
+
+            <Link to="/">./</Link>
+            <Link to="/blog">/blog.html</Link>
+          </div>
+
+          <ul className="media-links">
+            {navLinks.map(({ path, title, icon }) => (
+              <li key={title}>
+                <Link className="icon-anchor" anchor to={path}>
+                  <Icon as={icon} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         {children}
       </main>
       <footer>
+        <hr />
         <p>The footer is a lie.</p>
       </footer>
     </>

@@ -53,10 +53,6 @@ export default function PostSlug() {
   }, React.createRef());
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/blog">all posts</Link>
-      </nav>
       <h1>{post.title}</h1>
       <p className="post-date">Published in {post.date} ({post.readingTime} minute read)</p>
       <article className="post-container" dangerouslySetInnerHTML={{ __html: post.html }} />
