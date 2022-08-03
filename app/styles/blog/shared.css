@@ -23,9 +23,11 @@ main {
 
 nav {
   display: flex;
-  width: 100%;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  width: 100%;
+  font-family: monospace;
+  align-items: center;
 }
 
 footer {
@@ -40,4 +42,13 @@ footer {
   margin-top: 0;
   margin-bottom: 32px;
   color: rgb(163, 163, 163);
+}
+
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-links > * {
+  margin-right: 24px;
 }

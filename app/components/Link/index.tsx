@@ -9,6 +9,7 @@ export type ReusedLinkProps = {
   anchor?: boolean;
   tags?: string[];
   highlight?: boolean;
+  unstyled?: boolean;
 }
 
 export type LinkProps = ReusedLinkProps & React.HTMLAttributes<HTMLAnchorElement> & {
@@ -17,9 +18,11 @@ export type LinkProps = ReusedLinkProps & React.HTMLAttributes<HTMLAnchorElement
 
 type ClassOptions = {
   weight: FontWeight;
+  hasTags: boolean;
   omitUnderline: boolean;
   highlight: boolean;
   className?: string;
+  unstyled?: boolean;
 }
 
 const weightClasses = {
@@ -30,13 +33,16 @@ const weightClasses = {
 
 const noUnderline = 'no-underline';
 
-const getClassNames = ({ weight, omitUnderline, className, highlight }: ClassOptions) => {
-  const classes = ['link', weightClasses[weight], className, highlight ? 'highlight' : null];
+const getClassNames = ({ weight, omitUnderline, className, highlight, unstyled, hasTags, }: ClassOptions) => {
+  if (unstyled) return "link " + noUnderline;
+  
+  const classes = ['link', weightClasses[weight], hasTags ? "link-w-tags" : null, className, highlight ? 'highlight' : null];
   if (omitUnderline) classes.push(noUnderline);
   return classes.filter(Boolean).join(' ');
 }
 
 function Link({
+  unstyled = false,
   weight = 'thin',
   omitUnderline = false,
   children,
@@ -48,7 +54,7 @@ function Link({
 }: LinkProps) {
   const resolvedTags = tags ? `[${tags.join(', ')}]` : '';
   const sharedProps = {
-    className: getClassNames({ weight, omitUnderline, className, highlight }),
+    className: getClassNames({ unstyled, hasTags: !!tags?.length, weight, omitUnderline, className, highlight }),
     'data-tags': resolvedTags,
   };
 

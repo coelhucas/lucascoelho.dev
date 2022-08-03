@@ -17,9 +17,6 @@ export let links: LinksFunction = () => {
 export default function KingOfParties() {
   return (
     <section>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
       <h1>King of Parties</h1>
       <ul><b>Links</b>
         <li><Link anchor to="https://github.com/coelhucas/kop">Official Repository</Link></li>
