@@ -1,9 +1,8 @@
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
-import hljs from 'highlight.js';
+import hljs from "highlight.js";
 import { marked, Renderer } from "marked";
 import path from "path";
-import invariant from "tiny-invariant";
 
 export type Post = {
   slug: string;
@@ -12,13 +11,18 @@ export type Post = {
   readingTime: number;
 };
 
+export type SerializedPost = Post & {
+  html: string;
+};
+
 type PostMarkdownAttributes = {
   title: string;
   date: string;
 };
 
-const postsPath = process.env.NETLIFY ?
-  path.join(__dirname, '../../../..', 'posts') : path.join(process.cwd(), 'posts');
+const postsPath = process.env.NETLIFY
+  ? path.join(__dirname, "../../../..", "posts")
+  : path.join(process.cwd(), "posts");
 
 const renderer = new Renderer();
 const footnoteMatch = /^\[\^([^\]]+)\]:([\s\S]*)$/;
@@ -38,32 +42,32 @@ const interpolateReferences = (text: string) => {
   return text.replace(referenceMatch, (_, ref) => {
     return referenceTemplate(ref);
   });
-}
+};
 
 const interpolateFootnotes = (text: string) => {
   return text.replace(footnoteMatch, (_, value, text) => {
     return footnoteTemplate(value, text);
   });
-}
+};
 
 renderer.blockquote = (text: string) => {
   return `<blockquote class="quote">${text}</blockquote>`;
-}
+};
 
 renderer.paragraph = (text: string) => {
   return marked.Renderer.prototype.paragraph.apply(renderer, [
-    interpolateReferences(interpolateFootnotes(text))
+    interpolateReferences(interpolateFootnotes(text)),
   ]);
 };
 
 renderer.text = (text: string) => {
   return marked.Renderer.prototype.text.apply(renderer, [
-    interpolateReferences(interpolateFootnotes(text))
+    interpolateReferences(interpolateFootnotes(text)),
   ]);
 };
 
 renderer.heading = (text: string, level: number) => {
-  const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+  const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
 
   return `
     <h${level}>
@@ -74,24 +78,19 @@ renderer.heading = (text: string, level: number) => {
     </h${level}>`;
 };
 
-renderer.link = (href: string, _: string, text: string) => `<a class="anchor" href=${href}>${text}</a>`;
+renderer.link = (href: string, _: string, text: string) =>
+  `<a class="anchor" href=${href}>${text}</a>`;
 
 renderer.image = (href: string, _, text: string) => {
   return `<img class="post-image" src=${href} alt=${text} />`;
-}
+};
 
 const highlight = (code: string, lang: string) => {
-  const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+  const language = hljs.getLanguage(lang) ? lang : "plaintext";
   return hljs.highlight(code, { language }).value;
-}
+};
 
-const options = { renderer, langPrefix: 'hljs language-', highlight };
-
-function isValidPostAttributes(
-  attributes: PostMarkdownAttributes
-) {
-  return attributes.title;
-}
+const options = { renderer, langPrefix: "hljs language-", highlight };
 
 function getReadingTime(body: string): number {
   const wpm = 225;
@@ -103,20 +102,18 @@ function getReadingTime(body: string): number {
 export async function getPosts(): Promise<Post[]> {
   const dir = await fs.readdir(postsPath);
   return Promise.all(
-    dir.map(async filename => {
-      const file = await fs.readFile(
-        path.join(postsPath, filename)
-      );
+    dir.map(async (filename) => {
+      const file = await fs.readFile(path.join(postsPath, filename));
       const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
         file.toString()
       );
 
       const readingTime = getReadingTime(body);
 
-      invariant(
-        isValidPostAttributes(attributes),
-        `${filename} has bad meta data!`
-      );
+      // invariant(
+      //   isValidPostAttributes(attributes),
+      //   `${filename} has bad meta data!`
+      // );
 
       return {
         slug: filename.replace(/\.md$/, ""),
@@ -131,15 +128,18 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPost(slug: string) {
   const filepath = path.join(postsPath, slug + ".md");
   const file = await fs.readFile(filepath);
-  const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(file.toString());
-  const readingTime = getReadingTime(body);
-  invariant(
-    isValidPostAttributes(attributes),
-    `Post ${filepath} is missing attributes`
+  const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
+    file.toString()
   );
 
+  const readingTime = getReadingTime(body);
   marked.use({ renderer, gfm: true });
   const html = marked.parse(body, options);
-  return { slug, title: attributes.title, date: attributes.date, html, readingTime };
+  return {
+    slug,
+    title: attributes.title,
+    date: attributes.date,
+    html,
+    readingTime,
+  };
 }
-

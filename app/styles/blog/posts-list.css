@@ -12,7 +12,7 @@
 
 .list-item {
   padding: 8px 0;
-  border-top: 2px solid rgba(0, 0, 0, .1);
+  border-top: 2px solid var(--surface1);
   text-decoration: none;
 }
 
@@ -29,7 +29,7 @@
 .post-card > p {
   display: flex;
   flex-wrap: wrap;
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin: 0;
   padding-right: 24px;
   max-width: 512px;
@@ -42,7 +42,7 @@
 }
 
 .post-card:hover {
-  background-color: #f0f0f0;
+  opacity: 0.6;
 }
 
 .list-item:first-child {

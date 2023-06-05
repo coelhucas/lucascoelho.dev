@@ -1,51 +1,80 @@
-import highlightStyles from 'highlight.js/styles/github.css';
-import { json, Links, LiveReload, LoaderFunction, Meta, Outlet, Scripts, ScrollRestoration, useCatch, useLoaderData } from 'remix';
-import Link from '~/components/Link';
-import darkStylesUrl from '~/styles/dark.css';
-import globalStylesUrl from '~/styles/global.css';
-import sharedStylesUrl from '~/styles/shared.css';
+import {
+  isRouteErrorResponse,
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useLocation,
+  useRouteError,
+} from "@remix-run/react";
+import highlightStyles from "highlight.js/styles/github.css";
+import Link from "~/components/Link";
+import darkStylesUrl from "~/styles/dark.css";
+import globalStylesUrl from "~/styles/global.css";
+import sharedStylesUrl from "~/styles/shared.css";
 
-import React from 'react';
-import type { LinksFunction } from "remix";
-import Icon from './components/Icon';
-export let links: LinksFunction = () => {
+import React, { useEffect } from "react";
+import Icon from "./components/Icon";
+import { json } from "@remix-run/node";
+import ThemeButton from "./components/ThemeButton";
+export let links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
+    // {
+    //   rel: "stylesheet",
+    //   href: darkStylesUrl,
+    //   media: "(prefers-color-scheme: dark)",
+    // },
     {
-      rel: "stylesheet",
-      href: darkStylesUrl,
-      media: "(prefers-color-scheme: dark)"
-    }, {
       rel: "stylesheet",
       href: highlightStyles,
     },
     {
       rel: "stylesheet",
       href: sharedStylesUrl,
-    }
+    },
+    {
+      // <link rel="preconnect" href="https://fonts.googleapis.com">
+      // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      // <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    },
+    {
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "anonymous",
+    },
+    {
+      rel: "preload",
+      as: "style",
+      href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap",
+    },
   ];
 };
 
 const navLinks = [
   {
-    title: 'GitHub',
-    path: 'https://github.com/coelhucas',
-    icon: 'github',
+    title: "GitHub",
+    path: "https://github.com/coelhucas",
+    icon: "github",
   },
   {
-    title: 'Twitter',
-    path: 'https://twitter.com/coelhucass',
-    icon: 'twitter',
-  },
-  {
-    title: 'LinkedIn',
-    path: 'https://www.linkedin.com/in/lucascoelhoc',
-    icon: 'linkedin',
+    title: "LinkedIn",
+    path: "https://www.linkedin.com/in/lucascoelhoc",
+    icon: "linkedin",
   },
 ] as const;
 
 export default function App() {
-  let data = useLoaderData();
+  const location = useLocation();
+  const { gaTrackingId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {}, [location, gaTrackingId]);
+
   return (
     <Document>
       <Layout>
@@ -55,65 +84,62 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
-  return (
-    <Document title="Error!">
-      <Layout>
-        <div>
-          <h1>There was an error</h1>
-          <p>{error.message}</p>
-          <hr />
+export const loader = async () => {
+  return { gaTrackingId: process.env.GA_TRACKING_ID };
+};
+
+export const meta = () => {
+  return [
+    { charSet: "utf-8" },
+    { name: "viewport", content: "width=device-width,initial-scale=1" },
+  ];
+};
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  console.log(error);
+
+  if (isRouteErrorResponse(error)) {
+    let message;
+    switch (error.status) {
+      case 401:
+        message = (
           <p>
-            Hey, developer, you should replace this with what you want your
-            users to see.
+            Looks like you tried to visit a page that you do not have access to.
           </p>
-        </div>
-      </Layout>
-    </Document>
-  );
-}
+        );
+        break;
+      case 404:
+        message = <p>It looks like this page that does not exist.</p>;
+        break;
 
-// https://remix.run/docs/en/v1/api/conventions#catchboundary
-export function CatchBoundary() {
-  let caught = useCatch();
-
-  let message;
-  switch (caught.status) {
-    case 401:
-      message = (
-        <p>
-          Oops! Looks like you tried to visit a page that you do not have access
-          to.
-        </p>
-      );
-      break;
-    case 404:
-      message = (
-        <p>Oops! Looks like you tried to visit a page that does not exist. 🙈</p>
-      );
-      break;
-
-    default:
-      throw new Error(caught.data || caught.statusText);
+      default:
+        message = (
+          <p>
+            Ops! Guess I didn't treated this error 🤦‍♂️. Status: {error.status};
+          </p>
+        );
+        throw new Error(error.data || error.statusText);
+    }
+    return (
+      <Document title="Error!">
+        <Layout>
+          <div>
+            <h1>Unable to load page</h1>
+            <h2>{message}</h2>
+            <hr />
+            <p>Was it supposed to be working? Contact me</p>
+          </div>
+        </Layout>
+      </Document>
+    );
   }
-
-  return (
-    <Document title={`${caught.status} ${caught.statusText}`}>
-      <Layout>
-        <h1>
-          {caught.status}: {caught.statusText}
-        </h1>
-        {message}
-        <Link to="/">Return home</Link>
-      </Layout>
-    </Document>
-  );
 }
 
 function Document({
   children,
-  title
+  title,
 }: {
   children: React.ReactNode;
   title?: string;
@@ -143,7 +169,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       <main>
         <nav>
           <div className="navigation-links">
-
             <Link to="/">./</Link>
             <Link to="/blog">/blog.html</Link>
           </div>
@@ -156,6 +181,9 @@ function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               </li>
             ))}
+            <li>
+              <ThemeButton />
+            </li>
           </ul>
         </nav>
         {children}
