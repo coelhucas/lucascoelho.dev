@@ -19,6 +19,7 @@ import React, { useEffect } from "react";
 import Icon from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./misc/ThemeProvider";
+import globalMeta from "./utils/global-meta";
 export let links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
@@ -88,10 +89,7 @@ export const loader = async () => {
 };
 
 export const meta = () => {
-  return [
-    { charSet: "utf-8" },
-    { name: "viewport", content: "width=device-width,initial-scale=1" },
-  ];
+  return globalMeta
 };
 
 export function ErrorBoundary() {
@@ -117,14 +115,14 @@ export function ErrorBoundary() {
             Ops! Guess I didn't treated this error 🤦‍♂️. Status: {error.status};
           </p>
         );
-        throw new Error(error.data || error.statusText);
+        // throw new Error(error.data || error.statusText);
     }
     return (
       <Document title="Error!">
         <Layout>
           <div>
             <h1>Unable to load page</h1>
-            <h2>{message}</h2>
+            <h2>{JSON.stringify(message)}</h2>
             <hr />
             <p>Was it supposed to be working? Contact me</p>
           </div>

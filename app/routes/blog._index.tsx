@@ -5,9 +5,11 @@ import type { Post } from "~/utils/post";
 import { getPosts } from "~/utils/post";
 import stylesUrl from "~/styles/blog/posts-list.css";
 import sharedStylesUrl from "~/styles/blog/shared.css";
+import globalMeta from "~/utils/global-meta";
 
-export function meta() {
+export const meta = () => {
   return [
+    ...globalMeta,
     { title: "Blog | Lucas Coelho" },
     { description: "Some random thoughts and stuff that I learn and share." },
   ];

@@ -6,6 +6,9 @@ publish = "public"
 command = "yarn dev"
 targetPort = 3000
 
+[functions]
+  included_files = ["posts/**"]
+
 [[headers]]
 for = "/build/*"
 

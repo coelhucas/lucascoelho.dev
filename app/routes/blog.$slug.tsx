@@ -12,9 +12,11 @@ import { getPost } from "~/utils/post";
 import stylesUrl from "~/styles/blog/shared.css";
 import globalStylesUrl from "~/styles/global.css";
 import { useTheme } from "~/misc/ThemeProvider";
+import globalMeta from "~/utils/global-meta";
 
 export const meta: V2_MetaFunction = (r) => {
   return [
+    ...globalMeta,
     {
       title: r.data?.title
       ? `${r.data.title} | Blog | Lucas Coelho`
