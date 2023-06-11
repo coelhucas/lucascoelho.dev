@@ -3,7 +3,7 @@ command = "remix build && cp _app_redirects public/_redirects"
 publish = "public"
 
 [dev]
-command = "npm run dev"
+command = "yarn dev"
 targetPort = 3000
 
 [[headers]]
