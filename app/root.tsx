@@ -12,13 +12,11 @@ import {
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css";
 import Link from "~/components/Link";
-import darkStylesUrl from "~/styles/dark.css";
 import globalStylesUrl from "~/styles/global.css";
 import sharedStylesUrl from "~/styles/shared.css";
 
 import React, { useEffect } from "react";
 import Icon from "./components/Icon";
-import { json } from "@remix-run/node";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./misc/ThemeProvider";
 export let links = () => {
@@ -99,8 +97,6 @@ export const meta = () => {
 export function ErrorBoundary() {
   const error = useRouteError();
 
-  console.log(error);
-
   if (isRouteErrorResponse(error)) {
     let message;
     switch (error.status) {
@@ -148,8 +144,8 @@ function Document({
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-24 8 84 84%22><text y=%22.9em%22 font-size=%2290%22>&lambda;</text></svg>"></link>
+
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />

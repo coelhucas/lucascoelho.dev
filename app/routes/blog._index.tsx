@@ -8,7 +8,7 @@ import sharedStylesUrl from "~/styles/blog/shared.css";
 
 export function meta() {
   return [
-    { title: "Blog - lucascoelho.dev" },
+    { title: "Blog | Lucas Coelho" },
     { description: "Some random thoughts and stuff that I learn and share." },
   ];
 }

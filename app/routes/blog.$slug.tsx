@@ -17,8 +17,8 @@ export const meta: V2_MetaFunction = (r) => {
   return [
     {
       title: r.data?.title
-        ? `${r.data.title} | Blog - lucascoelho.dev`
-        : "Blog - lucascoelho.dev",
+      ? `${r.data.title} | Blog | Lucas Coelho`
+      : "Blog | Lucas Coelho",
     },
     { description: "Some random thoughts and stuff that I learn and share." },
   ];

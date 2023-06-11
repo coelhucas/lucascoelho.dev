@@ -5,7 +5,6 @@ import sharedStylesUrl from "~/styles/shared.css";
 
 import type { IconNames } from "~/components/Icon";
 import type { ReusedLinkProps } from "~/components/Link";
-import { json } from "@remix-run/node";
 
 export function headers({
   loaderHeaders,
@@ -103,7 +102,7 @@ export default function Index() {
 
         <h2>Software Engineer</h2>
         <p>
-          Interested in making development tools, games and learning more about performance & debugging. 
+          Interested in making development tools, games, and learning more about performance & debugging. 
           {/* <Link anchor highlight weight="bold" to="https://softwool.co">
             Softwool
           </Link> */}
@@ -112,7 +111,7 @@ export default function Index() {
           Worked on some design systems and front-end focused "platform teams". Founded a now in hiatus game development studio, <Link anchor highlight weight="bold" to="https://softwool.co">Softwool</Link>.
           {" "}Also have published some simple toy game projects on{" "}
           <Link anchor highlight to="https://cuca.itch.io/">
-          itch.io</Link>.
+          itch.io</Link>, <Link anchor highlight to="https://gamejolt.com/@cucadev">gamejolt/@cucadev</Link>.
         </p>
         <hr />
       </section>
