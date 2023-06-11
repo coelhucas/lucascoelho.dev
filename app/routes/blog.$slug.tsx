@@ -4,7 +4,7 @@ import type {
   V2_MetaFunction,
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
@@ -34,14 +34,11 @@ export let links: LinksFunction = () => {
 };
 
 export const loader = async ({ params }: LoaderArgs) => {
-  console.log("called");
   if (!params?.slug) {
     throw new Error("No slug provided");
   }
 
   const post = await getPost(params.slug);
-
-  console.log("post got");
 
   return post;
 };
@@ -51,10 +48,22 @@ function useUtterances(
   ref: React.RefObject<HTMLDivElement>
 ) {
 
-  const { theme } = useTheme()
+  const [isFrameLoaded, setIsFrameLoaded] = useState(false)
+  const [shouldUpdateTheme, setShouldUpdateTheme] = useState(false)
+  const [currentAttempt, setCurrentAttempt] = useState(1)
+  const { theme, isLoading } = useTheme()
+
+  const triggerIFrameListening = () => {
+    setIsFrameLoaded(true)
+  }
+
+  const triggerCommentsThemeUpdate = () => {
+    setTimeout(() => setShouldUpdateTheme(true), 100)
+  }
 
   useEffect(() => {
     const scriptElement = document.createElement("script");
+    scriptElement.addEventListener("load", triggerCommentsThemeUpdate)
 
     for (const [key, value] of Object.entries(attributes)) {
       scriptElement.setAttribute(key, value);
@@ -66,28 +75,53 @@ function useUtterances(
       throw new Error("welp");
     }
 
+    return() => scriptElement.removeEventListener("load", triggerCommentsThemeUpdate)
+
   }, []);
 
   useEffect(() => {
+    if (!isFrameLoaded) return
     const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
-    console.log(frame)
+    frame.contentWindow?.addEventListener("load", triggerCommentsThemeUpdate)
 
-    if (frame && !!theme) {
+    return () => frame.contentWindow?.removeEventListener("load", triggerIFrameListening)
+    
+
+  }, [isFrameLoaded, isLoading])
+
+  useEffect(() => {
+    if (!shouldUpdateTheme) return
+
+    const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
+    if (frame && theme) {
       const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light'
       const message = {
         type: 'set-theme',
         theme: commentsTheme
       };
 
-      frame.contentWindow?.postMessage(message, 'https://utteranc.es');
+      // This is some heavy gambiarra to wait for next event loop tick
+      // and hope for the message to be sent
+      const interval = setInterval(() => {
+        try {
+          frame.contentWindow?.postMessage(message, 'https://utteranc.es')
+          setShouldUpdateTheme(false)
+        } catch(_) {
+          console.warn(`Trying to post message again in 100ms...`)
+          setCurrentAttempt(c => c + 1)
+        } finally {
+          if (currentAttempt > 3) clearInterval(interval)
+        }
+      }, 0);
+
+      return () => clearInterval(interval)
     }
-  }, [theme])
+  }, [theme, isLoading, shouldUpdateTheme])
 
   return ref;
 }
 
-export default function PostSlug() {
-  const post = useLoaderData<SerializedPost>();
+const CommentsSection = ({ slug }: { slug: string}) => {
   const commentSection = useUtterances(
     {
       src: "https://utteranc.es/client.js",
@@ -96,10 +130,21 @@ export default function PostSlug() {
       theme: "preferred-color-scheme",
       id: "bazinga",
       async: "true",
-      "issue-term": post.slug,
+      "issue-term": slug,
     },
     React.createRef()
   );
+return (
+  <div className="blog-comments">
+        <div ref={commentSection}></div>
+      </div>
+)
+}
+
+export default function PostSlug() {
+  const post = useLoaderData<SerializedPost>();
+  const { theme } = useTheme()
+  
 
   return (
     <main className="blog-page-container">
@@ -108,9 +153,7 @@ export default function PostSlug() {
         Published in {post.date} ({post.readingTime} minute read)
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
-      <div className="blog-comments">
-        <div ref={commentSection}></div>
-      </div>
+      {theme && <CommentsSection slug={post.slug} />}
     </main>
   );
 }
