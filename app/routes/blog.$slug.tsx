@@ -58,7 +58,7 @@ function useUtterances(
   }
 
   const triggerCommentsThemeUpdate = () => {
-    setTimeout(() => setShouldUpdateTheme(true), 100)
+    setShouldUpdateTheme(true)
   }
 
   useEffect(() => {
@@ -110,9 +110,12 @@ function useUtterances(
           console.warn(`Trying to post message again in 100ms...`)
           setCurrentAttempt(c => c + 1)
         } finally {
-          if (currentAttempt > 3) clearInterval(interval)
+          if (currentAttempt > 3) {
+            // lets just give up at this point lol
+            clearInterval(interval)
+          }
         }
-      }, 0);
+      }, 10);
 
       return () => clearInterval(interval)
     }
