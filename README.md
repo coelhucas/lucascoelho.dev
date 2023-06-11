@@ -1,10 +1,11 @@
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)
+- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
 
 ## Netlify Setup
 
-1. Install the [Netlify CLI](https://www.netlify.com/products/dev/):
+1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
 
 ```sh
 npm i -g netlify-cli
@@ -30,23 +31,42 @@ netlify init
 
 ## Development
 
-The Netlify CLI starts your app in development mode, rebuilding assets on file changes.
+Ensure all packages are installed by running:
 
 ```sh
-npm run dev
+npm install
 ```
 
-Open up [http://localhost:3000](http://localhost:3000), and you should be ready to go!
+Run
+
+```sh
+netlify dev
+```
+
+Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
+
+### Adding Redirects and Rewrites
+
+To add redirects and rewrites, add them to the `netlify.toml` file or to the [\_app_redirects](_app_redirects) file. For more information about redirects and rewrites, see the [Netlify docs](https://docs.netlify.com/routing/redirects/).
+
+### Serve your site locally
+
+Run
+
+```sh
+npm run start
+```
+
+to serve your site locally at [http://localhost:8888](http://localhost:8888).
 
 ## Deployment
 
 There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
 
 ```sh
-$ npm run build
 # preview deployment
-$ netlify deploy
+netlify deploy --build
 
 # production deployment
-$ netlify deploy --prod
+netlify deploy --build --prod
 ```

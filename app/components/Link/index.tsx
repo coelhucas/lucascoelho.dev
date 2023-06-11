@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link as RemixLink } from "remix";
+import { Link as RemixLink } from "@remix-run/react";
+import React from "react";
 
-type FontWeight = 'thin' | 'regular' | 'bold';
+type FontWeight = "thin" | "regular" | "bold";
 
 export type ReusedLinkProps = {
   weight?: FontWeight;
@@ -10,11 +10,12 @@ export type ReusedLinkProps = {
   tags?: string[];
   highlight?: boolean;
   unstyled?: boolean;
-}
+};
 
-export type LinkProps = ReusedLinkProps & React.HTMLAttributes<HTMLAnchorElement> & {
-  to: string;
-}
+export type LinkProps = ReusedLinkProps &
+  React.HTMLAttributes<HTMLAnchorElement> & {
+    to: string;
+  };
 
 type ClassOptions = {
   weight: FontWeight;
@@ -23,27 +24,40 @@ type ClassOptions = {
   highlight: boolean;
   className?: string;
   unstyled?: boolean;
-}
+};
 
 const weightClasses = {
-  thin: 'link--thin',
-  regular: 'link--regular',
-  bold: 'link--bold',
-}
+  thin: "link--thin",
+  regular: "link--regular",
+  bold: "link--bold",
+};
 
-const noUnderline = 'no-underline';
+const noUnderline = "no-underline";
 
-const getClassNames = ({ weight, omitUnderline, className, highlight, unstyled, hasTags, }: ClassOptions) => {
+const getClassNames = ({
+  weight,
+  omitUnderline,
+  className,
+  highlight,
+  unstyled,
+  hasTags,
+}: ClassOptions) => {
   if (unstyled) return "link " + noUnderline;
-  
-  const classes = ['link', weightClasses[weight], hasTags ? "link-w-tags" : null, className, highlight ? 'highlight' : null];
+
+  const classes = [
+    "link",
+    weightClasses[weight],
+    hasTags ? "link-w-tags" : null,
+    className,
+    highlight ? "highlight" : null,
+  ];
   if (omitUnderline) classes.push(noUnderline);
-  return classes.filter(Boolean).join(' ');
-}
+  return classes.filter(Boolean).join(" ");
+};
 
 function Link({
   unstyled = false,
-  weight = 'thin',
+  weight = "thin",
   omitUnderline = false,
   children,
   anchor = false,
@@ -52,21 +66,32 @@ function Link({
   tags,
   to,
 }: LinkProps) {
-  const resolvedTags = tags ? `[${tags.join(', ')}]` : '';
+  const resolvedTags = tags ? `[${tags.join(", ")}]` : "";
   const sharedProps = {
-    className: getClassNames({ unstyled, hasTags: !!tags?.length, weight, omitUnderline, className, highlight }),
-    'data-tags': resolvedTags,
+    className: getClassNames({
+      unstyled,
+      hasTags: !!tags?.length,
+      weight,
+      omitUnderline,
+      className,
+      highlight,
+    }),
+    "data-tags": resolvedTags,
   };
 
   return (
     <>
-      {anchor ?
-        <a target="_blank" href={to} {...sharedProps}>{children}</a>
-        :
-        <RemixLink to={to} {...sharedProps}>{children}</RemixLink>
-      }
+      {anchor ? (
+        <a target="_blank" rel="noreferrer" href={to} {...sharedProps}>
+          {children}
+        </a>
+      ) : (
+        <RemixLink to={to} {...sharedProps}>
+          {children}
+        </RemixLink>
+      )}
     </>
-  )
+  );
 }
 
 export default Link;

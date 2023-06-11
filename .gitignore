@@ -6,6 +6,8 @@ node_modules
 public/build
 api/_build
 build/
+.env
+.yarn/cache
 
 # Local Netlify folder
 .netlify
