@@ -43,12 +43,12 @@ export const loader = () => {
       {
         title: "yoga",
         path: "https://github.com/gympass/yoga",
-        tags: ["JS"],
+        tags: ["JS", "React Native", "React.JS"],
       },
       {
-        title: "pixel",
-        path: "https://github.com/coelhucas/pixel",
-        tags: ["JS"],
+        title: "aabb physics library",
+        path: "https://github.com/coelhucas/simple-physics-handler",
+        tags: ["lua"]
       },
       {
         title: "mini-styled",
@@ -66,22 +66,21 @@ export const loader = () => {
         anchor: false,
         tags: ["GDScript"],
       },
+
+      {
+        title: "pixel",
+        path: "https://github.com/coelhucas/pixel",
+        tags: ["JS"],
+      },
       {
         title: "hitbox editor",
         path: "https://github.com/coelhucas/hitbox-editor/",
         tags: ["GDScript"],
       },
       {
-        title: "rgba based map generator",
+        title: "color based map generator",
         path: "https://github.com/coelhucas/unity-rgba-level-generator",
         tags: ["C#"],
-      },
-      {
-        title: "see more ⌄",
-        path: "https://github.com/coelhucas/",
-        props: {
-          omitUnderline: true,
-        },
       },
     ],
   };
@@ -99,30 +98,29 @@ export default function Index() {
   const data = useLoaderData() as RootLoaderReturn;
   return (
     <main>
-      <section>
+      <section className="main-section">
         <h1>Lucas Coelho</h1>
 
         <h2>Software Engineer</h2>
         <p>
-          Besides that I do game development in my spare time @{" "}
-          <Link anchor highlight weight="bold" to="https://softwool.co">
+          Interested in making development tools, games and learning more about performance & debugging. 
+          {/* <Link anchor highlight weight="bold" to="https://softwool.co">
             Softwool
-          </Link>
-          .
+          </Link> */}
           <br />
-          Check out{" "}
+          <br />
+          Worked on some design systems and front-end focused "platform teams". Founded a now in hiatus game development studio, <Link anchor highlight weight="bold" to="https://softwool.co">Softwool</Link>.
+          {" "}Also have published some simple toy game projects on{" "}
           <Link anchor highlight to="https://cuca.itch.io/">
-            my games
-          </Link>{" "}
-          as well.
+          itch.io</Link>.
         </p>
         <hr />
       </section>
       <section className="projects-container">
-        <Link weight="bold" omitUnderline highlight anchor to="/blog">
+        <Link weight="bold" omitUnderline highlight anchor to="https://github.com/coelhucas">
           Projects
         </Link>
-        <ul>
+        <ul className="projects-list">
           {data.projects.map(({ title, path, anchor = true, tags, props }) => (
             <li key={title}>
               <Link highlight anchor={anchor} to={path} tags={tags} {...props}>

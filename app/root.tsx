@@ -20,6 +20,7 @@ import React, { useEffect } from "react";
 import Icon from "./components/Icon";
 import { json } from "@remix-run/node";
 import ThemeButton from "./components/ThemeButton";
+import { ThemeProvider } from "./misc/ThemeProvider";
 export let links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
@@ -165,7 +166,7 @@ function Document({
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ThemeProvider>
       <main>
         <nav>
           <div className="navigation-links">
@@ -192,6 +193,6 @@ function Layout({ children }: { children: React.ReactNode }) {
         <hr />
         <p>The footer is a lie.</p>
       </footer>
-    </>
+    </ThemeProvider>
   );
 }

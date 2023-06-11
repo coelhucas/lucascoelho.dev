@@ -187,6 +187,10 @@ section:first-child {
   margin-bottom: 24px;
 }
 
+section.main-section {
+  width: 100%;
+}
+
 h1 {
   line-height: 1.5;
   font-size: 4rem;
@@ -213,7 +217,7 @@ hr {
 footer {
   margin: 0 auto;
   width: 100%;
-  max-width: 1240px;
+  max-width: 40rem;
 }
 
 footer > p {
@@ -226,11 +230,15 @@ footer > p {
   width: 100%;
 }
 
-.projects-container > ul {
+.projects-list {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 8px;
+  column-gap: 48px;
+  align-items: flex-start;
   padding: 0;
   list-style-type: none;
-  line-height: 1.5;
-  margin: 0;
 }
 
 .icon-button {
@@ -287,6 +295,10 @@ li {
 }
 
 @media (min-width: 600px) {
+  .projects-list {
+    flex-direction: row;
+  }
+
   body {
     padding: 48px 64px;
     padding-bottom: 0;

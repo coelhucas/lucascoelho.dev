@@ -11,6 +11,7 @@ import { getPost } from "~/utils/post";
 
 import stylesUrl from "~/styles/blog/shared.css";
 import globalStylesUrl from "~/styles/global.css";
+import { useTheme } from "~/misc/ThemeProvider";
 
 export const meta: V2_MetaFunction = (r) => {
   return [
@@ -47,33 +48,51 @@ function useUtterances(
   attributes: Record<string, string>,
   ref: React.RefObject<HTMLDivElement>
 ) {
+
+  const { theme } = useTheme()
+
   useEffect(() => {
     const scriptElement = document.createElement("script");
+
     for (const [key, value] of Object.entries(attributes)) {
       scriptElement.setAttribute(key, value);
     }
+
     if (ref?.current) {
       ref.current.appendChild(scriptElement);
     } else {
       throw new Error("welp");
     }
+
   }, []);
+
+  useEffect(() => {
+    const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
+    console.log(frame)
+
+    if (frame && !!theme) {
+      const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light'
+      const message = {
+        type: 'set-theme',
+        theme: commentsTheme
+      };
+
+      frame.contentWindow?.postMessage(message, 'https://utteranc.es');
+    }
+  }, [theme])
 
   return ref;
 }
 
 export default function PostSlug() {
   const post = useLoaderData<SerializedPost>();
-  console.log("hei");
-  const { matches: isUsingDarkTheme } = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  );
   const commentSection = useUtterances(
     {
       src: "https://utteranc.es/client.js",
       crossorigin: "anonymous",
       repo: "coelhucas/blog",
-      theme: isUsingDarkTheme ? "github-dark" : "github-light",
+      theme: "preferred-color-scheme",
+      id: "bazinga",
       async: "true",
       "issue-term": post.slug,
     },
