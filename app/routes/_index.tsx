@@ -3,6 +3,7 @@ import Link from "~/components/Link";
 
 import type { IconNames } from "~/components/Icon";
 import type { ReusedLinkProps } from "~/components/Link";
+import globalMeta from "~/utils/global-meta";
 
 export function headers({
   loaderHeaders,
@@ -81,7 +82,7 @@ export const loader = () => {
 };
 
 export function meta() {
-  return [{ title: "Lucas Coelho" }, { description: "something bout me" }];
+  return [...globalMeta, { title: "Lucas Coelho" }, { description: "Software Engineer interested in tools development" }];
 }
 
 export default function Index() {
