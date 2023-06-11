@@ -4,14 +4,13 @@ import type {
   V2_MetaFunction,
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import stylesUrl from "~/styles/blog/shared.css";
-import globalStylesUrl from "~/styles/global.css";
 import { useTheme } from "~/misc/ThemeProvider";
+import globalStylesUrl from "~/styles/global.css";
 import globalMeta from "~/utils/global-meta";
 
 export const meta: V2_MetaFunction = (r) => {
@@ -29,7 +28,6 @@ export const meta: V2_MetaFunction = (r) => {
 export let links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
-    { rel: "stylesheet", href: stylesUrl },
   ];
 };
 
@@ -48,22 +46,10 @@ function useUtterances(
   ref: React.RefObject<HTMLDivElement>
 ) {
 
-  const [isFrameLoaded, setIsFrameLoaded] = useState(false)
-  const [shouldUpdateTheme, setShouldUpdateTheme] = useState(false)
-  const [currentAttempt, setCurrentAttempt] = useState(1)
   const { theme, isLoading } = useTheme()
-
-  const triggerIFrameListening = () => {
-    setIsFrameLoaded(true)
-  }
-
-  const triggerCommentsThemeUpdate = () => {
-    setShouldUpdateTheme(true)
-  }
 
   useEffect(() => {
     const scriptElement = document.createElement("script");
-    scriptElement.addEventListener("load", triggerCommentsThemeUpdate)
 
     for (const [key, value] of Object.entries(attributes)) {
       scriptElement.setAttribute(key, value);
@@ -75,23 +61,9 @@ function useUtterances(
       throw new Error("welp");
     }
 
-    return() => scriptElement.removeEventListener("load", triggerCommentsThemeUpdate)
-
   }, []);
 
   useEffect(() => {
-    if (!isFrameLoaded) return
-    const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
-    frame.contentWindow?.addEventListener("load", triggerCommentsThemeUpdate)
-
-    return () => frame.contentWindow?.removeEventListener("load", triggerIFrameListening)
-    
-
-  }, [isFrameLoaded, isLoading])
-
-  useEffect(() => {
-    if (!shouldUpdateTheme) return
-
     const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
     if (frame && theme) {
       const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light'
@@ -100,37 +72,20 @@ function useUtterances(
         theme: commentsTheme
       };
 
-      // This is some heavy gambiarra to wait for next event loop tick
-      // and hope for the message to be sent
-      const interval = setInterval(() => {
-        try {
-          frame.contentWindow?.postMessage(message, 'https://utteranc.es')
-          setShouldUpdateTheme(false)
-        } catch(_) {
-          console.warn(`Trying to post message again in 100ms...`)
-          setCurrentAttempt(c => c + 1)
-        } finally {
-          if (currentAttempt > 3) {
-            // lets just give up at this point lol
-            clearInterval(interval)
-          }
-        }
-      }, 10);
-
-      return () => clearInterval(interval)
+      frame.contentWindow?.postMessage(message, 'https://utteranc.es')
     }
-  }, [theme, isLoading, shouldUpdateTheme])
+  }, [theme, isLoading])
 
   return ref;
 }
 
-const CommentsSection = ({ slug }: { slug: string}) => {
+const CommentsSection = ({ slug, theme }: { slug: string, theme: string}) => {
   const commentSection = useUtterances(
     {
       src: "https://utteranc.es/client.js",
       crossorigin: "anonymous",
       repo: "coelhucas/blog",
-      theme: "preferred-color-scheme",
+      theme: `github-${theme}`,
       id: "bazinga",
       async: "true",
       "issue-term": slug,
@@ -139,8 +94,8 @@ const CommentsSection = ({ slug }: { slug: string}) => {
   );
 return (
   <div className="blog-comments">
-        <div ref={commentSection}></div>
-      </div>
+    <div ref={commentSection}></div>
+  </div>
 )
 }
 
@@ -156,7 +111,7 @@ export default function PostSlug() {
         Published in {post.date} ({post.readingTime} minute read)
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
-      {theme && <CommentsSection slug={post.slug} />}
+      {theme && <CommentsSection theme={theme} slug={post.slug} />}
     </main>
   );
 }

@@ -4,7 +4,6 @@ import Link from "~/components/Link";
 import type { Post } from "~/utils/post";
 import { getPosts } from "~/utils/post";
 import stylesUrl from "~/styles/blog/posts-list.css";
-import sharedStylesUrl from "~/styles/blog/shared.css";
 import globalMeta from "~/utils/global-meta";
 
 export const meta = () => {
@@ -17,7 +16,6 @@ export const meta = () => {
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: sharedStylesUrl },
     { rel: "stylesheet", href: stylesUrl },
   ];
 };

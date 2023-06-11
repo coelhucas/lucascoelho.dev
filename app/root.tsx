@@ -13,7 +13,6 @@ import {
 import highlightStyles from "highlight.js/styles/github.css";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
-import sharedStylesUrl from "~/styles/shared.css";
 
 import React, { useEffect } from "react";
 import Icon from "./components/Icon";
@@ -33,26 +32,20 @@ export let links = () => {
       href: highlightStyles,
     },
     {
-      rel: "stylesheet",
-      href: sharedStylesUrl,
-    },
-    {
-      // <link rel="preconnect" href="https://fonts.googleapis.com">
-      // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      // <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
       rel: "preconnect",
       href: "https://fonts.googleapis.com",
+      as: "font",
     },
     {
       rel: "preconnect",
       href: "https://fonts.gstatic.com",
       crossOrigin: "anonymous",
     },
-    {
-      rel: "preload",
-      as: "style",
-      href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap",
-    },
+    // {
+    //   rel: "preload",
+    //   as: "style",
+    //   href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap",
+    // },
   ];
 };
 

@@ -1,8 +1,6 @@
 import { useLoaderData } from "react-router";
 import Link from "~/components/Link";
 
-import sharedStylesUrl from "~/styles/shared.css";
-
 import type { IconNames } from "~/components/Icon";
 import type { ReusedLinkProps } from "~/components/Link";
 
@@ -80,10 +78,6 @@ export const loader = () => {
       },
     ],
   };
-};
-
-export let links = () => {
-  return [{ rel: "stylesheet", href: sharedStylesUrl }];
 };
 
 export function meta() {

@@ -47,7 +47,11 @@ function isValidTheme(value: string = ""): value is Themes {
             setTheme(storedTheme)
             setIsLoading(false)
         } else {
-            setTheme(isUsingDarkTheme ? "dark" : "light")
+            setTheme(() => {
+              const nextTheme = isUsingDarkTheme ? "dark" : "light"
+              localStorage.setItem("theme", nextTheme)
+              return nextTheme
+            })
             setIsLoading(false)
         }
     }, [isUsingDarkTheme])

@@ -1,9 +1,8 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css";
-import sharedStylesUrl from "~/styles/blog/shared.css";
 
-export let meta: MetaFunction = () => {
+export const meta = () => {
   return [
     { title: "Blog - lucascoelho.dev" },
     { description: "Some random thoughts and stuff that I learn and share." },
@@ -12,7 +11,6 @@ export let meta: MetaFunction = () => {
 
 export let links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: sharedStylesUrl },
     { rel: "stylesheet", href: stylesUrl },
   ];
 };
