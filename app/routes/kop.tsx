@@ -1,11 +1,13 @@
 import type { LinksFunction } from "@remix-run/node";
 import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css";
+import globalMeta from "~/utils/global-meta";
 
 export const meta = () => {
   return [
-    { title: "Blog - lucascoelho.dev" },
-    { description: "Some random thoughts and stuff that I learn and share." },
+    ...globalMeta,
+    { title: "King of Parties | Lucas Coelho" },
+    { description: "Small peer-to-peer multiplayer game made as a proof of concept." },
   ];
 };
 
