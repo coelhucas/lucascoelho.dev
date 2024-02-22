@@ -66,12 +66,13 @@ export default function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
 
-  useEffect(() => {}, [location, gaTrackingId]);
+  useEffect(() => { }, [location, gaTrackingId]);
 
   return (
     <Document>
       <Layout>
         <Outlet />
+        <Meta />
       </Layout>
     </Document>
   );
@@ -108,7 +109,7 @@ export function ErrorBoundary() {
             Ops! Guess I didn't treated this error 🤦‍♂️. Status: {error.status};
           </p>
         );
-        // throw new Error(error.data || error.statusText);
+      // throw new Error(error.data || error.statusText);
     }
     return (
       <Document title="Error!">
@@ -138,7 +139,6 @@ function Document({
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-24 8 84 84%22><text y=%22.9em%22 font-size=%2290%22>&lambda;</text></svg>"></link>
 
         {title ? <title>{title}</title> : null}
-        <Meta />
         <Links />
       </head>
       <body>
