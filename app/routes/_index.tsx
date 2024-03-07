@@ -43,7 +43,7 @@ export const loader = () => {
       {
         title: "aabb physics library",
         path: "https://github.com/coelhucas/simple-physics-handler",
-        tags: ["lua"]
+        tags: ["lua"],
       },
       {
         title: "mini-styled",
@@ -82,7 +82,18 @@ export const loader = () => {
 };
 
 export function meta() {
-  return [...globalMeta, { title: "Lucas Coelho" }, { description: "Software Engineer interested in making development tools." }];
+  return [
+    ...globalMeta,
+    { title: "Lucas Coelho | Software Engineer" },
+    {
+      property: "og:title",
+      content: "Lucas Coelho | Software Engineer",
+    },
+    {
+      name: "description",
+      content: "Software Engineer interested in making development tools.",
+    },
+  ];
 }
 
 export default function Index() {
@@ -94,21 +105,38 @@ export default function Index() {
 
         <h2>Software Engineer</h2>
         <p>
-          Interested in making development tools, games, and learning more about performance & debugging. 
+          Interested in making development tools, games, and learning more about
+          performance & debugging.
           {/* <Link anchor highlight weight="bold" to="https://softwool.co">
             Softwool
           </Link> */}
           <br />
           <br />
-          Worked on some design systems and front-end focused "platform teams". Founded a now in hiatus game development studio, <Link anchor highlight weight="bold" to="https://softwool.co">Softwool</Link>.
-          {" "}Also have published some simple toy game projects on{" "}
+          Worked on some design systems and front-end focused "platform teams".
+          Founded a now in hiatus game development studio,{" "}
+          <Link anchor highlight weight="bold" to="https://softwool.co">
+            Softwool
+          </Link>
+          . Also have published some simple toy game projects on{" "}
           <Link anchor highlight to="https://cuca.itch.io/">
-          itch.io</Link>, <Link anchor highlight to="https://gamejolt.com/@cucadev">gamejolt/@cucadev</Link>.
+            itch.io
+          </Link>
+          ,{" "}
+          <Link anchor highlight to="https://gamejolt.com/@cucadev">
+            gamejolt/@cucadev
+          </Link>
+          .
         </p>
         <hr />
       </section>
       <section className="projects-container">
-        <Link weight="bold" omitUnderline highlight anchor to="https://github.com/coelhucas">
+        <Link
+          weight="bold"
+          omitUnderline
+          highlight
+          anchor
+          to="https://github.com/coelhucas"
+        >
           Projects
         </Link>
         <ul className="projects-list">

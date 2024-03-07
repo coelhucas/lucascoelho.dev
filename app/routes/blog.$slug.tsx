@@ -1,7 +1,7 @@
 import type {
-  LinksFunction,
-  LoaderArgs,
-  V2_MetaFunction,
+    LinksFunction,
+    LoaderArgs,
+    V2_MetaFunction
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React, { useEffect } from "react";
@@ -21,7 +21,13 @@ export const meta: V2_MetaFunction = (r) => {
       ? `${r.data.title} | Blog | Lucas Coelho`
       : "Blog | Lucas Coelho",
     },
-    { description: "Some random thoughts and stuff that I learn and share." },
+    {
+      property: "og:title",
+      content: r.data?.title
+      ? `${r.data.title} | Blog | Lucas Coelho`
+      : "Blog | Lucas Coelho",
+    },
+    { name: "description", content: "Some random thoughts and stuff that I learn and share." },
   ];
 };
 
@@ -102,7 +108,7 @@ return (
 export default function PostSlug() {
   const post = useLoaderData<SerializedPost>();
   const { theme } = useTheme()
-  
+
 
   return (
     <main className="blog-page-container">

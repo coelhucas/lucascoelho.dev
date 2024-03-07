@@ -7,14 +7,21 @@ export const meta = () => {
   return [
     ...globalMeta,
     { title: "King of Parties | Lucas Coelho" },
-    { description: "Small peer-to-peer multiplayer game made as a proof of concept." },
+    {
+      property: "og:title",
+      content:
+        "Small peer-to-peer multiplayer game made as a proof of concept.",
+    },
+    {
+      name: "description",
+      content:
+        "Small peer-to-peer multiplayer game made as a proof of concept.",
+    },
   ];
 };
 
 export let links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: stylesUrl },
-  ];
+  return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
 export default function KingOfParties() {
