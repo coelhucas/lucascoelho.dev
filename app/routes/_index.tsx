@@ -36,6 +36,12 @@ export const loader = () => {
   return {
     projects: [
       {
+        // Wip. Have a page for it?
+        title: "mythic quest (mmorpg jam)",
+        path: "https://cuca.itch.io/mmorpg-jam",
+        tags: ["TS", "Node", "socket.io"],
+      },
+      {
         title: "yoga",
         path: "https://github.com/gympass/yoga",
         tags: ["JS", "React Native", "React.JS"],
@@ -105,16 +111,18 @@ export default function Index() {
 
         <h2>Software Engineer</h2>
         <p>
-          Interested in making development tools, games, and learning more about
-          performance & debugging.
-          {/* <Link anchor highlight weight="bold" to="https://softwool.co">
-            Softwool
-          </Link> */}
+          Interested in making tools, games, and learning more about performance
+          & debugging.
           <br />
           <br />
           Worked on some design systems and front-end focused "platform teams".
           Founded a now in hiatus game development studio,{" "}
-          <Link anchor highlight weight="bold" to="https://softwool.co">
+          <Link
+            anchor
+            highlight
+            weight="bold"
+            to="https://store.steampowered.com/developer/Softwool"
+          >
             Softwool
           </Link>
           . Also have published some simple toy game projects on{" "}
