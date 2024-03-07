@@ -1,23 +1,32 @@
 import type { LinksFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Link from "~/components/Link";
-import type { Post } from "~/utils/post";
-import { getPosts } from "~/utils/post";
 import stylesUrl from "~/styles/blog/posts-list.css";
 import globalMeta from "~/utils/global-meta";
+import type { Post } from "~/utils/post";
+import { getPosts } from "~/utils/post";
 
 export const meta = () => {
   return [
     ...globalMeta,
     { title: "Blog | Lucas Coelho" },
-    { description: "Some random thoughts and stuff that I learn and share." },
+    {
+      property: "og:title",
+      content: "Blog | Lucas Coelho",
+    },
+    {
+      name: "description",
+      content: "Some random thoughts and stuff that I learn and share.",
+    },
+    {
+      property: "og:description",
+      content: "Some random thoughts and stuff that I learn and share.",
+    },
   ];
-}
+};
 
 export const links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: stylesUrl },
-  ];
+  return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
 export const loader = () => {
