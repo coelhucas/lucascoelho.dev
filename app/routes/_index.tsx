@@ -96,6 +96,10 @@ export function meta() {
       content: "Lucas Coelho | Software Engineer",
     },
     {
+      property: "og:description",
+      content: "Software Engineer interested in making development tools.",
+    },
+    {
       name: "description",
       content: "Software Engineer interested in making development tools.",
     },

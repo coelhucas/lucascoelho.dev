@@ -17,6 +17,11 @@ export const meta = () => {
       content:
         "Small peer-to-peer multiplayer game made as a proof of concept.",
     },
+    {
+      property: "og:description",
+      content:
+        "Small peer-to-peer multiplayer game made as a proof of concept.",
+    },
   ];
 };
 

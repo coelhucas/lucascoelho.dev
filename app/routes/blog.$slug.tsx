@@ -1,7 +1,7 @@
 import type {
-    LinksFunction,
-    LoaderArgs,
-    V2_MetaFunction
+  LinksFunction,
+  LoaderArgs,
+  V2_MetaFunction,
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React, { useEffect } from "react";
@@ -18,23 +18,28 @@ export const meta: V2_MetaFunction = (r) => {
     ...globalMeta,
     {
       title: r.data?.title
-      ? `${r.data.title} | Blog | Lucas Coelho`
-      : "Blog | Lucas Coelho",
+        ? `${r.data.title} | Blog | Lucas Coelho`
+        : "Blog | Lucas Coelho",
     },
     {
       property: "og:title",
       content: r.data?.title
-      ? `${r.data.title} | Blog | Lucas Coelho`
-      : "Blog | Lucas Coelho",
+        ? `${r.data.title} | Blog | Lucas Coelho`
+        : "Blog | Lucas Coelho",
     },
-    { name: "description", content: "Some random thoughts and stuff that I learn and share." },
+    {
+      property: "og:description",
+      content: "Some random thoughts and stuff that I learn and share.",
+    },
+    {
+      name: "description",
+      content: "Some random thoughts and stuff that I learn and share.",
+    },
   ];
 };
 
 export let links: LinksFunction = () => {
-  return [
-    { rel: "stylesheet", href: globalStylesUrl },
-  ];
+  return [{ rel: "stylesheet", href: globalStylesUrl }];
 };
 
 export const loader = async ({ params }: LoaderArgs) => {
@@ -49,10 +54,9 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 function useUtterances(
   attributes: Record<string, string>,
-  ref: React.RefObject<HTMLDivElement>
+  ref: React.RefObject<HTMLDivElement>,
 ) {
-
-  const { theme, isLoading } = useTheme()
+  const { theme, isLoading } = useTheme();
 
   useEffect(() => {
     const scriptElement = document.createElement("script");
@@ -66,26 +70,27 @@ function useUtterances(
     } else {
       throw new Error("welp");
     }
-
   }, []);
 
   useEffect(() => {
-    const frame = document.querySelector(".utterances-frame") as HTMLIFrameElement
+    const frame = document.querySelector(
+      ".utterances-frame",
+    ) as HTMLIFrameElement;
     if (frame && theme) {
-      const commentsTheme = theme === 'dark' ? 'github-dark' : 'github-light'
+      const commentsTheme = theme === "dark" ? "github-dark" : "github-light";
       const message = {
-        type: 'set-theme',
-        theme: commentsTheme
+        type: "set-theme",
+        theme: commentsTheme,
       };
 
-      frame.contentWindow?.postMessage(message, 'https://utteranc.es')
+      frame.contentWindow?.postMessage(message, "https://utteranc.es");
     }
-  }, [theme, isLoading])
+  }, [theme, isLoading]);
 
   return ref;
 }
 
-const CommentsSection = ({ slug, theme }: { slug: string, theme: string}) => {
+const CommentsSection = ({ slug, theme }: { slug: string; theme: string }) => {
   const commentSection = useUtterances(
     {
       src: "https://utteranc.es/client.js",
@@ -96,19 +101,18 @@ const CommentsSection = ({ slug, theme }: { slug: string, theme: string}) => {
       async: "true",
       "issue-term": slug,
     },
-    React.createRef()
+    React.createRef(),
   );
-return (
-  <div className="blog-comments">
-    <div ref={commentSection}></div>
-  </div>
-)
-}
+  return (
+    <div className="blog-comments">
+      <div ref={commentSection}></div>
+    </div>
+  );
+};
 
 export default function PostSlug() {
   const post = useLoaderData<SerializedPost>();
-  const { theme } = useTheme()
-
+  const { theme } = useTheme();
 
   return (
     <main className="blog-page-container">
