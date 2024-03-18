@@ -66,7 +66,7 @@ export default function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
 
-  useEffect(() => { }, [location, gaTrackingId]);
+  useEffect(() => {}, [location, gaTrackingId]);
 
   return (
     <Document>
@@ -83,7 +83,7 @@ export const loader = async () => {
 };
 
 export const meta = () => {
-  return globalMeta
+  return globalMeta;
 };
 
 export function ErrorBoundary() {
@@ -136,7 +136,11 @@ function Document({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-24 8 84 84%22><text y=%22.9em%22 font-size=%2290%22>&lambda;</text></svg>"></link>
+        <meta charSet="utf-8" />
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-24 8 84 84%22><text y=%22.9em%22 font-size=%2290%22>&lambda;</text></svg>"
+        ></link>
 
         {title ? <title>{title}</title> : null}
         <Links />
