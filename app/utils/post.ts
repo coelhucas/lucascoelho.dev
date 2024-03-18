@@ -104,7 +104,7 @@ export async function getPosts(): Promise<Post[]> {
   return Promise.all(
     dir.map(async (filename) => {
       const file = await fs.readFile(path.join(postsPath, filename), {
-        encoding: "latin1",
+        encoding: "utf8",
       });
       const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
         file.toString(),
@@ -129,7 +129,9 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPost(slug: string) {
   const filepath = path.join(postsPath, slug + ".md");
-  const file = await fs.readFile(filepath);
+  const file = await fs.readFile(filepath, {
+    encoding: "utf8",
+  });
   const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
     file.toString(),
   );
