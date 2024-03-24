@@ -15,6 +15,7 @@ export type ReusedLinkProps = {
 export type LinkProps = ReusedLinkProps &
   React.HTMLAttributes<HTMLAnchorElement> & {
     to: string;
+    name?: string;
   };
 
 type ClassOptions = {
@@ -63,6 +64,7 @@ function Link({
   anchor = false,
   className,
   highlight = false,
+  name = undefined,
   tags,
   to,
 }: LinkProps) {
@@ -86,7 +88,7 @@ function Link({
           {children}
         </a>
       ) : (
-        <RemixLink to={to} {...sharedProps}>
+        <RemixLink aria-label={name} to={to} {...sharedProps}>
           {children}
         </RemixLink>
       )}

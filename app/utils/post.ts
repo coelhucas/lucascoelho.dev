@@ -90,6 +90,32 @@ const highlight = (code: string, lang: string) => {
   return hljs.highlight(code, { language }).value;
 };
 
+const lcpImage = (src: string) => {
+  return `<img src="${src}" fetchPriority="high" loading="eager" class="post-image" />`;
+};
+
+const lcpImageEmbed = {
+  name: "lcp",
+  level: "block", // Is this a block-level or inline-level tokenizer?
+  start(src) {
+    return src.match(/^@\[/)?.index;
+  }, // Hint to Marked.js to stop and check for a match
+  tokenizer(src, tokens) {
+    const rule = /^@\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/; // Regex for the complete token, anchor to string start
+    const match = rule.exec(src);
+    if (match) {
+      return {
+        type: "lcp",
+        raw: match[0],
+        src: match[1].trim(),
+      };
+    }
+  },
+  renderer(token) {
+    return lcpImage(token.src);
+  },
+};
+
 const options = { renderer, langPrefix: "hljs language-", highlight };
 
 function getReadingTime(body: string): number {
@@ -137,7 +163,7 @@ export async function getPost(slug: string) {
   );
 
   const readingTime = getReadingTime(body);
-  marked.use({ renderer, gfm: true });
+  marked.use({ renderer, gfm: true, extensions: [lcpImageEmbed] });
   const html = marked.parse(body, options);
   return {
     slug,
