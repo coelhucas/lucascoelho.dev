@@ -19,6 +19,7 @@ import Icon from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./misc/ThemeProvider";
 import globalMeta from "./utils/global-meta";
+
 export let links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
@@ -137,6 +138,7 @@ function Document({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width" />
         <link
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-24 8 84 84%22><text y=%22.9em%22 font-size=%2290%22>&lambda;</text></svg>"
@@ -168,7 +170,7 @@ function Layout({ children }: { children: React.ReactNode }) {
           <ul className="media-links">
             {navLinks.map(({ path, title, icon }) => (
               <li key={title}>
-                <Link className="icon-anchor" anchor to={path}>
+                <Link className="icon-anchor" name={title} anchor to={path}>
                   <Icon as={icon} />
                 </Link>
               </li>
