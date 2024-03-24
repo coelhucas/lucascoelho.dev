@@ -82,7 +82,7 @@ renderer.link = (href: string, _: string, text: string) =>
   `<a class="anchor" href=${href}>${text}</a>`;
 
 renderer.image = (href: string, _, text: string) => {
-  return `<img class="post-image" src=${href} alt=${text} />`;
+  return `<img class="post-image" src=${href} alt=${text} type="image/webp" />`;
 };
 
 const highlight = (code: string, lang: string) => {
@@ -91,7 +91,7 @@ const highlight = (code: string, lang: string) => {
 };
 
 const lcpImage = (src: string) => {
-  return `<img src="${src}" fetchPriority="high" loading="eager" class="post-image" />`;
+  return `<img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" />`;
 };
 
 const lcpImageEmbed = {
