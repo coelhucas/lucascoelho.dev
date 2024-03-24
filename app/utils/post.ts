@@ -91,7 +91,10 @@ const highlight = (code: string, lang: string) => {
 };
 
 const lcpImage = (src: string) => {
-  return `<img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" />`;
+  return `<>
+    <link rel="preload" fetchPriority="high" as="image" href="${src}" type="image/webp">
+    <img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" />
+  </>`;
 };
 
 const lcpImageEmbed = {
