@@ -1,58 +1,58 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .list-item {
-  padding: 8px 0;
-  border-top: 2px solid var(--surface1);
-  text-decoration: none;
+    padding: 8px 0;
+    border-top: 2px solid var(--surface1);
+    text-decoration: none;
 }
 
 .post-card {
-  display: flex;
-  width: 100%;
-  padding: 8px;
-  min-height: 64px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.4rem;
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    min-height: 64px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
 }
 
 .post-card > p {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1rem;
-  margin: 0;
-  padding-right: 24px;
-  max-width: 512px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    margin: 0;
+    padding-right: 24px;
+    max-width: 512px;
 }
 
 .post-card > span {
-  flex: 1;
-  text-align: right;
-  min-width: 128px;
+    flex: 1;
+    text-align: right;
+    min-width: 128px;
 }
 
 .post-card:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .list-item:first-child {
-  border-top: none;
+    border-top: none;
 }
 
 .date {
-  text-decoration: none;
-  font-size: 0.8rem;
-  border: none;
-  margin: 0;
-  font-weight: 300;
+    text-decoration: none;
+    font-size: 1rem;
+    border: none;
+    margin: 0;
+    font-weight: 300;
 }
