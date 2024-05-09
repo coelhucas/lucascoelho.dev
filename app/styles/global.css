@@ -449,3 +449,13 @@ nav {
     font-family: monospace;
     align-items: center;
 }
+
+a {
+    color: white;
+    color: var(--text2);
+    text-underline-offset: 2px;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
