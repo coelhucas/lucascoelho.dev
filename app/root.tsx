@@ -94,22 +94,16 @@ export function ErrorBoundary() {
     let message;
     switch (error.status) {
       case 401:
-        message = (
-          <p>
-            Looks like you tried to visit a page that you do not have access to.
-          </p>
-        );
+        message =
+          "Looks like you tried to visit a page that you do not have access to.";
         break;
       case 404:
-        message = <p>It looks like this page that does not exist.</p>;
+        message = "404: 👀 It looks like this page that does not exist.";
         break;
 
       default:
-        message = (
-          <p>
-            Ops! Guess I didn't treated this error 🤦‍♂️. Status: {error.status};
-          </p>
-        );
+        message = `Ops! Guess I didn't treated this error 🤦‍♂️. Status: ${error.status}`;
+
       // throw new Error(error.data || error.statusText);
     }
     return (
@@ -117,9 +111,12 @@ export function ErrorBoundary() {
         <Layout>
           <div>
             <h1>Unable to load page</h1>
-            <h2>{JSON.stringify(message)}</h2>
+            <h2>{message}</h2>
             <hr />
-            <p>Was it supposed to be working? Contact me</p>
+            <p>
+              Was it supposed to be working?{" "}
+              <a href="mailto:lucascoelhodacosta@gmail.com">Contact me</a>
+            </p>
           </div>
         </Layout>
       </Document>
