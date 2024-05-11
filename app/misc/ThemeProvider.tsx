@@ -1,83 +1,60 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
-type Themes = "light" | "dark"
+type Themes = "light" | "dark";
 
 type ThemeContextValue = {
-    theme?: "light" | "dark";
-    toggle: () => void;
-    isLoading: boolean
-  };
-   
+  theme: "light" | "dark";
+  toggle: () => void;
+};
+
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function isValidTheme(value: string = ""): value is Themes {
-    return ['light', 'dark'].includes(value);
+export function useTheme() {
+  const value = useContext(ThemeContext);
+
+  if (value === null) {
+    throw new Error("useCounter cannot be called without a CounterProvider");
   }
-   
-  export function useTheme() {
-    const value = useContext(ThemeContext);
-   
-    if (value === null) {
-      throw new Error(
-        'useCounter cannot be called without a CounterProvider'
-      );
-    }
-   
-    return value;
-  }
-   
-  type ThemeProviderProps = {
-    children: React.ReactNode;
-  };
-   
-  export function ThemeProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Themes>();
-    const [isLoading, setIsLoading] = useState(true)
-   
-    const { matches: isUsingDarkTheme } =
-    typeof window === "object"
-      ? window.matchMedia("(prefers-color-scheme: dark)")
-      : { matches: false };
 
-    // Get initial theme
-    useEffect(() => {
-        const storedTheme = localStorage.getItem("theme")
+  return value;
+}
 
-        if (storedTheme && isValidTheme(storedTheme)) {
-            setTheme(storedTheme)
-            setIsLoading(false)
-        } else {
-            setTheme(() => {
-              const nextTheme = isUsingDarkTheme ? "dark" : "light"
-              localStorage.setItem("theme", nextTheme)
-              return nextTheme
-            })
-            setIsLoading(false)
-        }
-    }, [isUsingDarkTheme])
+type ThemeProviderProps = {
+  children: React.ReactNode;
+};
 
-    useEffect(() => {
-        if (isValidTheme(theme)) {
-            document.firstElementChild?.setAttribute("color-scheme", theme);
-        }
-    }, [theme])
+// TODO: Fix theme "blink" when using light one. [remix-themes](https://github.com/abereghici/remix-themes) might help if I don't want to manage the cookies manually.
+export function ThemeProvider({ children }: ThemeProviderProps) {
+  const theme = (((typeof window === "object" &&
+    localStorage.getItem("theme")) ??
+    (window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light")) ||
+    "light") as Themes;
+  const [localTheme, setLocalTheme] = useState<Themes>(theme);
 
-    const toggle = useCallback(() => {
-        setTheme(prev => {
-            const nextTheme = prev === "light" ? "dark" : "light"
-            localStorage.setItem("theme", nextTheme)
-            return nextTheme
-        });
-    }, [])
-   
-    const value = useMemo(
-      () => ({ theme, toggle, isLoading }),
-      [theme, toggle, isLoading]
-    );
-   
-    return (
-      <ThemeContext.Provider value={value}>
-        {children}
-      </ThemeContext.Provider>
-    );
-  }
+  useEffect(() => {
+    document.firstElementChild?.setAttribute("color-scheme", localTheme);
+  }, [localTheme]);
+
+  const toggle = useCallback(() => {
+    setLocalTheme((prev) => {
+      const nextTheme = prev === "light" ? "dark" : "light";
+      localStorage.setItem("theme", nextTheme);
+      return nextTheme;
+    });
+  }, []);
+
+  const value = useMemo(() => ({ theme: theme, toggle }), [theme, toggle]);
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+}
