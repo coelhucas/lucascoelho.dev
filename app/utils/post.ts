@@ -97,13 +97,13 @@ const lcpImage = (src: string) => {
   </>`;
 };
 
-const lcpImageEmbed = {
+const lcpImageEmbed: marked.TokenizerAndRendererExtension = {
   name: "lcp",
   level: "block", // Is this a block-level or inline-level tokenizer?
   start(src) {
     return src.match(/^@\[/)?.index;
   }, // Hint to Marked.js to stop and check for a match
-  tokenizer(src, tokens) {
+  tokenizer(src, _tokens) {
     const rule = /^@\[[^\]]*\]\((.*?)\s*("(?:.*[^"])")?\s*\)/; // Regex for the complete token, anchor to string start
     const match = rule.exec(src);
     if (match) {
@@ -141,15 +141,15 @@ export async function getPosts(): Promise<Post[]> {
 
       const readingTime = getReadingTime(body);
 
-      // invariant(
-      //   isValidPostAttributes(attributes),
-      //   `${filename} has bad meta data!`
-      // );
-
       return {
         slug: filename.replace(/\.md$/, ""),
         title: attributes.title,
-        date: attributes.date,
+        /** e.g.: Jun 24, 2022 */
+        date: new Date(attributes.date).toLocaleString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        }),
         readingTime,
       };
     }),
