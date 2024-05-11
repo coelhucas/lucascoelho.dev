@@ -1,23 +1,23 @@
 import type { LoaderFunction } from "@remix-run/node";
 import {
-    isRouteErrorResponse,
-    Links,
-    LiveReload,
-    Meta,
-    Outlet,
-    Scripts,
-    ScrollRestoration,
-    useLoaderData,
-    useLocation,
-    useRouteError
+  isRouteErrorResponse,
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useLocation,
+  useRouteError,
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css";
 import React, { useEffect, useState } from "react";
 import {
-    PreventFlashOnWrongTheme,
-    ThemeProvider,
-    useTheme,
-    type Theme
+  PreventFlashOnWrongTheme,
+  ThemeProvider,
+  useTheme,
+  type Theme,
 } from "remix-themes";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
@@ -30,11 +30,6 @@ import { pageview } from "./utils/gtag";
 export let links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
-    // {
-    //   rel: "stylesheet",
-    //   href: darkStylesUrl,
-    //   media: "(prefers-color-scheme: dark)",
-    // },
     {
       rel: "stylesheet",
       href: highlightStyles,
@@ -49,11 +44,6 @@ export let links = () => {
       href: "https://fonts.gstatic.com",
       crossOrigin: "anonymous",
     },
-    // {
-    //   rel: "preload",
-    //   as: "style",
-    //   href: "https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap",
-    // },
   ];
 };
 
@@ -122,43 +112,56 @@ export const meta = () => {
   return globalMeta;
 };
 
-// export function ErrorBoundary() {
-//   const [theme] = useTheme();
-//   const error = useRouteError();
+const ErrorDisplay = () => {
+  const [theme] = useTheme();
+  const error = useRouteError();
 
-//   if (isRouteErrorResponse(error)) {
-//     let message;
-//     switch (error.status) {
-//       case 401:
-//         message =
-//           "Looks like you tried to visit a page that you do not have access to.";
-//         break;
-//       case 404:
-//         message = "404: 👀 It looks like this page that does not exist.";
-//         break;
+  if (isRouteErrorResponse(error)) {
+    let message;
+    switch (error.status) {
+      case 401:
+        message =
+          "Looks like you tried to visit a page that you do not have access to.";
+        break;
+      case 404:
+        message = "404: 👀 It looks like this page that does not exist.";
+        break;
 
-//       default:
-//         message = `Ops! Guess I didn't treated this error 🤦‍♂️. Status: ${error.status}`;
+      default:
+        message = `Ops! Guess I didn't treated this error 🤦‍♂️. Status: ${error.status}`;
+    }
 
-//       // throw new Error(error.data || error.statusText);
-//     }
-//     return (
-//       <Document title="Error!" dataTheme={theme ?? ""}>
-//         <Layout>
-//           <div>
-//             <h1>Unable to load page</h1>
-//             <h2>{message}</h2>
-//             <hr />
-//             <p>
-//               Was it supposed to be working?{" "}
-//               <a href="mailto:lucascoelhodacosta@gmail.com">Contact me</a>
-//             </p>
-//           </div>
-//         </Layout>
-//       </Document>
-//     );
-//   }
-// }
+    return (
+      <Document title="Error!" dataTheme={theme ?? ""}>
+        <Layout>
+          <div>
+            <h1>Unable to load page</h1>
+            <h2>{message}</h2>
+            <hr />
+            <p>
+              Was it supposed to be working?{" "}
+              <a href="mailto:lucascoelhodacosta@gmail.com">Contact me</a>
+            </p>
+          </div>
+        </Layout>
+      </Document>
+    );
+  }
+  return null;
+};
+
+export function ErrorBoundary() {
+  const data = useLoaderData();
+  return (
+    <ThemeProvider
+      specifiedTheme={data?.theme}
+      themeAction="/action/set-theme"
+      disableTransitionOnThemeChange
+    >
+      <ErrorDisplay />
+    </ThemeProvider>
+  );
+}
 
 function Document({
   children,
@@ -228,7 +231,11 @@ function Layout({ children }: { children: React.ReactNode }) {
 export default function WrappedApp() {
   const data = useLoaderData();
   return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme" disableTransitionOnThemeChange>
+    <ThemeProvider
+      specifiedTheme={data.theme}
+      themeAction="/action/set-theme"
+      disableTransitionOnThemeChange
+    >
       <App />
     </ThemeProvider>
   );
