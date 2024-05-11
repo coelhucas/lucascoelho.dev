@@ -14,11 +14,12 @@ import highlightStyles from "highlight.js/styles/github.css";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
 import { ThemeProvider } from "./misc/ThemeProvider";
 import globalMeta from "./utils/global-meta";
+import { pageview } from "./utils/gtag";
 
 export let links = () => {
   return [
@@ -66,14 +67,38 @@ const navLinks = [
 export default function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
+  const [lastLocation, setLastLocation] = useState(location?.pathname);
 
-  useEffect(() => {}, [location, gaTrackingId]);
+  useEffect(() => {
+    if (gaTrackingId && lastLocation !== location?.pathname) {
+      pageview(location.pathname, gaTrackingId);
+      setLastLocation(location?.pathname);
+    }
+  }, [location, gaTrackingId, lastLocation]);
 
   return (
     <Document>
       <Layout>
         <Outlet />
         <Meta />
+        {gaTrackingId && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+              `,
+              }}
+            />
+          </>
+        )}
       </Layout>
     </Document>
   );
