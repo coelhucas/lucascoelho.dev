@@ -58,7 +58,6 @@ const sortByDate = (a: Post, b: Post) => {
 
 export default function Posts() {
   const posts = useLoaderData<Post[]>();
-  console.log({ posts });
   return (
     <div className="container">
       <h1>Posts</h1>
