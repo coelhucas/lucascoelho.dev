@@ -83,6 +83,11 @@ export const loader = () => {
         path: "https://github.com/coelhucas/unity-rgba-level-generator",
         tags: ["C#", "tool"],
       },
+      {
+        title: "View more",
+        path: "https://github.com/coelhucas",
+        tags: ["github"],
+      },
     ],
   };
 };
@@ -143,15 +148,7 @@ export default function Index() {
         <hr />
       </section>
       <section className="projects-container">
-        <Link
-          weight="bold"
-          omitUnderline
-          highlight
-          anchor
-          to="https://github.com/coelhucas"
-        >
-          Projects
-        </Link>
+        <h3>Projects</h3>
         <ul className="projects-list">
           {data.projects.map(({ title, path, anchor = true, tags, props }) => (
             <li key={title}>

@@ -1,23 +1,29 @@
+import type { LoaderFunction } from "@remix-run/node";
 import {
-  isRouteErrorResponse,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-  useLocation,
-  useRouteError,
+    isRouteErrorResponse,
+    Links,
+    LiveReload,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useLoaderData,
+    useLocation,
+    useRouteError
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css";
+import React, { useEffect, useState } from "react";
+import {
+    PreventFlashOnWrongTheme,
+    ThemeProvider,
+    useTheme,
+    type Theme
+} from "remix-themes";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
-
-import React, { useEffect, useState } from "react";
 import Icon from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
-import { ThemeProvider } from "./misc/ThemeProvider";
+import { themeSessionResolver } from "./sessions.server";
 import globalMeta from "./utils/global-meta";
 import { pageview } from "./utils/gtag";
 
@@ -64,9 +70,11 @@ const navLinks = [
   },
 ] as const;
 
-export default function App() {
+function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
+  const data = useLoaderData();
+  const [theme] = useTheme();
   const [lastLocation, setLastLocation] = useState(location?.pathname);
 
   useEffect(() => {
@@ -77,10 +85,11 @@ export default function App() {
   }, [location, gaTrackingId, lastLocation]);
 
   return (
-    <Document>
+    <Document dataTheme={theme ?? ""}>
       <Layout>
         <Outlet />
         <Meta />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         {gaTrackingId && (
           <>
             <script
@@ -104,60 +113,64 @@ export default function App() {
   );
 }
 
-export const loader = async () => {
-  return { gaTrackingId: process.env.GA_TRACKING_ID };
+export const loader: LoaderFunction = async ({ request }) => {
+  const { getTheme } = await themeSessionResolver(request);
+  return { gaTrackingId: process.env.GA_TRACKING_ID, theme: getTheme() };
 };
 
 export const meta = () => {
   return globalMeta;
 };
 
-export function ErrorBoundary() {
-  const error = useRouteError();
+// export function ErrorBoundary() {
+//   const [theme] = useTheme();
+//   const error = useRouteError();
 
-  if (isRouteErrorResponse(error)) {
-    let message;
-    switch (error.status) {
-      case 401:
-        message =
-          "Looks like you tried to visit a page that you do not have access to.";
-        break;
-      case 404:
-        message = "404: 👀 It looks like this page that does not exist.";
-        break;
+//   if (isRouteErrorResponse(error)) {
+//     let message;
+//     switch (error.status) {
+//       case 401:
+//         message =
+//           "Looks like you tried to visit a page that you do not have access to.";
+//         break;
+//       case 404:
+//         message = "404: 👀 It looks like this page that does not exist.";
+//         break;
 
-      default:
-        message = `Ops! Guess I didn't treated this error 🤦‍♂️. Status: ${error.status}`;
+//       default:
+//         message = `Ops! Guess I didn't treated this error 🤦‍♂️. Status: ${error.status}`;
 
-      // throw new Error(error.data || error.statusText);
-    }
-    return (
-      <Document title="Error!">
-        <Layout>
-          <div>
-            <h1>Unable to load page</h1>
-            <h2>{message}</h2>
-            <hr />
-            <p>
-              Was it supposed to be working?{" "}
-              <a href="mailto:lucascoelhodacosta@gmail.com">Contact me</a>
-            </p>
-          </div>
-        </Layout>
-      </Document>
-    );
-  }
-}
+//       // throw new Error(error.data || error.statusText);
+//     }
+//     return (
+//       <Document title="Error!" dataTheme={theme ?? ""}>
+//         <Layout>
+//           <div>
+//             <h1>Unable to load page</h1>
+//             <h2>{message}</h2>
+//             <hr />
+//             <p>
+//               Was it supposed to be working?{" "}
+//               <a href="mailto:lucascoelhodacosta@gmail.com">Contact me</a>
+//             </p>
+//           </div>
+//         </Layout>
+//       </Document>
+//     );
+//   }
+// }
 
 function Document({
   children,
   title,
+  dataTheme,
 }: {
   children: React.ReactNode;
+  dataTheme: Theme | string;
   title?: string;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme={dataTheme ?? ""}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
@@ -181,7 +194,7 @@ function Document({
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
+    <>
       <main>
         <nav>
           <div className="navigation-links">
@@ -208,6 +221,15 @@ function Layout({ children }: { children: React.ReactNode }) {
         <hr />
         <p>The footer is a lie.</p>
       </footer>
+    </>
+  );
+}
+
+export default function WrappedApp() {
+  const data = useLoaderData();
+  return (
+    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme" disableTransitionOnThemeChange>
+      <App />
     </ThemeProvider>
   );
 }

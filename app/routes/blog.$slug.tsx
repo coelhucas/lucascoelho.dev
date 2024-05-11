@@ -1,7 +1,7 @@
 import type {
-  LinksFunction,
-  LoaderArgs,
-  V2_MetaFunction,
+    LinksFunction,
+    LoaderArgs,
+    V2_MetaFunction
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React, { useEffect } from "react";
@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import { useTheme } from "~/misc/ThemeProvider";
+import { Theme, useTheme } from "remix-themes";
 import globalStylesUrl from "~/styles/global.css";
 import globalMeta from "~/utils/global-meta";
 
@@ -56,7 +56,7 @@ function useUtterances(
   attributes: Record<string, string>,
   ref: React.RefObject<HTMLDivElement>,
 ) {
-  const { theme, isLoading } = useTheme();
+  const [theme] = useTheme();
 
   useEffect(() => {
     const scriptElement = document.createElement("script");
@@ -67,8 +67,6 @@ function useUtterances(
 
     if (ref?.current) {
       ref.current.appendChild(scriptElement);
-    } else {
-      throw new Error("welp");
     }
   }, []);
 
@@ -77,7 +75,7 @@ function useUtterances(
       ".utterances-frame",
     ) as HTMLIFrameElement;
     if (frame && theme) {
-      const commentsTheme = theme === "dark" ? "github-dark" : "github-light";
+      const commentsTheme = theme === Theme.DARK ? "github-dark" : "github-light";
       const message = {
         type: "set-theme",
         theme: commentsTheme,
@@ -85,7 +83,7 @@ function useUtterances(
 
       frame.contentWindow?.postMessage(message, "https://utteranc.es");
     }
-  }, [theme, isLoading]);
+  }, [theme]);
 
   return ref;
 }

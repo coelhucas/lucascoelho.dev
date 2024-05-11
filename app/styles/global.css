@@ -55,10 +55,11 @@
 
     /* light */
     --brand-light: hsl(
-        var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
+        var(--brand-hue) var(--brand-saturation)
+            calc(var(--brand-lightness) / 3)
     );
     --text1-light: hsl(var(--brand-hue) 30% 15%);
-    --text2-light: hsl(var(--brand-hue) 20% 20%);
+    --text2-light: hsl(var(--brand-hue) 20% 40%);
     --text3-light: hsl(var(--brand-hue) 5% 40%);
     --surface1-light: hsl(var(--brand-hue) 25% 90%);
     --surface2-light: hsl(var(--brand-hue) 20% 99%);
@@ -136,7 +137,8 @@
     }
 }
 
-[color-scheme="light"] {
+[color-scheme="light"],
+[data-theme="light"] {
     color-scheme: light;
 
     --brand: var(--brand-light);
@@ -150,7 +152,8 @@
     --shadow-strength: var(--shadow-strength-light);
 }
 
-[color-scheme="dark"] {
+[color-scheme="dark"],
+[data-theme="dark"] {
     color-scheme: dark;
 
     --brand: var(--brand-dark);
@@ -257,6 +260,10 @@ footer > p {
     /* align-items: flex-start; */
     padding: 0;
     list-style-type: none;
+
+    @media (max-width: 600px) {
+        grid-template-columns: 100%;
+    }
 }
 
 .icon-button {
@@ -314,10 +321,6 @@ li {
 }
 
 @media (min-width: 600px) {
-    .projects-list {
-        flex-direction: row;
-    }
-
     body {
         padding: 48px 64px;
         padding-bottom: 0;
@@ -424,6 +427,7 @@ h2 {
     padding-left: 4px;
     bottom: 4px;
     content: attr(data-tags);
+    text-overflow: ellipsis;
     font-weight: 300;
     font-size: 0.6rem;
 }
