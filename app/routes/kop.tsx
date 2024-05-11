@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css";
 import globalMeta from "~/utils/global-meta";
@@ -24,6 +24,10 @@ export const meta = () => {
     },
   ];
 };
+
+export const headers: HeadersFunction = () => ({
+  "Content-Security-Policy": "default-src: *; frame-src *;",
+});
 
 export let links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
@@ -89,12 +93,18 @@ export default function KingOfParties() {
         </b>
       </p>
       <h2>Gameplay</h2>
+      {/* <video width={560} height={315} preload="none">
+        <source
+          type="video/youtube"
+          src="http://www.youtube.com/watch?v=FMZOk2F4W_w"
+        />
+      </video> */}
       <iframe
         width="560"
         height="315"
         title="King of Parties Gameplay"
-        src="https://www.youtube.com/embed/FMZOk2F4W_w?enablejsapi=1&origin=http://lucascoelho.dev/kop"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        src="https://www.youtube-nocookie.com/embed/FMZOk2F4W_w?enablejsapi=1&origin=http://lucascoelho.dev/kop"
+        allow="encrypted-media;"
         allowFullScreen
       ></iframe>
       <p>

@@ -34,43 +34,44 @@ export const loader = () => {
 };
 
 function PostCard({ slug, title, date, readingTime }: Post) {
-  /** e.g.: Jun 24, 2022 */
-  const formatedDate = new Date(date).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
   return (
-    <Link unstyled to={slug}>
-      <div className="post-card">
-        <p>{title}</p>
-        <span className="date">
-          {formatedDate} <br />
-          {readingTime} min read
-        </span>
-      </div>
-    </Link>
+    <li className="list-item">
+      <Link unstyled to={slug}>
+        <div className="post-card">
+          <p>{title}</p>
+          <span className="date">
+            {date} <br />
+            {readingTime} min read
+          </span>
+        </div>
+      </Link>
+    </li>
   );
 }
 
+const sortByDate = (a: Post, b: Post) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+
+  return dateA === dateB ? 0 : dateA > dateB ? -1 : 1;
+};
+
 export default function Posts() {
   const posts = useLoaderData<Post[]>();
+  console.log({ posts });
   return (
     <div className="container">
       <h1>Posts</h1>
       <ul className="list">
-        {[...posts]
-          .sort((a, b) => (a.date > b.date ? -1 : 1))
-          .map((post) => (
-            <li className="list-item" key={post.slug}>
-              <PostCard
-                slug={post.slug}
-                title={post.title}
-                date={post.date}
-                readingTime={post.readingTime}
-              />
-            </li>
-          ))}
+        {posts.sort(sortByDate).map((post) => (
+          <PostCard
+            key={post.slug}
+            slug={post.slug}
+            title={post.title}
+            date={post.date}
+            readingTime={post.readingTime}
+          />
+        ))}
       </ul>
     </div>
   );

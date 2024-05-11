@@ -37,32 +37,32 @@ export const loader = () => {
     projects: [
       {
         // Wip. Have a page for it?
-        title: "mythic quest (mmorpg jam)",
+        title: "Mythic Quest (MMORPG JAM)",
         path: "https://cuca.itch.io/mmorpg-jam",
         tags: ["TS", "Node", "socket.io"],
       },
       {
-        title: "yoga",
+        title: "Yoga",
         path: "https://github.com/gympass/yoga",
-        tags: ["JS", "React Native", "React.JS"],
+        tags: ["JS", "React Native", "React.JS", "design system"],
       },
       {
-        title: "aabb physics library",
+        title: "sph.lua",
         path: "https://github.com/coelhucas/simple-physics-handler",
-        tags: ["lua"],
+        tags: ["lua", "gamedev"],
       },
       {
         title: "mini-styled",
         path: "https://github.com/coelhucas/mini-styled",
-        tags: ["JS"],
+        tags: ["JS", "library"],
       },
       {
-        title: "outline me",
+        title: "Outline me",
         path: "https://github.com/coelhucas/outline-me",
-        tags: ["JS"],
+        tags: ["JS", "browser extension"],
       },
       {
-        title: "king of parties",
+        title: "King of Parties",
         path: "/kop",
         anchor: false,
         tags: ["GDScript"],
@@ -76,12 +76,12 @@ export const loader = () => {
       {
         title: "hitbox editor",
         path: "https://github.com/coelhucas/hitbox-editor/",
-        tags: ["GDScript"],
+        tags: ["GDScript", "tool"],
       },
       {
-        title: "color based map generator",
+        title: "RGBA map generator",
         path: "https://github.com/coelhucas/unity-rgba-level-generator",
-        tags: ["C#"],
+        tags: ["C#", "tool"],
       },
     ],
   };
@@ -90,18 +90,18 @@ export const loader = () => {
 export function meta() {
   return [
     ...globalMeta,
-    { title: "Lucas Coelho | Software Engineer" },
+    { title: "Lucas Coelho" },
     {
       property: "og:title",
-      content: "Lucas Coelho | Software Engineer",
+      content: "Lucas Coelho",
     },
     {
       property: "og:description",
-      content: "Software Engineer interested in making development tools.",
+      content: "Software Engineer interested in making developer tools.",
     },
     {
       name: "description",
-      content: "Software Engineer interested in making development tools.",
+      content: "Software Engineer interested in making developer tools.",
     },
   ];
 }
@@ -113,29 +113,30 @@ export default function Index() {
       <section className="main-section">
         <h1>Lucas Coelho</h1>
 
-        <h2>Software Engineer</h2>
+        <h2>
+          Software Engineer at{" "}
+          <a
+            target="_blank"
+            rel="noreferrer noopener"
+            href="https://timescale.com"
+          >
+            Timescale
+          </a>
+        </h2>
         <p>
-          Interested in making tools, games, and learning more about performance
-          & debugging.
+          Interested in making <code>/(developer)?\s+(tools)/</code>, games, and
+          messing with performance, debugging & observability.
           <br />
           <br />
-          Worked on some design systems and front-end focused "platform teams".
-          Founded a now in hiatus game development studio,{" "}
+          Created (and maintained) design systems, internal libraries, member of
+          Platform teams and designer of{" "}
           <Link
             anchor
             highlight
             weight="bold"
             to="https://store.steampowered.com/developer/Softwool"
           >
-            Softwool
-          </Link>
-          . Also have published some simple toy game projects on{" "}
-          <Link anchor highlight to="https://cuca.itch.io/">
-            itch.io
-          </Link>
-          ,{" "}
-          <Link anchor highlight to="https://gamejolt.com/@cucadev">
-            gamejolt/@cucadev
+            games
           </Link>
           .
         </p>
