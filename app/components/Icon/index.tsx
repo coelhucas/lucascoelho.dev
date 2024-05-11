@@ -95,26 +95,15 @@ const icons = {
       />
     </svg>
   ),
-};
+} as const;
 
-export type IconNames =
-  | "github"
-  | "linkedin"
-  | "twitter"
-  | "youtube"
-  | "blog"
-  | "sun"
-  | "moon";
+export type IconNames = keyof typeof icons;
 
 type IconProps = {
-  as?: IconNames;
+  as: IconNames;
 };
 
 function Icon({ as }: IconProps) {
-  if (!as) {
-    return null;
-  }
-
   const Component = () => icons[as];
   return <Component />;
 }
