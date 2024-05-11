@@ -133,8 +133,8 @@ export default function Index() {
           messing with performance, debugging & observability.
           <br />
           <br />
-          Created (and maintained) design systems, internal libraries, member of
-          Platform teams and designer of{" "}
+          Created (and maintained) design systems, libraries, worked in
+          Platform, Product, Marketing teams and designed some{" "}
           <Link
             anchor
             highlight
