@@ -110,7 +110,7 @@ const CommentsSection = ({ slug, theme }: { slug: string; theme: string }) => {
 
 export default function PostSlug() {
   const post = useLoaderData<SerializedPost>();
-  const { theme } = useTheme();
+  const [theme] = useTheme();
 
   return (
     <main className="blog-page-container">
