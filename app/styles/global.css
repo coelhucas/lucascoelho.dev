@@ -49,11 +49,25 @@
 
 * {
     /* brand foundation */
-    --brand-hue: 750;
-    --brand-saturation: 100%;
-    --brand-lightness: 50%;
+    --brand-hue: 250;
+    --brand-saturation: 100;
+    --brand-lightness: 100%;
 
     /* light */
+    --brand-light: hsl(
+        var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
+    );
+    --text1-light: hsl(var(--brand-hue) 30% 15%);
+    --text2-light: hsl(var(--brand-hue) 20% 20%);
+    --text3-light: hsl(var(--brand-hue) 5% 40%);
+    --surface1-light: hsl(var(--brand-hue) 25% 90%);
+    --surface2-light: hsl(var(--brand-hue) 20% 99%);
+    --surface3-light: hsl(var(--brand-hue) 20% 92%);
+    --surface4-light: hsl(var(--brand-hue) 20% 85%);
+    --surface-shadow-light: var(--brand-hue) 10%
+        calc(var(--brand-lightness) / 5);
+    --shadow-strength-light: 0.02;
+    /*
     --brand-light: hsl(
         var(--brand-hue) var(--brand-saturation) var(--brand-lightness)
     );
@@ -65,13 +79,14 @@
     --surface3-light: hsl(var(--brand-hue) 20% 92%);
     --surface4-light: hsl(var(--brand-hue) 20% 85%);
     --surface-shadow-light: var(--brand-hue) 10% 20%;
-    --shadow-strength-light: 0.02;
+    --shadow-strength-light: 0.02; */
 
     /* dark */
     --brand-dark: hsl(
-        calc(var(--brand-hue) + 10) calc(var(--brand-saturation))
-            calc(var(--brand-lightness))
+        var(--brand-hue) calc(var(--brand-saturation) / 2)
+            calc(var(--brand-lightness) / 1.5)
     );
+
     --text1-dark: hsl(var(--brand-hue) 15% 85%);
     --text2-dark: hsl(var(--brand-hue) 20% 70%);
     --text3-dark: hsl(var(--brand-hue) 15% 45%);
@@ -230,12 +245,16 @@ footer > p {
 }
 
 .projects-list {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    row-gap: 8px;
-    column-gap: 48px;
-    align-items: flex-start;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    row-gap: 4px;
+    column-gap: 32px;
+    place-items: stretch;
+    /* align-items: flex-start; */
     padding: 0;
     list-style-type: none;
 }

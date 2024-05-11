@@ -12,7 +12,8 @@
 
 .list-item {
     padding: 8px 0;
-    border-top: 2px solid var(--surface1);
+    border-top: 1px solid var(--surface2);
+    border-bottom: 1px solid var(--surface3);
     text-decoration: none;
 }
 
