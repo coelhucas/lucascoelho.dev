@@ -1,5 +1,6 @@
 import type { LinksFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import Icon from "~/components/Icon";
 import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css";
 import globalMeta from "~/utils/global-meta";
@@ -60,7 +61,12 @@ export default function Posts() {
   const posts = useLoaderData<Post[]>();
   return (
     <div className="container">
-      <h1>Posts</h1>
+      <div className="row center">
+        <h1 className="flex-1">Posts</h1>
+        <Link className="icon-anchor" anchor to="/rss.xml">
+          <Icon as="rss" />
+        </Link>
+      </div>
       <ul className="list">
         {posts.sort(sortByDate).map((post) => (
           <PostCard
