@@ -7,7 +7,12 @@ Eu demorei bastante a entender como o reduce funciona, mais do que eu “me orgu
 
 @[](https://miro.medium.com/max/1400/1*x_MQsBFxPHbWF0nE5xNr1A.jpeg)
 
-<sub>Foto por [Brenda Godinez](https://unsplash.com/@cravethebenefits?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) no [Unsplash](https://unsplash.com/s/photos/fruit-salad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)</sub>
+<center>
+
+<sub>Foto por [Brenda Godinez](https://unsplash.com/@cravethebenefits) no [Unsplash](https://unsplash.com/s/photos/fruit-salad)</sub>
+
+</center>
+<br/>
 
 Dependendo da sua bolha e redes sociais, provavelmente você já viu aquele clássico exemplo mostrando diversos emojis de fruta em um array e como o reduce de fato “reduz” o array a uma salada de frutas. É um exemplo bonitinho de ser ilustrado, mas não dá nenhuma ajuda real.
 

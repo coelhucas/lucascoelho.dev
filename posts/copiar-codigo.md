@@ -12,7 +12,12 @@ Esse é um lugar comum de se ver essa prática, já que uma minoria das pessoas 
 
 @[](https://www.designer-daily.com/wp-content/uploads/2017/10/SZPjHwz.jpg)
 
-<center><sub><a class="anchor" href="https://www.designer-daily.com/a-collection-of-fake-programming-covers-61303">Fonte</a></sub></center>
+<center>
+
+<sub>[Fonte](https://www.designer-daily.com/a-collection-of-fake-programming-covers-61303)</sub>
+
+</center>
+
 <br />
 
 ## Você não sabe os porquês
