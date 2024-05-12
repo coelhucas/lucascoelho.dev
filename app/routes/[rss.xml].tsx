@@ -23,7 +23,8 @@ export function generateRss({
   entries: RssEntry[];
 }): string {
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>${title}</title>
     <description>${description}</description>
@@ -38,14 +39,16 @@ export function generateRss({
         <title><![CDATA[${entry.title}]]></title>
         <pubDate>${entry.pubDate}</pubDate>
         <link>${entry.link}</link>
-        <content type="html" xml:base="${entry.link}">${entry.content}</content>
         ${entry.guid ? `<guid isPermaLink="false">${entry.guid}</guid>` : ""}
+        <content:encoded>${entry.content}</content:encoded>
       </item>`,
       )
       .join("")}
   </channel>
 </rss>`;
 }
+
+// <content type="html" xml:base="${entry.link}">${entry.content}</content>
 
 export const loader: LoaderFunction = async () => {
   const posts = await getPosts();
