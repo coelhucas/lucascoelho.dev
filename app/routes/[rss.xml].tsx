@@ -50,7 +50,6 @@ export const loader: LoaderFunction = async () => {
   const entries = await Promise.all(
     posts.map(async (post) => {
       const { html } = await getPost(post.slug);
-      console.log({ html: sanitizeHtml(html) });
       return {
         pubDate: new Date(post.date).toUTCString(),
         title: post.title,
@@ -62,7 +61,7 @@ export const loader: LoaderFunction = async () => {
   );
 
   const feed = generateRss({
-    title: "Lucas Coelho's Blog",
+    title: "Lucas Coelho",
     description:
       "Where I share some thoughts about software and other personal interests",
     link: "https://lucascoelho.dev/blog",
