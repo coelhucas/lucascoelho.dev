@@ -1,31 +1,38 @@
 import type { LoaderFunction } from "@remix-run/node";
 import {
-  isRouteErrorResponse,
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-  useLocation,
-  useRouteError,
+    isRouteErrorResponse,
+    Links,
+    LiveReload,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useLoaderData,
+    useLocation,
+    useRouteError
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css";
 import React, { useEffect, useState } from "react";
 import {
-  PreventFlashOnWrongTheme,
-  ThemeProvider,
-  useTheme,
-  type Theme,
+    PreventFlashOnWrongTheme,
+    ThemeProvider,
+    useTheme,
+    type Theme
 } from "remix-themes";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
-import Icon from "./components/Icon";
+import Icon, { IconNames } from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
 import { themeSessionResolver } from "./sessions.server";
 import globalMeta from "./utils/global-meta";
 import { pageview } from "./utils/gtag";
+
+type LinkProps = {
+  title: string;
+  path: string;
+  icon: IconNames;
+  rel?: string;
+}
 
 export let links = () => {
   return [
@@ -58,7 +65,13 @@ const navLinks = [
     path: "https://www.linkedin.com/in/lucascoelhoc",
     icon: "linkedin",
   },
-] as const;
+  {
+    title: "Mastodon",
+    path: "https://mastodon.gamedev.place/@cuca",
+    icon: "mastodon",
+    rel: "me",
+  },
+] as LinkProps[];
 
 function App() {
   const location = useLocation();
@@ -206,13 +219,22 @@ function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           <ul className="media-links">
-            {navLinks.map(({ path, title, icon }) => (
-              <li key={title}>
-                <Link className="icon-anchor" name={title} anchor to={path}>
-                  <Icon as={icon} />
-                </Link>
-              </li>
-            ))}
+            {navLinks.map(({ path, title, icon, rel }) => {
+              const resolvedRel = rel ? { rel } : {};
+              return (
+                <li key={title}>
+                  <Link
+                    className="icon-anchor"
+                    name={title}
+                    anchor
+                    to={path}
+                    {...resolvedRel}
+                  >
+                    <Icon as={icon} />
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <ThemeButton />
             </li>

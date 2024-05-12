@@ -67,6 +67,7 @@ function Link({
   name = undefined,
   tags,
   to,
+  ...props
 }: LinkProps) {
   const resolvedTags = tags ? `[${tags.join(", ")}]` : "";
   const sharedProps = {
@@ -84,7 +85,13 @@ function Link({
   return (
     <>
       {anchor ? (
-        <a target="_blank" rel="noreferrer" href={to} {...sharedProps}>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={to}
+          {...props}
+          {...sharedProps}
+        >
           {children}
         </a>
       ) : (
