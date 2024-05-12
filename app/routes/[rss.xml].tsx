@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import sanitizeHtml from "sanitize-html";
 import { getPost, getPosts } from "~/utils/post";
 
@@ -34,9 +34,9 @@ export function generateRss({
         (entry) => `
       <item>
         <title><![CDATA[${entry.title}]]></title>
-        <pubDate>${entry.pubDate}</pubDate>
         <link>${entry.link}</link>
-        ${entry.guid ? `<guid isPermaLink="false">${entry.guid}</guid>` : ""}
+        ${entry.guid ? `<guid isPermaLink="true">${entry.guid}</guid>` : ""}
+        <pubDate>${entry.pubDate}</pubDate>
         <content:encoded><![CDATA[${entry.content}]]></content:encoded>
       </item>`,
       )
@@ -45,14 +45,12 @@ export function generateRss({
 </rss>`;
 }
 
-// <content type="html" xml:base="${entry.link}">${entry.content}</content>
-
 export const loader: LoaderFunction = async () => {
   const posts = await getPosts();
   const entries = await Promise.all(
     posts.map(async (post) => {
       const { html } = await getPost(post.slug);
-      console.log({html: sanitizeHtml(html)})
+      console.log({ html: sanitizeHtml(html) });
       return {
         pubDate: new Date(post.date).toUTCString(),
         title: post.title,
