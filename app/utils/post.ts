@@ -79,10 +79,10 @@ renderer.heading = (text: string, level: number) => {
 };
 
 renderer.link = (href: string, _: string, text: string) =>
-  `<a class="anchor" href=${href}>${text}</a>`;
+  `<a class="anchor" href="${href}">${text}</a>`;
 
 renderer.image = (href: string, _, text: string) => {
-  return `<img class="post-image" src=${href} alt=${text} type="image/webp" />`;
+  return `<img class="post-image" src="${href}" alt="${text}" type="image/webp" />`;
 };
 
 const highlight = (code: string, lang: string) => {
@@ -91,10 +91,10 @@ const highlight = (code: string, lang: string) => {
 };
 
 const lcpImage = (src: string) => {
-  return `<>
-    <link rel="preload" fetchPriority="high" as="image" href="${src}" type="image/webp">
+  return `<div>
+    <link rel="preload" fetchPriority="high" as="image" href="${src}" type="image/webp" />
     <img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" />
-  </>`;
+  </div>`;
 };
 
 const lcpImageEmbed: marked.TokenizerAndRendererExtension = {
