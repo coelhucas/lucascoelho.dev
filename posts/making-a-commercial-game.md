@@ -1,5 +1,5 @@
 ---
-title: I'm making a commercial game! 
+title: I'm making a commercial game!
 date: "2024-02-21"
 ---
 
@@ -8,7 +8,7 @@ I've been making games since I was a child. For some time, being succesful looke
 
 The end of 2022 marks the point where I started taking it much more seriously, with the release of [Torecower](https://store.steampowered.com/app/2210670/Torecower/), made by Cauê with me on Softwool and huge design touches by me, as the creation of the leaderboard, skill-tree redesign (thanks for the help, Gabriel <3), maintaning the game and updating it still.
 
-I started a lots of projects that "this time is for real", but for the first time I now have a new work of my own with a steam page, and it is [Siege 'n Sow](https://store.steampowered.com/app/2210670/Torecower/)
+I started a lots of projects that "this time is for real", but for the first time I now have a new work of my own with a steam page, and it is [Siege 'n Sow](https://store.steampowered.com/app/2773700/Siege_n_Sow/)
 
 ![Me on a devlog thumbnail](https://github.com/coelhucas/coelhucas.github.io/assets/28108272/a870f761-edff-4ab8-9165-4077d5f721ee)
 
@@ -24,7 +24,4 @@ Strategy games in general are my favorite since an early age when I went to LAN 
 
 ![Current planning on Trello](https://github.com/coelhucas/coelhucas.github.io/assets/28108272/efc864e1-9df6-4a1b-8567-caa85bebbe26)
 
-
 I'm pretty happy with what I got so far. Right now the game was sent for some playtesters to record a gameplay so I can elaborate more some of the next steps based on the results of it. I'm going to participate on a pretty eccentric MMO game jam this weekend so I'll have something else to think about as well. Hopefully I'll come back with some results to share.
-
- 
