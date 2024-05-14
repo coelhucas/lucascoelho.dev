@@ -134,7 +134,7 @@ export default function Index() {
           <br />
           <br />
           Created (and maintained) design systems, libraries, worked in
-          Platform, Product, Marketing teams and designed some{" "}
+          Platform, Product and Marketing teams, and designed some{" "}
           <Link
             anchor
             highlight
