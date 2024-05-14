@@ -1,5 +1,4 @@
 import type { LoaderFunction } from "@remix-run/node";
-import sanitizeHtml from "sanitize-html";
 import { getPost, getPosts } from "~/utils/post";
 
 export type RssEntry = {
@@ -55,7 +54,7 @@ export const loader: LoaderFunction = async () => {
         title: post.title,
         link: `https://lucascoelho.dev/blog/${post.slug}`,
         guid: `https://lucascoelho.dev/blog/${post.slug}`,
-        content: sanitizeHtml(html),
+        content: html,
       };
     }),
   );

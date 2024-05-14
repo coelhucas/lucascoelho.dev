@@ -1,7 +1,7 @@
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
 import hljs from "highlight.js";
-import { marked, Renderer } from "marked";
+import { marked, Renderer, type TokenizerAndRendererExtension } from "marked";
 import path from "path";
 
 export type Post = {
@@ -81,8 +81,12 @@ renderer.heading = (text: string, level: number) => {
 renderer.link = (href: string, _: string, text: string) =>
   `<a class="anchor" href="${href}">${text}</a>`;
 
-renderer.image = (href: string, _, text: string) => {
-  return `<img class="post-image" src="${href}" alt="${text}" type="image/webp" />`;
+// renderer.image = (href: string, _, text: string) => {
+//   return `<div><img class="post-image" src="${href}" alt="${text}" type="image/webp">rirriri</img></div>`;
+// };
+
+renderer.image = (href: string, title: string, text: string) => {
+  return `<img src="${href}" class="post-image" alt="${text}" title="${title ?? text}"></img>`;
 };
 
 const highlight = (code: string, lang: string) => {
@@ -92,12 +96,12 @@ const highlight = (code: string, lang: string) => {
 
 const lcpImage = (src: string) => {
   return `<div>
-    <link rel="preload" fetchPriority="high" as="image" href="${src}" type="image/webp" />
-    <img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" />
+    <link rel="preload" fetchPriority="high" as="image" href="${src}" type="image/webp"></link>
+    <img src="${src}" fetchPriority="high" loading="eager" class="post-image" type="image/webp" ></img>
   </div>`;
 };
 
-const lcpImageEmbed: marked.TokenizerAndRendererExtension = {
+const lcpImageEmbed: TokenizerAndRendererExtension = {
   name: "lcp",
   level: "block", // Is this a block-level or inline-level tokenizer?
   start(src) {
@@ -167,7 +171,7 @@ export async function getPost(slug: string) {
 
   const readingTime = getReadingTime(body);
   marked.use({ renderer, gfm: true, extensions: [lcpImageEmbed] });
-  const html = marked.parse(body, options);
+  const html = await marked.parse(body, options);
   return {
     slug,
     title: attributes.title,
