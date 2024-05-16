@@ -1,6 +1,8 @@
-import type {
+import {
     LinksFunction,
     LoaderArgs,
+    redirect,
+    Response,
     V2_MetaFunction
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
@@ -47,9 +49,16 @@ export const loader = async ({ params }: LoaderArgs) => {
     throw new Error("No slug provided");
   }
 
+  try {
   const post = await getPost(params.slug);
-
   return post;
+  } catch (err) {
+    // Something went wrong, likely the post don't exist. I'll assume that.
+    throw new Response(null, {
+      status: 404,
+      statusText: "Not found"
+    })
+  }
 };
 
 function useUtterances(
