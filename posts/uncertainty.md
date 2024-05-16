@@ -56,7 +56,9 @@ And still, I can't imagine how my life will be at, let's say, 35. Because I don'
 
 &nbsp;&nbsp;&nbsp;&nbsp;I know, dear reader, you (or I) can just get hit by a bus and die while being perfectly healthy. I assure you it's not the same thing. I don't spend my whole day thinking I'm going to die. The fact is that _**I don't** have an expiration date anymore_.
 
-Back in 2011, I got a heart transplantation after just a month on the queue, at around mid-12. It was easier at the time since I was tall enough to get an adult heart (something that's not really usual, it seems).
+Back in 2011, I got a heart transplantation after just two and a half months on the queue, at age around mid-12. It was easier at the time since I was tall enough to get an adult heart (something that's not really usual, it seems).
+
+In fact, I was the 100th pediatric hearth transplant of INCOR, I was on some journals and even on TV[^5]
 
 So, I don't see my life as either a half-full or half-empty glass of water. A lot of things went right, a lot of things went wrong. The "post-transplantation" isn't the easiest thing in the world; I keep having to go several times a year for a bunch of exams. At the end of last year, I even got a pacemaker implant, so... This journey isn't done after the surgery.
 
@@ -68,10 +70,11 @@ Now, while previously I had no "goal" in my life, I have the goal of going to li
 
 Maybe don't. Maybe I don't even get to move, just because I changed my mind. ¯\\\_(ツ)\_/¯
 
-Oh, and just in case you're reading this, mom: Mario Bros[^5]
+Oh, and just in case you're reading this, mom: Mario Bros[^6]
 
 [^1]: [Source](https://pubmed.ncbi.nlm.nih.gov/24630786/)
 [^2]: [Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8822222/#B2)
 [^3]: Wikipedia: [SUS](https://en.wikipedia.org/wiki/Sistema_%C3%9Anico_de_Sa%C3%BAde)
 [^4]: [TFD](<https://wiki.saude.gov.br/regulacao/index.php/Tratamento_Fora_do_Domic%C3%ADlio_(TFD)>)
-[^5]: Before going into surgery, we agreed that once I woke up from the transplant, this was the safety word to tell her that I'm ok. My transplant was on May 5th, 2011, Mother's Day's eve.
+[^5]: [Youtube Video](https://youtu.be/QozyNzYJWr0?t=95)
+[^6]: Before going into surgery, we agreed that once I woke up from the transplant, this was the safety word to tell her that I'm ok. My transplant was on May 7th, 2011, Mother's Day's eve.
