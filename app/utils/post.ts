@@ -2,6 +2,7 @@ import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
 import hljs from "highlight.js";
 import { marked, Renderer, type TokenizerAndRendererExtension } from "marked";
+import markedFootnote from "marked-footnote";
 import path from "path";
 
 export type Post = {
@@ -54,17 +55,17 @@ renderer.blockquote = (text: string) => {
   return `<blockquote class="quote">${text}</blockquote>`;
 };
 
-renderer.paragraph = (text: string) => {
-  return marked.Renderer.prototype.paragraph.apply(renderer, [
-    interpolateReferences(interpolateFootnotes(text)),
-  ]);
-};
+// renderer.paragraph = (text: string) => {
+//   return marked.Renderer.prototype.paragraph.apply(renderer, [
+//     interpolateReferences(interpolateFootnotes(text)),
+//   ]);
+// };
 
-renderer.text = (text: string) => {
-  return marked.Renderer.prototype.text.apply(renderer, [
-    interpolateReferences(interpolateFootnotes(text)),
-  ]);
-};
+// renderer.text = (text: string) => {
+//   return marked.Renderer.prototype.text.apply(renderer, [
+//     interpolateReferences(interpolateFootnotes(text)),
+//   ]);
+// };
 
 renderer.heading = (text: string, level: number) => {
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
@@ -126,8 +127,9 @@ const lcpImageEmbed: TokenizerAndRendererExtension = {
 const options = { renderer, langPrefix: "hljs language-", highlight };
 
 function getReadingTime(body: string): number {
-  const wpm = 225;
-  const words = body.trim().split(/\s+/).length;
+  const wpm = 200;
+  const words = body.trim().split(/\s+/g).length;
+  console.log(words)
   const time = Math.ceil(words / wpm);
   return time;
 }
@@ -170,6 +172,7 @@ export async function getPost(slug: string) {
   );
 
   const readingTime = getReadingTime(body);
+  marked.use(markedFootnote());
   marked.use({ renderer, gfm: true, extensions: [lcpImageEmbed] });
   const html = await marked.parse(body, options);
   return {
