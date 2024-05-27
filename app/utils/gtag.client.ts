@@ -20,7 +20,7 @@ export const pageview = (url: string, trackingId: string) => {
     return;
   }
 
-  window.gtag("config", trackingId, {
+  window.gtag("event", trackingId, {
     page_path: url,
   });
 };
