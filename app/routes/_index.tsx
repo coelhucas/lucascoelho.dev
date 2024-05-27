@@ -1,17 +1,10 @@
 import { useLoaderData } from "react-router";
-import Link from "~/components/Link";
-
 import type { IconNames } from "~/components/Icon";
 import type { ReusedLinkProps } from "~/components/Link";
+import Link from "~/components/Link";
 import globalMeta from "~/utils/global-meta";
 
-export function headers({
-  loaderHeaders,
-  parentHeaders,
-}: {
-  loaderHeaders: Headers;
-  parentHeaders: Headers;
-}) {
+export function headers() {
   return {
     // This is an example of how to set caching headers for a route
     // For more info on headers in Remix, see: https://remix.run/docs/en/v1/route/headers

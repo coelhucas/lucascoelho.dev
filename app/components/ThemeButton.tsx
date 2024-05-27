@@ -1,5 +1,5 @@
 import { Theme, useTheme } from "remix-themes";
-import Icon from "./Icon";
+import Icon from "~/components/Icon";
 
 const ThemeButton = () => {
   const [theme, setTheme] = useTheme();
