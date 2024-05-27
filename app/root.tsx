@@ -1,38 +1,38 @@
 import type { LoaderFunction } from "@remix-run/node";
 import {
-    isRouteErrorResponse,
-    Links,
-    LiveReload,
-    Meta,
-    Outlet,
-    Scripts,
-    ScrollRestoration,
-    useLoaderData,
-    useLocation,
-    useRouteError
+  isRouteErrorResponse,
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useLocation,
+  useRouteError,
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
-    PreventFlashOnWrongTheme,
-    ThemeProvider,
-    useTheme,
-    type Theme
+  PreventFlashOnWrongTheme,
+  ThemeProvider,
+  useTheme,
+  type Theme,
 } from "remix-themes";
+import Icon, { type IconNames } from "~/components/Icon";
 import Link from "~/components/Link";
 import globalStylesUrl from "~/styles/global.css";
-import Icon, { IconNames } from "./components/Icon";
 import ThemeButton from "./components/ThemeButton";
 import { themeSessionResolver } from "./sessions.server";
 import globalMeta from "./utils/global-meta";
-import { pageview } from "./utils/gtag";
+import { pageview } from "./utils/gtag.client";
 
 type LinkProps = {
   title: string;
   path: string;
   icon: IconNames;
   rel?: string;
-}
+};
 
 export let links = () => {
   return [
@@ -53,8 +53,8 @@ export let links = () => {
     },
     {
       href: "https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap",
-      rel: "stylesheet"
-    }
+      rel: "stylesheet",
+    },
   ];
 };
 
@@ -82,14 +82,12 @@ function App() {
   const { gaTrackingId } = useLoaderData<typeof loader>();
   const data = useLoaderData();
   const [theme] = useTheme();
-  const [lastLocation, setLastLocation] = useState(location?.pathname);
 
   useEffect(() => {
-    if (gaTrackingId && lastLocation !== location?.pathname) {
+    if (gaTrackingId?.length) {
       pageview(location.pathname, gaTrackingId);
-      setLastLocation(location?.pathname);
     }
-  }, [location, gaTrackingId, lastLocation]);
+  }, [location, gaTrackingId]);
 
   return (
     <Document dataTheme={theme ?? ""}>
@@ -110,6 +108,12 @@ function App() {
                 __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
+
+                gtag('js', new Date());
+
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                });
               `,
               }}
             />
