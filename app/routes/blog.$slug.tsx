@@ -1,9 +1,6 @@
 import {
-    LinksFunction,
-    LoaderArgs,
-    redirect,
-    Response,
-    V2_MetaFunction
+    Response, type LinksFunction,
+    type LoaderArgs, type V2_MetaFunction
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React, { useEffect } from "react";
