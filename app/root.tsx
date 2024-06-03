@@ -65,11 +65,6 @@ const navLinks = [
     icon: "github",
   },
   {
-    title: "LinkedIn",
-    path: "https://www.linkedin.com/in/lucascoelhoc",
-    icon: "linkedin",
-  },
-  {
     title: "Mastodon",
     path: "https://mastodon.gamedev.place/@cuca",
     icon: "mastodon",
@@ -227,6 +222,9 @@ function Layout({ children }: { children: React.ReactNode }) {
           </div>
 
           <ul className="media-links">
+            <li style={{ alignSelf: "center" }}>
+              <a href="mailto:contact@lucascoelho.dev">Contact</a>
+            </li>
             {navLinks.map(({ path, title, icon, rel }) => {
               const resolvedRel = rel ? { rel } : {};
               return (

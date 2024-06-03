@@ -8,6 +8,7 @@ api/_build
 build/
 .env
 .yarn/cache
+.DS_Store
 
 # Local Netlify folder
 .netlify

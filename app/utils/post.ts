@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
 import hljs from "highlight.js";
@@ -45,6 +46,7 @@ const interpolateReferences = (text: string) => {
   });
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const interpolateFootnotes = (text: string) => {
   return text.replace(footnoteMatch, (_, value, text) => {
     return footnoteTemplate(value, text);
@@ -129,7 +131,6 @@ const options = { renderer, langPrefix: "hljs language-", highlight };
 function getReadingTime(body: string): number {
   const wpm = 200;
   const words = body.trim().split(/\s+/g).length;
-  console.log(words)
   const time = Math.ceil(words / wpm);
   return time;
 }
