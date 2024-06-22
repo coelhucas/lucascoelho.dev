@@ -259,6 +259,10 @@ path.theme-button-fill {
     gap: 18px;
     padding: 0;
 
+    @media (max-width: 412px) {
+        gap: 12px;
+    }
+
     & li {
         display: inline-block;
         padding: 8px 0;
@@ -412,6 +416,10 @@ h2 {
 
 .navigation-links > * {
     margin-right: 24px;
+
+    @media (max-width: 412px) {
+        margin-right: 16px;
+    }
 }
 
 .row {
