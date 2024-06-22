@@ -60,6 +60,11 @@ export let links = () => {
 
 const navLinks = [
   {
+    title: "Email",
+    path: "mailto:contact@lucascoelho.dev",
+    icon: "email",
+  },
+  {
     title: "GitHub",
     path: "https://github.com/coelhucas",
     icon: "github",
@@ -218,13 +223,11 @@ function Layout({ children }: { children: React.ReactNode }) {
         <nav>
           <div className="navigation-links">
             <Link to="/">./</Link>
-            <Link to="/blog">/blog.html</Link>
+            <Link to="/blog">/blog</Link>
+            <Link to="/speaker">/speaker</Link>
           </div>
 
           <ul className="media-links">
-            <li style={{ alignSelf: "center" }}>
-              <a href="mailto:contact@lucascoelho.dev">Contact</a>
-            </li>
             {navLinks.map(({ path, title, icon, rel }) => {
               const resolvedRel = rel ? { rel } : {};
               return (
