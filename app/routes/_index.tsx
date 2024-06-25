@@ -128,12 +128,7 @@ export default function Index() {
           <br />
           Created (and maintained) design systems, libraries, worked in
           Platform, Product and Marketing teams, and designed some{" "}
-          <Link
-            anchor
-            highlight
-            weight="bold"
-            to="https://store.steampowered.com/developer/Softwool"
-          >
+          <Link highlight weight="bold" to="/games">
             games
           </Link>
           .
