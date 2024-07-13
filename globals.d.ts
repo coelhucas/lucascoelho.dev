@@ -12,4 +12,5 @@ declare global {
   let process: Process;
 
   declare module "*.css";
+  declare module "*.mdx";
 }
