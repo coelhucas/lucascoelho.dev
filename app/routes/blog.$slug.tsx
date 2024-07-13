@@ -1,18 +1,45 @@
-import {
-    Response, type LinksFunction,
-    type LoaderArgs, type V2_MetaFunction
-} from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+// import {
+//     Response, type LinksFunction,
+//     type LoaderArgs, type V2_MetaFunction
+// } from "@remix-run/node";
 import React, { useEffect } from "react";
 
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { Theme, useTheme } from "remix-themes";
 import globalStylesUrl from "~/styles/global.css";
 import globalMeta from "~/utils/global-meta";
 
-export const meta: V2_MetaFunction = (r) => {
+export let links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: globalStylesUrl }];
+};
+
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  if (!params?.slug) {
+    throw new Error("No slug provided");
+  }
+
+  try {
+    const post = await getPost(params.slug);
+    return json(post);
+  } catch (err) {
+    // Something went wrong, likely the post don't exist. I'll assume that.
+    throw new Response(null, {
+      status: 404,
+      statusText: "Not found",
+    });
+  }
+};
+
+export const meta: MetaFunction<typeof loader> = (r) => {
   return [
     ...globalMeta,
     {
@@ -35,27 +62,6 @@ export const meta: V2_MetaFunction = (r) => {
       content: "Some random thoughts and stuff that I learn and share.",
     },
   ];
-};
-
-export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: globalStylesUrl }];
-};
-
-export const loader = async ({ params }: LoaderArgs) => {
-  if (!params?.slug) {
-    throw new Error("No slug provided");
-  }
-
-  try {
-  const post = await getPost(params.slug);
-  return post;
-  } catch (err) {
-    // Something went wrong, likely the post don't exist. I'll assume that.
-    throw new Response(null, {
-      status: 404,
-      statusText: "Not found"
-    })
-  }
 };
 
 function useUtterances(
@@ -81,7 +87,8 @@ function useUtterances(
       ".utterances-frame",
     ) as HTMLIFrameElement;
     if (frame && theme) {
-      const commentsTheme = theme === Theme.DARK ? "github-dark" : "github-light";
+      const commentsTheme =
+        theme === Theme.DARK ? "github-dark" : "github-light";
       const message = {
         type: "set-theme",
         theme: commentsTheme,

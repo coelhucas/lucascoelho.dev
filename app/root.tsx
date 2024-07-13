@@ -80,7 +80,7 @@ const navLinks = [
 function App() {
   const location = useLocation();
   const { gaTrackingId } = useLoaderData<typeof loader>();
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
 
   useEffect(() => {
@@ -172,7 +172,7 @@ const ErrorDisplay = () => {
 };
 
 export function ErrorBoundary() {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   return (
     <ThemeProvider
       specifiedTheme={data?.theme}
@@ -260,7 +260,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function WrappedApp() {
-  const data = useLoaderData();
+  const data = useLoaderData<typeof loader>();
   return (
     <ThemeProvider
       specifiedTheme={data.theme}

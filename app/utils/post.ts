@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
 import hljs from "highlight.js";
@@ -24,7 +23,8 @@ type PostMarkdownAttributes = {
 
 const postsPath = process.env.NETLIFY
   ? path.join(__dirname, "../../../..", "posts")
-  : path.join(process.cwd(), "posts");
+  : // @ts-expect-error im dumb
+    path.join(process.cwd(), "posts");
 
 const renderer = new Renderer();
 const footnoteMatch = /^\[\^([^\]]+)\]:([\s\S]*)$/;
@@ -40,6 +40,7 @@ const referenceTemplate = (ref: string) => {
   return `<sup id="${referencePrefix}:${ref}"><a class="anchor" href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const interpolateReferences = (text: string) => {
   return text.replace(referenceMatch, (_, ref) => {
     return referenceTemplate(ref);
@@ -168,6 +169,7 @@ export async function getPost(slug: string) {
   const file = await fs.readFile(filepath, {
     encoding: "utf8",
   });
+
   const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
     file.toString(),
   );

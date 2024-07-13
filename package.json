@@ -1,6 +1,7 @@
 {
   "private": true,
   "sideEffects": false,
+  "type": "module",
   "scripts": {
     "build": "remix build",
     "predev": "rimraf ./public/_redirects",
@@ -9,10 +10,12 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
-    "@netlify/functions": "^1.3.0",
-    "@remix-run/netlify": "^1.15.0",
-    "@remix-run/node": "^1.15.0",
-    "@remix-run/react": "^1.15.0",
+    "@netlify/functions": "^2.6.0",
+    "@remix-run/node": "^2.10.2",
+    "@remix-run/react": "^2.10.2",
+    "@netlify/remix-adapter": "^2.3.1",
+    "@netlify/remix-edge-adapter": "^3.2.1",
+    "@netlify/remix-runtime": "^2.2.0",
     "cross-env": "^7.0.3",
     "dompurify": "^3.1.3",
     "front-matter": "^4.0.2",
@@ -22,12 +25,14 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "remix-themes": "^1.3.1",
-    "sanitize-html": "^2.13.0"
+    "sanitize-html": "^2.13.0",
+    "vite": "^5.0.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.15.0",
-    "@remix-run/eslint-config": "^1.15.0",
-    "@remix-run/serve": "^1.15.0",
+    "@remix-run/dev": "^2.10.2",
+    "@remix-run/eslint-config": "^2.10.2",
+    "@remix-run/serve": "^2.10.2",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
@@ -37,7 +42,6 @@
     "typescript": "^4.8.4"
   },
   "engines": {
-    "node": ">=14"
-  },
-  "packageManager": "yarn@1.22.19"
+    "node": ">=18.0.0"
+  }
 }
