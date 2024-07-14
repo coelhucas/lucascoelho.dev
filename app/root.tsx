@@ -84,6 +84,10 @@ function Layout({ children }: { children: ReactNode }) {
         <ScrollRestoration />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme)} />
         <Scripts />
+        <footer>
+          <hr />
+          <p>The footer is a lie.</p>
+        </footer>
       </body>
     </html>
   );
