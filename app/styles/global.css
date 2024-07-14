@@ -25,6 +25,7 @@
     --text1-light: hsl(var(--brand-hue) 30% 15%);
     --text2-light: hsl(var(--brand-hue) 20% 40%);
     --text3-light: hsl(var(--brand-hue) 5% 40%);
+    --surface-light: hsl(var(--brand-hue) 80% 99%);
     --surface1-light: hsl(var(--brand-hue) 25% 90%);
     --surface2-light: hsl(var(--brand-hue) 20% 99%);
     --surface3-light: hsl(var(--brand-hue) 20% 92%);
@@ -42,6 +43,7 @@
     --text1-dark: hsl(var(--brand-hue) 15% 85%);
     --text2-dark: hsl(var(--brand-hue) 20% 70%);
     --text3-dark: hsl(var(--brand-hue) 15% 45%);
+    --surface-dark: hsl(var(--brand-hue) 10% 10%);
     --surface1-dark: hsl(var(--brand-hue) 10% 10%);
     --surface2-dark: hsl(var(--brand-hue) 10% 15%);
     --surface3-dark: hsl(var(--brand-hue) 5% 20%);
@@ -64,6 +66,7 @@
     --text1: var(--text1-light);
     --text2: var(--text2-light);
     --text3: var(--text3-light);
+    --surface: var(--surface-light);
     --surface1: var(--surface1-light);
     --surface2: var(--surface2-light);
     --surface3: var(--surface3-light);
@@ -79,6 +82,7 @@
         --brand: var(--brand-dark);
         --text1: var(--text1-dark);
         --text2: var(--text2-dark);
+        --surface: var(--surface-dark);
         --surface1: var(--surface1-dark);
         --surface2: var(--surface2-dark);
         --surface3: var(--surface3-dark);
@@ -95,6 +99,7 @@
     --brand: var(--brand-light);
     --text1: var(--text1-light);
     --text2: var(--text2-light);
+    --surface: var(--surface-light);
     --surface1: var(--surface1-light);
     --surface2: var(--surface2-light);
     --surface3: var(--surface3-light);
@@ -451,4 +456,9 @@ a {
     &:hover {
         text-decoration: none;
     }
+}
+
+#reactions {
+    display: none !important;
+    background-color: magenta !important;
 }

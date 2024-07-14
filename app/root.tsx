@@ -219,38 +219,36 @@ function Document({
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <main>
-        <nav>
-          <div className="navigation-links">
-            <Link to="/">./</Link>
-            <Link to="/blog">/blog</Link>
-            <Link to="/speaker">/speaker</Link>
-          </div>
+      <nav>
+        <div className="navigation-links">
+          <Link to="/">./</Link>
+          <Link to="/blog">/blog</Link>
+          <Link to="/speaker">/speaker</Link>
+        </div>
 
-          <ul className="media-links">
-            {navLinks.map(({ path, title, icon, rel }) => {
-              const resolvedRel = rel ? { rel } : {};
-              return (
-                <li key={title}>
-                  <Link
-                    className="icon-anchor"
-                    name={title}
-                    anchor
-                    to={path}
-                    {...resolvedRel}
-                  >
-                    <Icon as={icon} />
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <ThemeButton />
-            </li>
-          </ul>
-        </nav>
-        {children}
-      </main>
+        <ul className="media-links">
+          {navLinks.map(({ path, title, icon, rel }) => {
+            const resolvedRel = rel ? { rel } : {};
+            return (
+              <li key={title}>
+                <Link
+                  className="icon-anchor"
+                  name={title}
+                  anchor
+                  to={path}
+                  {...resolvedRel}
+                >
+                  <Icon as={icon} />
+                </Link>
+              </li>
+            );
+          })}
+          <li>
+            <ThemeButton />
+          </li>
+        </ul>
+      </nav>
+      {children}
       <footer>
         <hr />
         <p>The footer is a lie.</p>

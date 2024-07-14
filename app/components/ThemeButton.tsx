@@ -6,9 +6,11 @@ const ThemeButton = () => {
 
   return (
     <button
-      onClick={() =>
-        setTheme((prev) => (prev === Theme.DARK ? Theme.LIGHT : Theme.DARK))
-      }
+      onClick={() => {
+        setTheme((prev) => (prev === Theme.DARK ? Theme.LIGHT : Theme.DARK));
+        const event = new Event("colorSchemeChanged");
+        document.dispatchEvent(event);
+      }}
       className="icon-button"
       aria-label="Switch theme"
     >

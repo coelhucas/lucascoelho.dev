@@ -26,30 +26,21 @@ const postsPath = process.env.NETLIFY
   ? path.join(__dirname, "../../../..", "posts")
   : path.join(process.cwd(), "posts");
 
+console.log({ postsPath });
+
 const renderer = new Renderer();
-const footnoteMatch = /^\[\^([^\]]+)\]:([\s\S]*)$/;
 const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
 const referencePrefix = "footnote-ref";
 const footnotePrefix = "footnote";
-
-const footnoteTemplate = (ref: string, text: string) => {
-  return `<p class="footnote"><sup id="${footnotePrefix}:${ref}"><a class="anchor" href="#${referencePrefix}:${ref}">${ref}</a></sup>${text} <a class="anchor" href="#${referencePrefix}:${ref}">⏎</a></p>`;
-};
 
 const referenceTemplate = (ref: string) => {
   return `<sup id="${referencePrefix}:${ref}"><a class="anchor" href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const interpolateReferences = (text: string) => {
   return text.replace(referenceMatch, (_, ref) => {
     return referenceTemplate(ref);
-  });
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const interpolateFootnotes = (text: string) => {
-  return text.replace(footnoteMatch, (_, value, text) => {
-    return footnoteTemplate(value, text);
   });
 };
 
@@ -176,6 +167,7 @@ export async function getPost(slug: string) {
   marked.use(markedFootnote());
   marked.use({ renderer, gfm: true, extensions: [lcpImageEmbed] });
   const html = await marked.parse(body, options);
+
   return {
     slug,
     title: attributes.title,
