@@ -83,10 +83,12 @@ I'm aware that I am able to finish stuff and one of the reasons I have a full-ti
 
 Good for me seems good enough.
 ## Team
-Well, it wouldn't make sense to say all that without giving kudos and credits to all the people who made this possible and participated. So I really want to shout out to:
+Well, it wouldn't make sense to say all that without giving kudos to the people who made this possible and were directly involved. So I really want to shout out to:
+
 - [Gabriel](https://x.com/gabvinis): now working in the beautiful [Moth Kubit](https://store.steampowered.com/app/2257830/Moth_Kubit/), we setup the first accounts together, came up with the name, the first visual identity. And even after Softwool, played some RPG sessions together;
 - [ThornDuck](https://x.com/Murilo3031): made a lot of cool prototypes, and is working on a full fledged version of one of his games, The Warrior
-- [Cauê](https://store.steampowered.com/app/2464880/Terracards/): I would never be able to say a game I actually worked on was on Steam if it wasn't by you. I'm so happy for the success [Terracards](https://store.steampowered.com/app/2464880/Terracards/) is. I know I'm pretty annoying with you, but I have an affection and feel as if you were my younger brother. Always nice to see the success you got.
-- Haydorf: you've been one of my best friends forever. You heard me whining before everyone else when anything felt wrong.
-- [Tulipa](https://x.com/Tulipa_Dev): you brought color to the team, literally and subjectively. I'm so glad to have worked and to got to know a bit more of you and the love you put in every pixel you make.
-I would be really fortunate in working in a project with any of you in the future. And I am happy we made this story together. I don't think any of us will stop making games so, who knows what the future will bring us?
+- [Cauê](https://store.steampowered.com/app/2464880/Terracards/): I would never be able to say a game I actually worked on was on Steam if it wasn't by you. I'm so happy for the success [Terracards](https://store.steampowered.com/app/2464880/Terracards/) is. I know I'm pretty annoying with you, but I have an affection and feel as if you were my younger brother.
+- [Haydorf](https://x.com/cuelhoga): you've been one of my best friends forever. You heard me whining before everyone else when anything felt wrong and I really expect to work with you in the future, you have a really nice touch for being a producer/game designer.
+- [Tulipa](https://x.com/Tulipa_Dev): thanks for taking your bright to the team! I'm so glad to have worked and to got to know a bit more of you and the love you put in every pixel you make.
+
+I am glad we made this story together. I don't think any of us will stop making games anytime soon. Thanks for everything.
