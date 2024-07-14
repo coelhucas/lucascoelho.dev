@@ -128,6 +128,7 @@ html {
     color: var(--text1);
     background-color: var(--surface);
     display: flex;
+    flex-direction: column;
 }
 
 body {
