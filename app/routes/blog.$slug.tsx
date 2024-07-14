@@ -1,6 +1,8 @@
 import {
-    Response, type LinksFunction,
-    type LoaderArgs, type V2_MetaFunction
+  Response,
+  type LinksFunction,
+  type LoaderArgs,
+  type V2_MetaFunction,
 } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import React, { useEffect } from "react";
@@ -47,14 +49,14 @@ export const loader = async ({ params }: LoaderArgs) => {
   }
 
   try {
-  const post = await getPost(params.slug);
-  return post;
+    const post = await getPost(params.slug);
+    return post;
   } catch (err) {
     // Something went wrong, likely the post don't exist. I'll assume that.
     throw new Response(null, {
       status: 404,
-      statusText: "Not found"
-    })
+      statusText: "Not found",
+    });
   }
 };
 
@@ -81,7 +83,8 @@ function useUtterances(
       ".utterances-frame",
     ) as HTMLIFrameElement;
     if (frame && theme) {
-      const commentsTheme = theme === Theme.DARK ? "github-dark" : "github-light";
+      const commentsTheme =
+        theme === Theme.DARK ? "github-dark" : "github-light";
       const message = {
         type: "set-theme",
         theme: commentsTheme,
