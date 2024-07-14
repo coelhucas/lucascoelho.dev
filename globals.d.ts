@@ -1,4 +1,4 @@
-export { };
+export {};
 
 declare global {
   interface ProcessEnv {
@@ -11,6 +11,5 @@ declare global {
   }
   let process: Process;
 
-  declare module "*.css";
   declare module "*.mdx";
 }

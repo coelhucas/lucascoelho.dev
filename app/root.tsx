@@ -1,21 +1,28 @@
-import { LoaderFunction } from "@remix-run/node";
+import { json, LoaderFunction } from "@remix-run/node";
 import {
-    Links,
-    Meta,
-    Outlet,
-    Scripts,
-    ScrollRestoration,
-    useLoaderData,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+  useRouteLoaderData,
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css?url";
-import { ThemeProvider } from "remix-themes";
+import { ReactNode } from "react";
+import {
+  PreventFlashOnWrongTheme,
+  ThemeProvider,
+  useTheme,
+} from "remix-themes";
 import globalStylesUrl from "~/styles/global.css?url";
+import CustomErrorBoundary from "./components/CustomErrorBoundary";
 import Navigation from "./components/Navigation";
 import { themeSessionResolver } from "./sessions.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   const { getTheme } = await themeSessionResolver(request);
-  return { gaTrackingId: process.env.GA_TRACKING_ID, theme: getTheme() };
+  return json({ gaTrackingId: process.env.GA_TRACKING_ID, theme: getTheme() });
 };
 
 export const links = () => {
@@ -43,29 +50,50 @@ export const links = () => {
   ];
 };
 
+export function ErrorBoundary() {
+  return (
+    <Providers>
+      <CustomErrorBoundary />
+    </Providers>
+  );
+}
 
-export default function App() {
+function Providers({ children }: { children: ReactNode }) {
   const data = useLoaderData<typeof loader>();
   return (
-    <ThemeProvider
-      specifiedTheme={data.theme}
-      themeAction="/action/set-theme"
-      disableTransitionOnThemeChange
-    >
-      <html lang="en">
-        <head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <Meta />
-          <Links />
-        </head>
-        <body>
-          <Navigation />
-          <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-        </body>
-      </html>
+    <ThemeProvider specifiedTheme={data?.theme} themeAction="/action/set-theme">
+      <Layout>{children}</Layout>
     </ThemeProvider>
+  );
+}
+
+function Layout({ children }: { children: ReactNode }) {
+  const data = useRouteLoaderData<typeof loader>("root");
+  const [theme] = useTheme();
+  return (
+    <html lang="en" data-theme={theme}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Navigation />
+        {children}
+        <ScrollRestoration />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme)} />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  const data = useRouteLoaderData<typeof loader>("root");
+  return (
+    <Providers>
+      <Outlet />
+    </Providers>
   );
 }

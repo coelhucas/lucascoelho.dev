@@ -1,5 +1,6 @@
 import Icon, { IconNames } from "../Icon";
 import Link from "../Link";
+import ThemeButton from "../ThemeButton";
 
 type LinkProps = {
   title: string;
@@ -41,9 +42,8 @@ const Navigation = () => (
         return (
           <li key={title}>
             <Link
+              target="_blank"
               className="icon-anchor"
-              name={title}
-              anchor
               to={path}
               {...resolvedRel}
             >
@@ -52,6 +52,9 @@ const Navigation = () => (
           </li>
         );
       })}
+      <li>
+        <ThemeButton />
+      </li>
     </ul>
   </nav>
 );

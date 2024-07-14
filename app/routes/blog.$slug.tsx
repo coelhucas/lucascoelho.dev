@@ -151,3 +151,37 @@ export default function BlogPost() {
     </main>
   );
 }
+
+// <script
+//   dangerouslySetInnerHTML={{
+//     __html: `
+// /**
+// *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+// *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+// var disqus_config = function () {
+// this.page.url = "${canonicalUrl}";  // Replace PAGE_URL with your page's canonical URL variable
+// this.page.identifier = "${slug}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+// };
+
+// // Gambeta sinistra
+// // https://ourcodeworld.com/articles/read/1606/how-to-reset-disqus-color-schema-automatically
+// (function() {
+// document.addEventListener('colorSchemeChanged', function (e) {
+// setTimeout(() => {
+//     if (document.readyState == 'complete') {
+//       DISQUS.reset({ reload: true, config: disqus_config });
+//     }
+//   }, 0)
+// })
+// })();
+// alert('BUSETAAA');
+
+// (function() { // DON'T EDIT BELOW THIS LINE
+// var d = document, s = d.createElement('script');
+// s.src = 'https://lucascoelho.disqus.com/embed.js';
+// s.setAttribute('data-timestamp', +new Date());
+// (d.head || d.body).appendChild(s);
+// })();
+// `,
+//   }}
+// />

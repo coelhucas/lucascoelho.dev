@@ -1,10 +1,7 @@
-/** eslint-disable import/no-unresolved */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
 import hljs from "highlight.js";
 import { marked, Renderer, type TokenizerAndRendererExtension } from "marked";
-// eslint-disable-next-line import/no-unresolved
 import markedFootnote from "marked-footnote";
 import path from "path";
 
@@ -28,8 +25,6 @@ const postsPath = process.env.NETLIFY
   ? path.join(__dirname, "../../..", "posts")
   : path.join(process.cwd(), "app", "posts");
 
-console.log({ postsPath });
-
 const renderer = new Renderer();
 const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
 const referencePrefix = "footnote-ref";
@@ -39,28 +34,9 @@ const referenceTemplate = (ref: string) => {
   return `<sup id="${referencePrefix}:${ref}"><a class="anchor" href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const interpolateReferences = (text: string) => {
-  return text.replace(referenceMatch, (_, ref) => {
-    return referenceTemplate(ref);
-  });
-};
-
 renderer.blockquote = (text: string) => {
   return `<blockquote class="quote">${text}</blockquote>`;
 };
-
-// renderer.paragraph = (text: string) => {
-//   return marked.Renderer.prototype.paragraph.apply(renderer, [
-//     interpolateReferences(interpolateFootnotes(text)),
-//   ]);
-// };
-
-// renderer.text = (text: string) => {
-//   return marked.Renderer.prototype.text.apply(renderer, [
-//     interpolateReferences(interpolateFootnotes(text)),
-//   ]);
-// };
 
 renderer.heading = (text: string, level: number) => {
   const escapedText = text.toLowerCase().replace(/[^\w]+/g, "-");
@@ -74,12 +50,10 @@ renderer.heading = (text: string, level: number) => {
     </h${level}>`;
 };
 
-renderer.link = (href: string, _: string, text: string) =>
-  `<a class="anchor" href="${href}">${text}</a>`;
-
-// renderer.image = (href: string, _, text: string) => {
-//   return `<div><img class="post-image" src="${href}" alt="${text}" type="image/webp">rirriri</img></div>`;
-// };
+renderer.link = (href: string, _: string, text: string) => {
+  const target = href.startsWith("/") ? "" : 'target="_blank"';
+  return `<a class="anchor" href="${href}" ${target}>${text}</a>`;
+};
 
 renderer.image = (href: string, title: string, text: string) => {
   return `<img src="${href}" class="post-image" alt="${text}" title="${title ?? text}"></img>`;
