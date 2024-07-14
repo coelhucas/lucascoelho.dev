@@ -1,7 +1,7 @@
 import type { LinksFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import Icon from "~/components/Icon";
-import Link from "~/components/Link";
+// import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css?url";
 import globalMeta from "~/utils/global-meta";
 import type { Post } from "~/utils/post";
@@ -37,7 +37,7 @@ export const loader = () => {
 function PostCard({ slug, title, date, readingTime }: Post) {
   return (
     <li className="list-item">
-      <Link unstyled to={slug}>
+      <Link to={slug} target="_top">
         <div className="post-card">
           <p>{title}</p>
           <span className="date">
