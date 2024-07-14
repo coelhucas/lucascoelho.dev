@@ -10,6 +10,7 @@ export type Post = {
   title: string;
   date: string;
   readingTime: number;
+  lastUpdate?: string;
 };
 
 export type SerializedPost = Post & {
@@ -19,6 +20,7 @@ export type SerializedPost = Post & {
 type PostMarkdownAttributes = {
   title: string;
   date: string;
+  update?: string;
 };
 
 const postsPath = process.env.NETLIFY
@@ -124,6 +126,14 @@ export async function getPosts(): Promise<Post[]> {
           month: "short",
           day: "numeric",
         }),
+        lastUpdate: attributes?.update
+          ? new Date(attributes.update).toLocaleString(undefined, {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          : undefined,
+
         readingTime,
       };
     }),
@@ -147,8 +157,20 @@ export async function getPost(slug: string) {
   return {
     slug,
     title: attributes.title,
-    date: attributes.date,
+    /** e.g.: Jun 24, 2022 */
+    date: new Date(attributes.date).toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    }),
     html,
+    lastUpdate: attributes?.update
+      ? new Date(attributes.update).toLocaleString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      : undefined,
     readingTime,
   };
 }

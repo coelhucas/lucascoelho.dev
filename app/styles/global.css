@@ -302,7 +302,7 @@ h2 {
 
 .blog-post-date {
     margin-top: 0;
-    margin-bottom: 32px;
+    margin-bottom: 0;
     color: var(--text3);
 }
 

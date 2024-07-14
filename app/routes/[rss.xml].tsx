@@ -7,6 +7,7 @@ export type RssEntry = {
   pubDate: string;
   content: string;
   author?: string;
+  lastBuildDate?: string;
   guid?: string;
 };
 
@@ -36,6 +37,7 @@ export function generateRss({
         <link>${entry.link}</link>
         ${entry.guid ? `<guid isPermaLink="true">${entry.guid}</guid>` : ""}
         <pubDate>${entry.pubDate}</pubDate>
+        ${entry?.lastBuildDate ? `<lastBuildDate>${entry.lastBuildDate}</lastBuildDate>` : ""}
         <content:encoded><![CDATA[${entry.content}]]></content:encoded>
       </item>`,
       )
@@ -51,6 +53,9 @@ export const loader: LoaderFunction = async () => {
       const { html } = await getPost(post.slug);
       return {
         pubDate: new Date(post.date).toUTCString(),
+        lastBuildDate: post?.lastUpdate
+          ? new Date(post.date).toUTCString()
+          : undefined,
         title: post.title,
         link: `https://lucascoelho.dev/blog/${post.slug}`,
         guid: `https://lucascoelho.dev/blog/${post.slug}`,
@@ -59,12 +64,19 @@ export const loader: LoaderFunction = async () => {
     }),
   );
 
+  const sortByDate = (a: RssEntry, b: RssEntry) => {
+    const dateA = new Date(a.pubDate);
+    const dateB = new Date(b.pubDate);
+
+    return dateA === dateB ? 0 : dateA > dateB ? -1 : 1;
+  };
+
   const feed = generateRss({
     title: "Lucas Coelho",
     description:
       "Where I share some thoughts about software and other personal interests",
     link: "https://lucascoelho.dev/blog",
-    entries,
+    entries: entries.sort(sortByDate),
   });
 
   return new Response(feed, {

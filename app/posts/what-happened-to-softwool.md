@@ -1,6 +1,7 @@
 ---
 title: What happened to Softwool?
-date: "2025-07-13"
+date: "2024-07-13"
+update: "2024-07-14"
 ---
 
 If you already know what is Softwool, you may want to skip to [Softwool](#softwool).

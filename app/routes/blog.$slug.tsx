@@ -128,8 +128,10 @@ export default function BlogPost() {
     <main className="blog-page-container">
       <h1>{post.title}</h1>
       <p className="blog-post-date">
-        Published in {post.date} ({post.readingTime} minute read)
+        {post.date} ∙ {post.readingTime} minute read
       </p>
+      <br />
+
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
       <CommentsSection theme={theme} slug={post.slug} url={pageUrl} />
     </main>
