@@ -1,7 +1,7 @@
 import type { LinksFunction } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import Icon from "~/components/Icon";
-// import Link from "~/components/Link";
+import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog/posts-list.css?url";
 import globalMeta from "~/utils/global-meta";
 import type { Post } from "~/utils/post";
