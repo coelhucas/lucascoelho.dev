@@ -4,24 +4,26 @@ import blogStyles from "../styles/blog/styles.module.css";
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useEffect, useRef } from "react";
 import type { Theme } from "remix-themes";
 import { useTheme } from "remix-themes";
 import globalMeta from "~/utils/global-meta";
 
-export const meta: MetaFunction = (r) => {
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  const post = data?.post;
+
   return [
     ...globalMeta,
     {
-      title: r.data?.title
-        ? `${r.data.title} | Blog | Lucas Coelho`
+      title: post?.title
+        ? `${post.title} | Blog | Lucas Coelho`
         : "Blog | Lucas Coelho",
     },
     {
       property: "og:title",
-      content: r.data?.title
-        ? `${r.data.title} | Blog | Lucas Coelho`
+      content: post?.title
+        ? `${post.title} | Blog | Lucas Coelho`
         : "Blog | Lucas Coelho",
     },
     {
@@ -42,7 +44,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
   try {
     const post = await getPost(params.slug);
-    return { post, pageUrl: process.env.WEBSITE_URL };
+    return json({ post, pageUrl: process.env.WEBSITE_URL });
   } catch (err) {
     // Something went wrong, likely the post don't exist. I'll assume that.
     throw new Response(null, {
