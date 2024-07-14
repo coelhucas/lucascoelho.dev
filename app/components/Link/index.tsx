@@ -1,5 +1,5 @@
 import { Link as RemixLink } from "@remix-run/react";
-import React from "react";
+import { RemixLinkProps } from "@remix-run/react/dist/components";
 
 type FontWeight = "thin" | "regular" | "bold";
 
@@ -13,8 +13,7 @@ export type ReusedLinkProps = {
 };
 
 export type LinkProps = ReusedLinkProps &
-  React.HTMLAttributes<HTMLAnchorElement> & {
-    to: string;
+  RemixLinkProps & {
     name?: string;
   };
 
