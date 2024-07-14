@@ -5,6 +5,7 @@ declare global {
     NODE_ENV: "development" | "production" | "test";
     NETLIFY: string;
     GA_TRACKING_ID: string;
+    WEBSITE_URL: string;
   }
   interface Process {
     env: ProcessEnv;
