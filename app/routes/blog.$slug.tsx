@@ -97,7 +97,6 @@ const CommentsSection = ({
   this.page.identifier = "${slug}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
   };
 
-  alert('watafok');
   // Gambeta sinistra
   // https://ourcodeworld.com/articles/read/1606/how-to-reset-disqus-color-schema-automatically
   (function() {
