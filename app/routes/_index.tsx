@@ -139,7 +139,7 @@ export default function Index() {
       <section className="projects-container">
         <h3>Projects</h3>
         <ul className="projects-list">
-          {data.projects.map(({ title, path, anchor = true, tags, props }) => {
+          {data.projects.map(({ title, path, tags }) => {
             const target = path.startsWith("https") ? "_blank" : undefined;
 
             return (
