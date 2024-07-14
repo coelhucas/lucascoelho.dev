@@ -1,15 +1,15 @@
 import { LoaderFunction } from "@remix-run/node";
 import {
-    Links,
-    Meta,
-    Outlet,
-    Scripts,
-    ScrollRestoration,
-    useLoaderData,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
-import highlightStyles from "highlight.js/styles/github.css";
+import highlightStyles from "highlight.js/styles/github.css?url";
 import { ThemeProvider } from "remix-themes";
-import globalStylesUrl from "~/styles/global.css";
+import globalStylesUrl from "~/styles/global.css?url";
 import { themeSessionResolver } from "./sessions.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -48,7 +48,6 @@ export default function App() {
     <ThemeProvider
       specifiedTheme={data.theme}
       themeAction="/action/set-theme"
-
       disableTransitionOnThemeChange
     >
       <html lang="en">
