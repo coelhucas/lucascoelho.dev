@@ -37,7 +37,7 @@ export const loader = () => {
 function PostCard({ slug, title, date, readingTime }: Post) {
   return (
     <li className="list-item">
-      <Link to={slug} target="_top" rel="dwakokd">
+      <Link to={slug} target="_top">
         <div className="post-card">
           <p>{title}</p>
           <span className="date">
