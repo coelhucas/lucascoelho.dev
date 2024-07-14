@@ -60,24 +60,26 @@ const sortByDate = (a: Post, b: Post) => {
 export default function Posts() {
   const posts = useLoaderData<Post[]>();
   return (
-    <div className="container">
-      <div className="row center">
-        <h1 className="flex-1">Posts</h1>
-        <Link className="icon-anchor" anchor to="/rss.xml">
-          <Icon as="rss" />
-        </Link>
+    <main>
+      <div className="container">
+        <div className="row center">
+          <h1 className="flex-1">Posts</h1>
+          <Link className="icon-anchor" anchor to="/rss.xml">
+            <Icon as="rss" />
+          </Link>
+        </div>
+        <ul className="list">
+          {posts.sort(sortByDate).map((post) => (
+            <PostCard
+              key={post.slug}
+              slug={post.slug}
+              title={post.title}
+              date={post.date}
+              readingTime={post.readingTime}
+            />
+          ))}
+        </ul>
       </div>
-      <ul className="list">
-        {posts.sort(sortByDate).map((post) => (
-          <PostCard
-            key={post.slug}
-            slug={post.slug}
-            title={post.title}
-            date={post.date}
-            readingTime={post.readingTime}
-          />
-        ))}
-      </ul>
-    </div>
+    </main>
   );
 }

@@ -1,18 +1,21 @@
-import {
-    Response, type LinksFunction,
-    type LoaderArgs, type V2_MetaFunction
-} from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import React, { useEffect } from "react";
+/** eslint-disable import/no-unresolved */
+// import {
+//   Response,
+//   type LinksFunction,
+//   type LoaderArgs,
+//   type V2_MetaFunction,
+// } from "@remix-run/node";
+import { useLoaderData, useLocation } from "@remix-run/react";
 
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import { Theme, useTheme } from "remix-themes";
-import globalStylesUrl from "~/styles/global.css";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import type { Theme } from "remix-themes";
+import { useTheme } from "remix-themes";
 import globalMeta from "~/utils/global-meta";
 
-export const meta: V2_MetaFunction = (r) => {
+export const meta: MetaFunction = (r) => {
   return [
     ...globalMeta,
     {
@@ -37,85 +40,106 @@ export const meta: V2_MetaFunction = (r) => {
   ];
 };
 
-export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: globalStylesUrl }];
-};
-
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async ({ params }: LoaderFunctionArgs) => {
   if (!params?.slug) {
     throw new Error("No slug provided");
   }
 
   try {
-  const post = await getPost(params.slug);
-  return post;
+    const post = await getPost(params.slug);
+    return { post, pageUrl: process.env.WEBSITE_URL };
   } catch (err) {
     // Something went wrong, likely the post don't exist. I'll assume that.
     throw new Response(null, {
       status: 404,
-      statusText: "Not found"
-    })
+      statusText: "Not found",
+    });
   }
 };
 
-function useUtterances(
-  attributes: Record<string, string>,
-  ref: React.RefObject<HTMLDivElement>,
-) {
-  const [theme] = useTheme();
+const CommentsSection = ({
+  slug,
+  url,
+}: {
+  slug: string;
+  theme: Theme | null;
+  url: string;
+}) => {
+  const location = useLocation();
+  const canonicalUrl = url + location.pathname;
 
-  useEffect(() => {
-    const scriptElement = document.createElement("script");
-
-    for (const [key, value] of Object.entries(attributes)) {
-      scriptElement.setAttribute(key, value);
-    }
-
-    if (ref?.current) {
-      ref.current.appendChild(scriptElement);
-    }
-  }, []);
-
-  useEffect(() => {
-    const frame = document.querySelector(
-      ".utterances-frame",
-    ) as HTMLIFrameElement;
-    if (frame && theme) {
-      const commentsTheme = theme === Theme.DARK ? "github-dark" : "github-light";
-      const message = {
-        type: "set-theme",
-        theme: commentsTheme,
-      };
-
-      frame.contentWindow?.postMessage(message, "https://utteranc.es");
-    }
-  }, [theme]);
-
-  return ref;
-}
-
-const CommentsSection = ({ slug, theme }: { slug: string; theme: string }) => {
-  const commentSection = useUtterances(
-    {
-      src: "https://utteranc.es/client.js",
-      crossorigin: "anonymous",
-      repo: "coelhucas/blog",
-      theme: `github-${theme}`,
-      id: "bazinga",
-      async: "true",
-      "issue-term": slug,
-    },
-    React.createRef(),
-  );
+  // const commentSection = useUtterances(
+  //   {
+  //     src: "https://utteranc.es/client.js",
+  //     crossorigin: "anonymous",
+  //     repo: "coelhucas/blog",
+  //     theme: `github-${theme}`,
+  //     id: "bazinga",
+  //     async: "true",
+  //     "issue-term": slug,
+  //   },
+  //   React.createRef(),
+  // );
   return (
-    <div className="blog-comments">
-      <div ref={commentSection}></div>
-    </div>
+    <span style={{}}>
+      <div id="disqus_thread">
+        <p>Texto de teste pro tema</p>
+      </div>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+  var disqus_config = function () {
+  this.page.url = "${canonicalUrl}";  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = "${slug}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  alert('watafok');
+  // Gambeta sinistra
+  // https://ourcodeworld.com/articles/read/1606/how-to-reset-disqus-color-schema-automatically
+  (function() {
+    document.addEventListener('colorSchemeChanged', function (e) {
+      setTimeout(() => {
+          if (document.readyState == 'complete') {
+            DISQUS.reset({ reload: true, config: disqus_config });
+            console.log({ DISQUS })
+          }
+        }, 0)
+    })
+  })();
+
+  function loadDisqus() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lucascoelho.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => { loadDisqus(); });
+  `,
+        }}
+      />
+      <noscript>
+        Please enable JavaScript to view the{" "}
+        <a href="https://disqus.com/?ref_noscript">
+          comments powered by Disqus.
+        </a>
+      </noscript>
+    </span>
   );
 };
 
-export default function PostSlug() {
-  const post = useLoaderData<SerializedPost>();
+export default function BlogPost() {
+  const { post, pageUrl } = useLoaderData<{
+    post: SerializedPost;
+    pageUrl: string;
+  }>();
+
+  console.log({ pageUrl });
+
   const [theme] = useTheme();
 
   return (
@@ -125,7 +149,7 @@ export default function PostSlug() {
         Published in {post.date} ({post.readingTime} minute read)
       </p>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
-      {theme && <CommentsSection theme={theme} slug={post.slug} />}
+      <CommentsSection theme={theme} slug={post.slug} url={pageUrl} />
     </main>
   );
 }
