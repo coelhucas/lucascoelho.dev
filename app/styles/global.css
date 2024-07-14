@@ -388,11 +388,6 @@ h2 {
     }
 
     & svg {
-        width: 28px;
-        height: 28px;
-        vertical-align: middle;
-        fill: var(--text2);
-        opacity: 1;
     }
 }
 

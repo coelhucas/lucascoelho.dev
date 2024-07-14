@@ -64,7 +64,7 @@ export default function Posts() {
       <div className="container">
         <div className="row center">
           <h1 className="flex-1">Posts</h1>
-          <Link className="icon-anchor" anchor to="/rss.xml">
+          <Link className="icon-anchor" target="_blank" to="/rss.xml">
             <Icon as="rss" />
           </Link>
         </div>

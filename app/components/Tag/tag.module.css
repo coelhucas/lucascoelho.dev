@@ -1,0 +1,50 @@
+.color-js {
+    color: #fcda32;
+}
+
+.color-ts {
+    color: #76befc;
+}
+
+.color-lua {
+    color: #a6e874;
+}
+
+.color-cs {
+    color: #c1a6fc;
+}
+
+.color-gd {
+    color: #f98a84;
+}
+
+.color-default {
+    background-color: white;
+}
+
+[color-scheme="light"],
+[data-theme="light"] {
+    .color-js {
+        color: #fc7532;
+    }
+
+    .color-ts {
+        color: #2e2a66;
+    }
+
+    .color-lua {
+        color: #486036;
+    }
+
+    .color-cs {
+        color: #895fe2;
+    }
+
+    .color-gd {
+        color: #542e2c;
+    }
+
+    .color-default {
+        background-color: black;
+    }
+}
