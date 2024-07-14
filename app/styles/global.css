@@ -446,6 +446,10 @@ nav {
     width: 100%;
     font-family: monospace;
     align-items: center;
+
+    margin: auto;
+    width: 100%;
+    max-width: 50rem;
 }
 
 a {

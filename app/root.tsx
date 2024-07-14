@@ -1,15 +1,16 @@
 import { LoaderFunction } from "@remix-run/node";
 import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
+    Links,
+    Meta,
+    Outlet,
+    Scripts,
+    ScrollRestoration,
+    useLoaderData,
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css?url";
 import { ThemeProvider } from "remix-themes";
 import globalStylesUrl from "~/styles/global.css?url";
+import Navigation from "./components/Navigation";
 import { themeSessionResolver } from "./sessions.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -42,6 +43,7 @@ export const links = () => {
   ];
 };
 
+
 export default function App() {
   const data = useLoaderData<typeof loader>();
   return (
@@ -58,6 +60,7 @@ export default function App() {
           <Links />
         </head>
         <body>
+          <Navigation />
           <Outlet />
           <ScrollRestoration />
           <Scripts />
