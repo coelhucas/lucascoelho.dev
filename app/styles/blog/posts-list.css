@@ -15,6 +15,10 @@
     border-top: 1px solid var(--surface2);
     border-bottom: 1px solid var(--surface3);
     text-decoration: none;
+
+    &:last-of-type {
+        border: none;
+    }
 }
 
 .post-card {
