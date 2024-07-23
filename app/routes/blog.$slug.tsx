@@ -6,8 +6,6 @@ import { getPost } from "~/utils/post";
 
 import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useEffect, useRef } from "react";
-import type { Theme } from "remix-themes";
-import { useTheme } from "remix-themes";
 import globalMeta from "~/utils/global-meta";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -54,14 +52,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   }
 };
 
-const CommentsSection = ({
-  slug,
-  url,
-}: {
-  slug: string;
-  theme: Theme | null;
-  url: string;
-}) => {
+const CommentsSection = ({ slug, url }: { slug: string; url: string }) => {
   const location = useLocation();
   const canonicalUrl = url + location.pathname;
 
@@ -122,8 +113,6 @@ export default function BlogPost() {
     pageUrl: string;
   }>();
 
-  const [theme] = useTheme();
-
   return (
     <main className="blog-page-container">
       <h1>{post.title}</h1>
@@ -133,7 +122,7 @@ export default function BlogPost() {
       <br />
 
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
-      <CommentsSection theme={theme} slug={post.slug} url={pageUrl} />
+      <CommentsSection slug={post.slug} url={pageUrl} />
     </main>
   );
 }

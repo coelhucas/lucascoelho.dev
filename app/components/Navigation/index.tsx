@@ -1,6 +1,5 @@
 import Icon, { IconNames } from "../Icon";
 import Link from "../Link";
-import ThemeButton from "../ThemeButton";
 
 type LinkProps = {
   title: string;
@@ -52,9 +51,6 @@ const Navigation = () => (
           </li>
         );
       })}
-      <li>
-        <ThemeButton />
-      </li>
     </ul>
   </nav>
 );

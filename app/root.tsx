@@ -5,24 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useRouteLoaderData,
 } from "@remix-run/react";
 import highlightStyles from "highlight.js/styles/github.css?url";
 import { ReactNode } from "react";
-import {
-  PreventFlashOnWrongTheme,
-  ThemeProvider,
-  useTheme,
-} from "remix-themes";
 import globalStylesUrl from "~/styles/global.css?url";
 import CustomErrorBoundary from "./components/CustomErrorBoundary";
 import Navigation from "./components/Navigation";
-import { themeSessionResolver } from "./sessions.server";
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const { getTheme } = await themeSessionResolver(request);
-  return json({ gaTrackingId: process.env.GA_TRACKING_ID, theme: getTheme() });
+export const loader: LoaderFunction = async () => {
+  return json({ gaTrackingId: process.env.GA_TRACKING_ID });
 };
 
 export const links = () => {
@@ -59,19 +51,13 @@ export function ErrorBoundary() {
 }
 
 function Providers({ children }: { children: ReactNode }) {
-  const data = useLoaderData<typeof loader>();
-  return (
-    <ThemeProvider specifiedTheme={data?.theme} themeAction="/action/set-theme">
-      <Layout>{children}</Layout>
-    </ThemeProvider>
-  );
+  return <Layout>{children}</Layout>;
 }
 
 function Layout({ children }: { children: ReactNode }) {
   const data = useRouteLoaderData<typeof loader>("root");
-  const [theme] = useTheme();
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -86,7 +72,6 @@ function Layout({ children }: { children: ReactNode }) {
         <Navigation />
         {children}
         <ScrollRestoration />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme)} />
         <Scripts />
         <footer>
           <hr />
