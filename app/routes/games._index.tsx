@@ -31,8 +31,8 @@ export default function Page() {
     <main>
       <h1>I make games!</h1>
       <p>
-        I'm in a hurry while I make this page so uhh... I'll just list all of
-        the games that didn't got lost over time. Thanks for coming by!
+        I have a huge passion for designing games, here you can find some of the
+        games I made, from small game jam ones to commercial releases on Steam.
       </p>
       <p>See below:</p>
       <ul>

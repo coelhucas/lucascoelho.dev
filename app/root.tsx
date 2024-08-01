@@ -7,10 +7,10 @@ import {
   ScrollRestoration,
   useRouteLoaderData,
 } from "@remix-run/react";
-import highlightStyles from "highlight.js/styles/github.css?url";
 import { ReactNode } from "react";
 import globalStylesUrl from "~/styles/global.css?url";
 import CustomErrorBoundary from "./components/CustomErrorBoundary";
+import Link from "./components/Link";
 import Navigation from "./components/Navigation";
 
 export const loader: LoaderFunction = async () => {
@@ -20,11 +20,6 @@ export const loader: LoaderFunction = async () => {
 export const links = () => {
   return [
     { rel: "stylesheet", href: globalStylesUrl },
-    {
-      rel: "stylesheet",
-      // TODO: Move to blog/[slug]
-      href: highlightStyles,
-    },
     {
       rel: "preconnect",
       href: "https://fonts.googleapis.com",
@@ -75,7 +70,12 @@ function Layout({ children }: { children: ReactNode }) {
         <Scripts />
         <footer>
           <hr />
-          <p>The footer is a lie.</p>
+          <p>
+            isn't it cool to have a footer? ∙{" "}
+            <Link target="_blank" to="/rss.xml">
+              rss
+            </Link>
+          </p>
         </footer>
       </body>
     </html>

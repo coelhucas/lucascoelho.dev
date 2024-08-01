@@ -1,6 +1,5 @@
 import parseFrontMatter from "front-matter";
 import fs from "fs/promises";
-import hljs from "highlight.js";
 import { marked, Renderer, type TokenizerAndRendererExtension } from "marked";
 import markedFootnote from "marked-footnote";
 import path from "path";
@@ -28,13 +27,8 @@ const postsPath = process.env.NETLIFY
   : path.join(process.cwd(), "app", "posts");
 
 const renderer = new Renderer();
-const referenceMatch = /\[\^([^\]]+)\](?!\()/g;
 const referencePrefix = "footnote-ref";
 const footnotePrefix = "footnote";
-
-const referenceTemplate = (ref: string) => {
-  return `<sup id="${referencePrefix}:${ref}"><a class="anchor" href="#${footnotePrefix}:${ref}">${ref}</a></sup>`;
-};
 
 renderer.blockquote = (text: string) => {
   return `<blockquote class="quote">${text}</blockquote>`;
@@ -58,11 +52,20 @@ renderer.link = (href: string, _: string, text: string) => {
 };
 
 renderer.image = (href: string, title: string, text: string) => {
-  return `<img src="${href}" class="post-image" alt="${text}" title="${title ?? text}"></img>`;
+  return `<img src="${href}" class="post-image" alt="${text}" title="${
+    title ?? text
+  }"></img>`;
 };
 
-const highlight = (code: string, lang: string) => {
+const highlight = function (code: string, lang: string) {
+  const hljs = require("highlight.js");
   const language = hljs.getLanguage(lang) ? lang : "plaintext";
+
+  hljs.registerLanguage(
+    "javascript",
+    require("highlight.js/lib/languages/javascript")
+  );
+
   return hljs.highlight(code, { language }).value;
 };
 
@@ -95,7 +98,7 @@ const lcpImageEmbed: TokenizerAndRendererExtension = {
   },
 };
 
-const options = { renderer, langPrefix: "hljs language-", highlight };
+const options = { renderer, highlight, langPrefix: "hljs language-" };
 
 function getReadingTime(body: string): number {
   const wpm = 200;
@@ -112,7 +115,7 @@ export async function getPosts(): Promise<Post[]> {
         encoding: "utf8",
       });
       const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
-        file.toString(),
+        file.toString()
       );
 
       const readingTime = getReadingTime(body);
@@ -136,7 +139,7 @@ export async function getPosts(): Promise<Post[]> {
 
         readingTime,
       };
-    }),
+    })
   );
 }
 
@@ -146,7 +149,7 @@ export async function getPost(slug: string) {
     encoding: "utf8",
   });
   const { attributes, body } = parseFrontMatter<PostMarkdownAttributes>(
-    file.toString(),
+    file.toString()
   );
 
   const readingTime = getReadingTime(body);

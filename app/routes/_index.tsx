@@ -1,4 +1,3 @@
-import { useLoaderData } from "@remix-run/react";
 import { IconNames } from "~/components/Icon";
 import Link, { LinkProps } from "~/components/Link";
 import Tag from "~/components/Tag";
@@ -105,15 +104,14 @@ const ProjectLink = ({ tags, ...props }: LinkProps & { tags?: string[] }) => {
 };
 
 export default function Index() {
-  const data = useLoaderData<typeof loader>();
+  // const data = useLoaderData<typeof loader>();
 
   return (
     <main>
       <section className="main-section">
-        <h1>Lucas Coelho</h1>
-
-        <h2>
-          Software Engineer at{" "}
+        <h1 className="main__name">Lucas Coelho</h1>
+        <sub>
+          Software Engineer @{" "}
           <a
             target="_blank"
             rel="noreferrer noopener"
@@ -121,35 +119,41 @@ export default function Index() {
           >
             Timescale
           </a>
-        </h2>
+        </sub>
+
         <p>
-          Interested in making <code>/(developer)?\s+(tools)/</code>, games, and
-          messing with performance, debugging & observability.
-          <br />
-          <br />
-          Created (and maintained) design systems, libraries, worked in
-          Platform, Product and Marketing teams, and designed some{" "}
+          Interested in solving a lot of problems. Curious about game design,
+          performance, tool creation and debugging. Interested in making <br />
+        </p>
+        <p>
+          Created and maintained design systems, general libraries. Worked in
+          Platform, Product and Marketing teams, and keep designing some{" "}
           <Link to="/games">
             <strong>games</strong>
           </Link>
           .
         </p>
-        <hr />
       </section>
-      <section className="projects-container">
-        <h3>Projects</h3>
-        <ul className="projects-list">
-          {data.projects.map(({ title, path, tags }) => {
-            const target = path.startsWith("https") ? "_blank" : undefined;
-
-            return (
-              <li key={title}>
-                <ProjectLink tags={tags} to={path} target={target}>
-                  {title}
-                </ProjectLink>
-              </li>
-            );
-          })}
+      <hr />
+      <section>
+        <p>
+          I've been trying to <Link to="/blog">write more</Link>.
+        </p>
+        <h3>Socials</h3>
+        <ul>
+          <li>
+            <Link to="mailto:contact@lucascoelho.dev">
+              contact@lucascoelho.dev
+            </Link>
+          </li>
+          <li>
+            <Link target="_blank" to="https://github.com/coelhucas">
+              github
+            </Link>
+          </li>
+          <li>
+            <Link to="https://mastodon.gamedev.place/@cuca">mastodon</Link>
+          </li>
         </ul>
       </section>
     </main>

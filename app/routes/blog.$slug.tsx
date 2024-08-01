@@ -1,10 +1,17 @@
 import { useLoaderData, useLocation } from "@remix-run/react";
-import blogStyles from "../styles/blog/styles.module.css";
 
+import highlightStyles from "highlight.js/styles/default.min.css?url";
+import stylesUrl from "~/styles/blog.css?url";
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import { json, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import {
+  json,
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "@remix-run/node";
+import hljs from "highlight.js";
 import { useEffect, useRef } from "react";
 import globalMeta from "~/utils/global-meta";
 
@@ -31,6 +38,16 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     {
       name: "description",
       content: "Some random thoughts and stuff that I learn and share.",
+    },
+  ];
+};
+
+export const links: LinksFunction = () => {
+  return [
+    { rel: "stylesheet", href: stylesUrl },
+    {
+      rel: "stylesheet",
+      href: highlightStyles,
     },
   ];
 };
@@ -94,7 +111,7 @@ const CommentsSection = ({ slug, url }: { slug: string; url: string }) => {
   }, []);
 
   return (
-    <div ref={scriptParent} className={blogStyles.comments}>
+    <div ref={scriptParent}>
       <div id="disqus_thread"></div>
 
       <noscript>
@@ -107,6 +124,13 @@ const CommentsSection = ({ slug, url }: { slug: string; url: string }) => {
   );
 };
 
+const Highlight = () => {
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
+  return <></>;
+};
+
 export default function BlogPost() {
   const { post, pageUrl } = useLoaderData<{
     post: SerializedPost;
@@ -116,13 +140,12 @@ export default function BlogPost() {
   return (
     <main className="blog-page-container">
       <h1>{post.title}</h1>
-      <p className="blog-post-date">
+      <sub className="post-date">
         {post.date} ∙ {post.readingTime} minute read
-      </p>
-      <br />
-
+      </sub>
       <article dangerouslySetInnerHTML={{ __html: post.html }} />
       <CommentsSection slug={post.slug} url={pageUrl} />
+      <Highlight />
     </main>
   );
 }
