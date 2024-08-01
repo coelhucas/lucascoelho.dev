@@ -47,7 +47,8 @@ renderer.heading = (text: string, level: number) => {
 };
 
 renderer.link = (href: string, _: string, text: string) => {
-  const target = href.startsWith("/") ? "" : 'target="_blank"';
+  const target =
+    href.startsWith("/") || href.startsWith("#") ? "" : 'target="_blank"';
   return `<a class="anchor" href="${href}" ${target}>${text}</a>`;
 };
 
