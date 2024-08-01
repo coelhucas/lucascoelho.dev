@@ -1,5 +1,4 @@
 import { SVGProps } from "react";
-import styles from "./icon.module.css";
 
 const icons = {
   email: (props: SVGProps<SVGSVGElement>) => (
@@ -166,7 +165,7 @@ type IconProps = SVGProps<SVGSVGElement> & {
 
 function Icon({ as, ...props }: IconProps) {
   const Component = icons[as];
-  return <Component {...props} className={styles.icon} />;
+  return <Component {...props} className="icon" />;
 }
 
 export default Icon;

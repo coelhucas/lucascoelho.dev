@@ -1,8 +1,9 @@
 import type { LinksFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+
 import Icon from "~/components/Icon";
 import Link from "~/components/Link";
-import stylesUrl from "~/styles/blog/posts-list.css?url";
+import stylesUrl from "~/styles/blog.css?url";
 import globalMeta from "~/utils/global-meta";
 import type { Post } from "~/utils/post";
 import { getPosts } from "~/utils/post";
@@ -37,14 +38,14 @@ export const loader = () => {
 function PostCard({ slug, title, date, readingTime }: Post) {
   return (
     <li className="list-item">
-      <Link to={slug} target="_top">
-        <div className="post-card">
-          <p>{title}</p>
-          <span className="date">
-            {date} <br />
-            {readingTime} min read
-          </span>
-        </div>
+      <Link to={slug} target="_top" className="post-card">
+        {/* <div className="post-card"> */}
+        <p>{title}</p>
+        <span className="date">
+          {date} <br />
+          {readingTime} min read
+        </span>
+        {/* </div> */}
       </Link>
     </li>
   );
@@ -62,12 +63,10 @@ export default function Posts() {
   return (
     <main>
       <div className="container">
-        <div className="row center">
-          <h1 className="flex-1">Posts</h1>
-          <Link className="icon-anchor" target="_blank" to="/rss.xml">
-            <Icon as="rss" />
-          </Link>
-        </div>
+        <h1 className="flex-1">Posts</h1>
+        <Link className="icon__anchor" target="_blank" to="/rss.xml">
+          <Icon as="rss" /> RSS
+        </Link>
         <ul className="list">
           {posts.sort(sortByDate).map((post) => (
             <PostCard

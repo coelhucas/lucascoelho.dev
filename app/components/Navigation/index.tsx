@@ -29,20 +29,23 @@ const navLinks = [
 
 const Navigation = () => (
   <nav>
-    <div className="navigation-links">
-      <Link to="/">./</Link>
-      <Link to="/blog">/blog</Link>
-      <Link to="/speaker">/speaker</Link>
-    </div>
+    <ul>
+      <li>
+        <Link to="/">./</Link>
+      </li>
+      <li>
+        <Link to="/blog">/blog</Link>
+      </li>
+    </ul>
 
-    <ul className="media-links">
+    <ul>
       {navLinks.map(({ path, title, icon, rel }) => {
         const resolvedRel = rel ? { rel } : {};
         return (
           <li key={title}>
             <Link
               target="_blank"
-              className="icon-anchor"
+              className="icon__anchor"
               to={path}
               {...resolvedRel}
             >
