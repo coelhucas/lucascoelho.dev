@@ -127,11 +127,11 @@ export default function Index() {
         </p>
         <p>
           Created and maintained design systems, general libraries. Worked in
-          Platform, Product and Marketing teams, and keep designing some{" "}
+          Platform, Product, Marketing teams... while designing some{" "}
           <Link to="/games">
             <strong>games</strong>
-          </Link>
-          .
+          </Link>{" "}
+          at home.
         </p>
       </section>
       <hr />
