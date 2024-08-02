@@ -64,9 +64,11 @@ export default function Posts() {
     <main>
       <div className="container">
         <h1 className="flex-1">Posts</h1>
-        <Link className="icon__anchor" target="_blank" to="/rss.xml">
-          <Icon as="rss" /> RSS
-        </Link>
+        <h2>
+          <Link className="icon__anchor" target="_blank" to="/rss.xml">
+            <Icon as="rss" /> RSS
+          </Link>
+        </h2>
         <ul className="list">
           {posts.sort(sortByDate).map((post) => (
             <PostCard
