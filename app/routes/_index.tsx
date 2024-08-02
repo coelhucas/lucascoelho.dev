@@ -122,12 +122,12 @@ export default function Index() {
         </sub>
 
         <p>
-          Interested in solving a lot of problems. Curious about game design,
-          performance, tool creation and debugging. Interested in making <br />
+          Interested in problem solving, strategy and puzzle games. Curious
+          about game design, performance, tool creation and debugging.
         </p>
         <p>
-          Created and maintained design systems, general libraries. Worked in
-          Platform, Product, Marketing teams... while designing some{" "}
+          Created and maintained design systems, worked in Platform, Product and
+          Marketing teams... while designing some{" "}
           <Link to="/games">
             <strong>games</strong>
           </Link>{" "}
