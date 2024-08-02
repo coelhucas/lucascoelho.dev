@@ -5,6 +5,10 @@
   > li {
     padding: 16px 0;
     border-bottom: 1px solid #dde;
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 1px solid #887;
+    }
   }
 }
 
@@ -30,4 +34,8 @@ blockquote {
   padding: 0 2rem;
   margin: 1rem;
   border-left: 4px solid #dde;
+
+  @media (prefers-color-scheme: dark) {
+    border-left: 4px solid #887;
+  }
 }

@@ -14,6 +14,15 @@ body {
   padding: 0 2rem;
 }
 
+body {
+  background-color: #f5f5fa;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #1c1c1e;
+    color: #bbb;
+  }
+}
+
 h1 {
   margin: 0;
 }
@@ -70,6 +79,10 @@ a:hover {
 
 hr {
   border: 1px solid #dde;
+
+  @media (prefers-color-scheme: dark) {
+    border: 1px solid #887;
+  }
 }
 
 footer {
@@ -83,6 +96,10 @@ footer {
   vertical-align: middle;
   fill: #444;
   opacity: 1;
+
+  @media (prefers-color-scheme: dark) {
+    fill: #bbb;
+  }
 }
 
 .icon__anchor {
