@@ -11,7 +11,6 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@coelhucas/vim-scroll": "file:../vim-scroll",
     "@netlify/functions": "^2.6.0",
     "@netlify/remix-adapter": "^2.3.1",
     "@react-router/fs-routes": "^7.5.3",
@@ -39,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.1.6",
     "vite": "^6.3.4",
     "vite-tsconfig-paths": "^5.1.4"
