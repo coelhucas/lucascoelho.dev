@@ -1,4 +1,4 @@
-import type { HeadersFunction } from "@remix-run/node";
+import type { HeadersFunction } from "react-router";
 import Link from "~/components/Link";
 import globalMeta from "~/utils/global-meta";
 

@@ -1,16 +1,11 @@
-import { useLoaderData, useLocation } from "@remix-run/react";
+import { useLoaderData, useLocation } from "react-router";
 
 import highlightStyles from "highlight.js/styles/default.min.css?url";
 import stylesUrl from "~/styles/blog.css?url";
 import type { SerializedPost } from "~/utils/post";
 import { getPost } from "~/utils/post";
 
-import {
-  json,
-  LinksFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
-} from "@remix-run/node";
+import { LinksFunction, LoaderFunctionArgs, MetaFunction } from "react-router";
 import hljs from "highlight.js";
 import { useEffect, useRef } from "react";
 import globalMeta from "~/utils/global-meta";
@@ -59,7 +54,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 
   try {
     const post = await getPost(params.slug);
-    return json({ post, pageUrl: process.env.WEBSITE_URL });
+    return { post, pageUrl: process.env.WEBSITE_URL };
   } catch (err) {
     // Something went wrong, likely the post don't exist. I'll assume that.
     throw new Response(null, {

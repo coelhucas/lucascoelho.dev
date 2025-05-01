@@ -1,5 +1,5 @@
-import type { LinksFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import type { LinksFunction } from "react-router";
+import { useLoaderData } from "react-router";
 
 import Icon from "~/components/Icon";
 import Link from "~/components/Link";

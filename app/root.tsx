@@ -1,4 +1,4 @@
-import { json, LoaderFunction } from "@remix-run/node";
+import { LoaderFunction } from "react-router";
 import {
   Links,
   Meta,
@@ -6,7 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteLoaderData,
-} from "@remix-run/react";
+} from "react-router";
 import { ReactNode } from "react";
 import globalStylesUrl from "~/styles/global.css?url";
 import CustomErrorBoundary from "./components/CustomErrorBoundary";
@@ -14,7 +14,7 @@ import Link from "./components/Link";
 import Navigation from "./components/Navigation";
 
 export const loader: LoaderFunction = async () => {
-  return json({ gaTrackingId: process.env.GA_TRACKING_ID });
+  return { gaTrackingId: process.env.GA_TRACKING_ID };
 };
 
 export const links = () => {
