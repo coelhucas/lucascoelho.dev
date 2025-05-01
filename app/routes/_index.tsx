@@ -1,4 +1,3 @@
-import { VimScroll } from "@coelhucas/vim-scroll";
 import { IconNames } from "~/components/Icon";
 import Link, { LinkProps } from "~/components/Link";
 import Tag from "~/components/Tag";
@@ -89,21 +88,6 @@ export function meta() {
   ];
 }
 
-const ProjectLink = ({ tags, ...props }: LinkProps & { tags?: string[] }) => {
-  return (
-    <span>
-      <Link {...props} />{" "}
-      {tags &&
-        tags.map((t) => (
-          <Tag key={t} text={t}>
-            {" "}
-            ∙{" "}
-          </Tag>
-        ))}
-    </span>
-  );
-};
-
 export default function Index() {
   // const data = useLoaderData<typeof loader>();
 
@@ -157,7 +141,7 @@ export default function Index() {
           </li>
         </ul>
       </section>
-      <VimScroll />
+      {/* <VimScroll /> */}
     </main>
   );
 }
