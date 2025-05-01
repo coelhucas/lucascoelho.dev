@@ -11,6 +11,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@coelhucas/vim-scroll": "file:../vim-scroll",
     "@netlify/functions": "^2.6.0",
     "@netlify/remix-adapter": "^2.3.1",
     "@remix-run/node": "^2.10.2",
@@ -21,6 +22,7 @@
     "isbot": "^4.1.0",
     "marked": "^12.0.2",
     "marked-footnote": "^1.2.2",
+    "react-router": "^7.5.3",
     "remix-themes": "^1.5.0"
   },
   "devDependencies": {
@@ -36,10 +38,11 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "typescript": "^5.1.6",
-    "vite": "^5.0.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite": "^6.3.4",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

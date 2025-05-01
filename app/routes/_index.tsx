@@ -1,3 +1,4 @@
+import { VimScroll } from "@coelhucas/vim-scroll";
 import { IconNames } from "~/components/Icon";
 import Link, { LinkProps } from "~/components/Link";
 import Tag from "~/components/Tag";
@@ -156,6 +157,7 @@ export default function Index() {
           </li>
         </ul>
       </section>
+      <VimScroll />
     </main>
   );
 }
