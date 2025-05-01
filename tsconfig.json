@@ -1,26 +1,14 @@
 {
-  "include": [
-    "env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "netlify-edge-plugin.ts"
-  ],
+  "include": ["env.d.ts", "**/*.ts", "**/*.tsx", "netlify-edge-plugin.ts"],
   "compilerOptions": {
-    "types": [
-      "@react-router/node",
-      "vite/client"
-    ],
+    "types": ["@react-router/node", "vite/client"],
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,
     "esModuleInterop": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "resolveJsonModule": true,
     "target": "ES2022",
     "strict": true,
@@ -28,9 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./app/*"
-      ]
+      "~/*": ["./app/*"]
     },
     "noEmit": true
   }

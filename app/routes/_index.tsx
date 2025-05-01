@@ -141,7 +141,6 @@ export default function Index() {
           </li>
         </ul>
       </section>
-      {/* <VimScroll /> */}
     </main>
   );
 }
