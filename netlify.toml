@@ -1,9 +1,9 @@
 [build]
-command = "npm run build"
+command = "yarn build"
 publish = "build/client"
 
 [dev]
-command = "npm run dev"
+command = "yarn dev"
 framework = "vite"
 
 # Set immutable caching for static files, because they have fingerprinted filenames
