@@ -31,10 +31,14 @@ const Navigation = () => (
   <nav>
     <ul>
       <li>
-        <Link to="/">./</Link>
+        <Link to="/" viewTransition>
+          ./
+        </Link>
       </li>
       <li>
-        <Link to="/blog">/blog</Link>
+        <Link to="/blog" viewTransition>
+          /blog
+        </Link>
       </li>
     </ul>
 

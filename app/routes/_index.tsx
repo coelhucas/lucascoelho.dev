@@ -1,5 +1,5 @@
 import { IconNames } from "~/components/Icon";
-import Link, { LinkProps } from "~/components/Link";
+import Link from "~/components/Link";
 import Tag from "~/components/Tag";
 import globalMeta from "~/utils/global-meta";
 

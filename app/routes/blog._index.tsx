@@ -38,14 +38,12 @@ export const loader = () => {
 function PostCard({ slug, title, date, readingTime }: Post) {
   return (
     <li className="list-item">
-      <Link to={slug} target="_top" className="post-card">
-        {/* <div className="post-card"> */}
+      <Link to={slug} target="_top" className="post-card" viewTransition>
         <p>{title}</p>
         <span className="date">
           {date} <br />
           {readingTime} min read
         </span>
-        {/* </div> */}
       </Link>
     </li>
   );
