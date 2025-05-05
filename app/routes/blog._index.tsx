@@ -41,7 +41,7 @@ function PostCard({ slug, title, date, readingTime }: Post) {
       <span>
         {date}
         {"  "}
-        <Link to={href} target="_top" viewTransition>
+        <Link to={href} viewTransition>
           {title}
         </Link>
       </span>

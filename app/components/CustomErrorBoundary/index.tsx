@@ -22,7 +22,10 @@ const CustomErrorBoundary = () => {
     <main>
       <h1>{formattedError}</h1>
       <span>
-        Return to <Link to="/">home</Link>
+        Return to{" "}
+        <Link to="/" viewTransition>
+          home
+        </Link>
       </span>
 
       <p>
