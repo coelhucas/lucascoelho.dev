@@ -24,7 +24,8 @@ type PostMarkdownAttributes = {
 
 const postsPath = process.env.NETLIFY
   ? path.join(__dirname, "../../..", "posts")
-  : path.join(process.cwd(), "app", "posts");
+  : // @ts-expect-error - it thinks we're on browser, but this runs on node
+    path.join(process.cwd(), "app", "posts");
 
 const renderer = new Renderer();
 const referencePrefix = "footnote-ref";

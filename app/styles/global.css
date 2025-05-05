@@ -6,25 +6,20 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   line-height: 1.6;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  /* background-color: #f5f5fa; */
+  background-color: #fefefe;
+  font-size: 1.2rem;
   font-weight: 300;
-  color: #444;
-  background-color: #eeeeee;
+  color: #333;
   padding: 0 2rem;
 }
 
 body {
-  background-color: #f5f5fa;
-
   @media (prefers-color-scheme: dark) {
-    background-color: #1c1c1e;
-    color: #bbb;
+    /* background-color: #1c1c1e; */
+    /* color: #bbb; */
   }
-}
-
-h1 {
-  margin: 0;
 }
 
 h1,
@@ -74,7 +69,7 @@ a:visited {
 
 a:focus,
 a:hover {
-  color: #7864ed;
+  text-decoration: underline;
 }
 
 hr {
@@ -98,10 +93,14 @@ footer {
   opacity: 1;
 
   @media (prefers-color-scheme: dark) {
-    fill: #bbb;
+    /* fill: #bbb; */
   }
 }
 
 .icon__anchor {
   outline-offset: 0.5rem;
+}
+
+.main-name {
+  margin: 0;
 }

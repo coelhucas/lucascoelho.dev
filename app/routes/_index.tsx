@@ -11,7 +11,7 @@ type NavigationLink = {
   icon?: IconNames;
 };
 
-export const loader = () => {
+export const loader = async () => {
   return {
     projects: [
       {
@@ -94,7 +94,7 @@ export default function Index() {
   return (
     <main>
       <section className="main-section">
-        <h1 className="main__name">Lucas Coelho</h1>
+        <h1 className="main-name">Lucas Coelho</h1>
         <sub>
           Software Engineer @{" "}
           <a

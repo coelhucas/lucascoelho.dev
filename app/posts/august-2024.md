@@ -3,7 +3,7 @@ title: August 2024
 date: "2024-09-01"
 ---
 
-# Life (and death)
+## Life (and death)
 
 I've already seen a couple of things about August being a sad month and things like that, and this one I guess I could relate.
 

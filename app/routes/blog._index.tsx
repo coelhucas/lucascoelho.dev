@@ -1,7 +1,6 @@
 import type { LinksFunction } from "react-router";
 import { useLoaderData } from "react-router";
 
-import Icon from "~/components/Icon";
 import Link from "~/components/Link";
 import stylesUrl from "~/styles/blog.css?url";
 import globalMeta from "~/utils/global-meta";
@@ -31,20 +30,21 @@ export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: stylesUrl }];
 };
 
-export const loader = () => {
-  return getPosts();
+export const loader = async () => {
+  return await getPosts();
 };
 
 function PostCard({ slug, title, date, readingTime }: Post) {
+  const href = `/blog/${slug}`;
   return (
     <li className="list-item">
-      <Link to={slug} target="_top" className="post-card" viewTransition>
-        <p>{title}</p>
-        <span className="date">
-          {date} <br />
-          {readingTime} min read
-        </span>
-      </Link>
+      <span>
+        {date}
+        {"  "}
+        <Link to={href} target="_top" viewTransition>
+          {title}
+        </Link>
+      </span>
     </li>
   );
 }
@@ -62,11 +62,6 @@ export default function Posts() {
     <main>
       <div className="container">
         <h1 className="flex-1">Posts</h1>
-        <h2>
-          <Link className="icon__anchor" target="_blank" to="/rss.xml">
-            <Icon as="rss" /> RSS
-          </Link>
-        </h2>
         <ul className="list">
           {posts.sort(sortByDate).map((post) => (
             <PostCard
