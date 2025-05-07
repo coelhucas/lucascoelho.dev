@@ -40,10 +40,9 @@ renderer.heading = (text: string, level: number) => {
 
   return `
     <h${level} id=${escapedText}>
-      <a  name="${escapedText}" class="anchor anchor--no-decoration" href="#${escapedText}">
-        #
+      <a name="${escapedText}" class="anchor-heading" href="#${escapedText}">
+        ${text}
       </a>
-      ${text}
     </h${level}>`;
 };
 
