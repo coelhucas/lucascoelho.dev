@@ -17,13 +17,13 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     ...globalMeta,
     {
       title: post?.title
-        ? `${post.title} | Blog | Lucas Coelho`
+        ? `${post.title} | Lucas Coelho`
         : "Blog | Lucas Coelho",
     },
     {
       property: "og:title",
       content: post?.title
-        ? `${post.title} | Blog | Lucas Coelho`
+        ? `${post.title} | Lucas Coelho`
         : "Blog | Lucas Coelho",
     },
     {
