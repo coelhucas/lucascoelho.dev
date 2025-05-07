@@ -70,12 +70,18 @@ function Layout({ children }: { children: ReactNode }) {
         <Scripts />
         <footer>
           <hr />
-          <p>
-            isn't it cool to have a footer? ∙{" "}
-            <Link target="_blank" to="/rss.xml">
-              rss
-            </Link>
-          </p>
+          <div className="footer-inner">
+            <span>look right - - -</span>
+            <div>
+              <Link target="_blank" to="/rss.xml">
+                rss
+              </Link>{" "}
+              ∙{" "}
+              <Link target="_blank" to="https://github.com/coelhucas">
+                github
+              </Link>
+            </div>
+          </div>
         </footer>
       </body>
     </html>
