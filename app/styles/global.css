@@ -28,23 +28,6 @@ h3 {
   line-height: 1.2;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  > ul {
-    padding: 16px 0;
-    display: flex;
-    gap: 1.2rem;
-    list-style: none;
-
-    > li > a {
-      font-family: monospace;
-    }
-  }
-}
-
 main {
   margin-bottom: auto;
   margin-bottom: 48px;
@@ -97,10 +80,40 @@ footer {
   }
 }
 
+.top-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > ul {
+    padding: 16px 0;
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+
+    > li > a {
+      font-family: monospace;
+    }
+  }
+}
+
 .icon__anchor {
   outline-offset: 0.5rem;
 }
 
 .main-name {
   margin: 0;
+}
+
+.index-posts {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -108,9 +108,17 @@ function getReadingTime(body: string): number {
   return time;
 }
 
-export async function getPosts(): Promise<Post[]> {
+const sortByDate = (a: Post, b: Post) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+
+  return dateA === dateB ? 0 : dateA > dateB ? -1 : 1;
+};
+
+export async function getPosts(limit?: number): Promise<Post[]> {
   const dir = await fs.readdir(postsPath);
-  return Promise.all(
+
+  const result = await Promise.all(
     dir.map(async (filename) => {
       const file = await fs.readFile(path.join(postsPath, filename), {
         encoding: "utf8",
@@ -142,6 +150,12 @@ export async function getPosts(): Promise<Post[]> {
       };
     })
   );
+
+  const displayedPosts = limit
+    ? result.sort(sortByDate).slice(0, limit)
+    : result.sort(sortByDate);
+
+  return displayedPosts;
 }
 
 export async function getPost(slug: string) {

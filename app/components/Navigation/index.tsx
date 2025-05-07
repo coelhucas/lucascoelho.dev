@@ -28,7 +28,7 @@ const navLinks = [
 ] as LinkProps[];
 
 const Navigation = () => (
-  <nav>
+  <nav className="top-navigation">
     <ul>
       <li>
         <Link to="/" viewTransition>

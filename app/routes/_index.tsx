@@ -1,72 +1,10 @@
-import { IconNames } from "~/components/Icon";
+import { useLoaderData } from "react-router";
 import Link from "~/components/Link";
-import Tag from "~/components/Tag";
 import globalMeta from "~/utils/global-meta";
-
-type NavigationLink = {
-  title: string;
-  path: string;
-  anchor?: boolean;
-  tags?: string[];
-  icon?: IconNames;
-};
+import { getPosts } from "~/utils/post";
 
 export const loader = async () => {
-  return {
-    projects: [
-      {
-        // Wip. Have a page for it?
-        title: "MMORPG JAM: Mythic Quest",
-        path: "https://cuca.itch.io/mmorpg-jam",
-        tags: ["Typescript"],
-      },
-      {
-        title: "Yoga",
-        path: "https://github.com/gympass/yoga",
-        tags: ["JavaScript"],
-      },
-      {
-        title: "sph.lua",
-        path: "https://github.com/coelhucas/simple-physics-handler",
-        tags: ["Lua"],
-      },
-      {
-        title: "mini-styled",
-        path: "https://github.com/coelhucas/mini-styled",
-        tags: ["JavaScript"],
-      },
-      {
-        title: "Outline me",
-        path: "https://github.com/coelhucas/outline-me",
-        tags: ["JavaScript"],
-      },
-      {
-        title: "King of Parties",
-        path: "/kop",
-        tags: ["GDScript"],
-      },
-
-      {
-        title: "pixel",
-        path: "https://github.com/coelhucas/pixel",
-        tags: ["JavaScript"],
-      },
-      {
-        title: "hitbox editor",
-        path: "https://github.com/coelhucas/hitbox-editor/",
-        tags: ["GDScript"],
-      },
-      {
-        title: "RGBA map generator",
-        path: "https://github.com/coelhucas/unity-rgba-level-generator",
-        tags: ["C#"],
-      },
-      {
-        title: "View more",
-        path: "https://github.com/coelhucas",
-      },
-    ] as NavigationLink[],
-  };
+  return await getPosts(5);
 };
 
 export function meta() {
@@ -89,7 +27,7 @@ export function meta() {
 }
 
 export default function Index() {
-  // const data = useLoaderData<typeof loader>();
+  const posts = useLoaderData<typeof loader>();
 
   return (
     <main>
@@ -141,6 +79,25 @@ export default function Index() {
           </li>
         </ul>
       </section>
+      <nav className="index-posts">
+        <ul>
+          <h3>Blog posts</h3>
+          {posts.map((post) => (
+            <li key={post.title}>
+              <span>
+                <Link viewTransition to={`/blog/${post.slug}`}>
+                  {post.date} - {post.title}
+                </Link>
+              </span>
+            </li>
+          ))}
+          <li>
+            <Link viewTransition to="/blog">
+              More...
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </main>
   );
 }

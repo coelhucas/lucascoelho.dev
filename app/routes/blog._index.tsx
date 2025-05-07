@@ -49,13 +49,6 @@ function PostCard({ slug, title, date, readingTime }: Post) {
   );
 }
 
-const sortByDate = (a: Post, b: Post) => {
-  const dateA = new Date(a.date);
-  const dateB = new Date(b.date);
-
-  return dateA === dateB ? 0 : dateA > dateB ? -1 : 1;
-};
-
 export default function Posts() {
   const posts = useLoaderData<Post[]>();
   return (
@@ -63,7 +56,7 @@ export default function Posts() {
       <div className="container">
         <h1 className="flex-1">Posts</h1>
         <ul className="list">
-          {posts.sort(sortByDate).map((post) => (
+          {posts.map((post) => (
             <PostCard
               key={post.slug}
               slug={post.slug}
