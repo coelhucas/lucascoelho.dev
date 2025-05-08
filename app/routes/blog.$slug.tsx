@@ -12,6 +12,7 @@ import globalMeta from "~/utils/global-meta";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   const post = data?.post;
+  const coverImage = data?.post?.coverImage;
 
   return [
     ...globalMeta,
@@ -33,6 +34,12 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     {
       name: "description",
       content: "Some random thoughts and stuff that I learn and share.",
+    },
+    {
+      ...(coverImage && {
+        property: "og:image",
+        content: coverImage,
+      }),
     },
   ];
 };

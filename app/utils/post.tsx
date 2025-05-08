@@ -158,6 +158,22 @@ export async function getPosts(limit?: number): Promise<Post[]> {
   return displayedPosts;
 }
 
+// tarnished, cursed, never talk about that
+const extractCoverImage = (html: string) => {
+  const parts = html.split("<img");
+
+  if (parts.length < 2) {
+    return null;
+  }
+
+  const [, secondPart] = parts;
+  const srcRegex = /src=["']([^"']+)["']/;
+  const match = secondPart.match(srcRegex);
+
+  // Return the captured group (content inside quotes) or null if not found
+  return match ? match[1] : null;
+};
+
 export async function getPost(slug: string) {
   const filepath = path.join(postsPath, slug + ".md");
   const file = await fs.readFile(filepath, {
@@ -172,9 +188,12 @@ export async function getPost(slug: string) {
   marked.use({ renderer, gfm: true, extensions: [lcpImageEmbed] });
   const html = await marked.parse(body, options);
 
+  const coverImage = extractCoverImage(html);
+
   return {
     slug,
     title: attributes.title,
+    coverImage,
     /** e.g.: Jun 24, 2022 */
     date: new Date(attributes.date).toLocaleString(undefined, {
       year: "numeric",
