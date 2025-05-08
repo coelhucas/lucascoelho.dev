@@ -117,3 +117,10 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
+
+p code {
+  background-color: #666;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
