@@ -48,6 +48,9 @@ Bevy, an open source *refreshingly simple data-driven game engine built in Rust*
 
 Leaning to game development examples is a good way to "extrapolate" some ideas of what can be done thinking outside of the box, since usually there's more freedom than in a company environment and interesting ideas emerge from people working on creative projects.
 
+---
+Thanks to [manokara](https://github.com/manokara) for helping review this post and for mentioning the Bevy example!
+
 
 [^1]: [Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions)
 [^2]: [iznaut.com/littlemario](https://iznaut.com/littlemario)
