@@ -3,6 +3,11 @@ title: Cool things we can do with automated workflows
 date: "2025-05-07"
 ---
 
+![A Japanese automata theater in Osaka, drawn in 18th century. The Takeda family opened their automata theater in 1662.](https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Takeda_Oumi_karakuri.jpg/1920px-Takeda_Oumi_karakuri.jpg)
+<sub>A Japanese automata theater in Osaka, drawn in 18th century. The Takeda family opened their automata theater in 1662.
+By 竹原春朝斎 - 摂津名所図会, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=39232059">Link</a></sub>
+<br /><br />
+
 One of the things I have played a lot with at work and on personal projects recently is the automation of tasks using GitHub Actions. Maybe you've done the same elsewhere, such as in Argo Workflows, Jenkins, CircleCI... But so far the experience with GitHub Actions has been the best for me and given they're [mostly compatible](https://docs.gitea.com/usage/actions/comparison) with Gitea make it a bigger deal for me personally, as I wouldn't like to be "locked-in" on proprietary software.
 
 Recently I had to integrate [benk-uk/workflow-dispatch](https://github.com/benc-uk/workflow-dispatch) at [timescale/docs](https://github.com/timescale/docs/commit/a301849dfc2942483fdc903a5a135da5265a82b7), so we could trigger internal builds on our private documentation website repo adding newer content from this public docs content repo.
@@ -35,8 +40,16 @@ A Little Game Called Mario, an *"open-source, collectively developed hell projec
 
 Isleward, an open-source moddable roguelike MMO[^3], has in their [.gitlab.yml](https://gitlab.com/Isleward/isleward/-/blob/master/.gitlab-ci.yml) uses it for running `npm audit`, linting both client and server packages and even building docker images for the game.
 
+Bevy, an open source *refreshingly simple data-driven game engine built in Rust*[^4] goes further and use actions to [check for visual regressions](https://github.com/bevyengine/bevy/blob/main/.github/workflows/send-screenshots-to-pixeleagle.yml)! That might not seem so cool for web folks that have done the very same for web pages, but come on, we're talking about a game engine, much cooler.
+
+![Example Bloom screenshot that went through Bevy's visual regression test](/blog-post-images/screenshot-Bloom.png)
+<sub>Example Bloom screenshot that went through Bevy's visual regression test</sub>
+<br /><br />
+
 Leaning to game development examples is a good way to "extrapolate" some ideas of what can be done thinking outside of the box, since usually there's more freedom than in a company environment and interesting ideas emerge from people working on creative projects.
+
 
 [^1]: [Security hardening for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions)
 [^2]: [iznaut.com/littlemario](https://iznaut.com/littlemario)
 [^3]: [Isleward](https://play.isleward.com/)
+[^4]: [Bevy](https://bevyengine.org/)
