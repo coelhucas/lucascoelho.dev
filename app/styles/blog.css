@@ -63,3 +63,7 @@ a.anchor-heading::after {
   opacity: 0;
   transition: opacity 150ms ease-out;
 }
+
+code {
+  font-size: 1rem;
+}

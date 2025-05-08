@@ -126,18 +126,29 @@ const CommentsSection = ({ slug, url }: { slug: string; url: string }) => {
   );
 };
 
-const Highlight = () => {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-  return <></>;
-};
-
 export default function BlogPost() {
   const { post, pageUrl } = useLoaderData<{
     post: SerializedPost;
     pageUrl: string;
   }>();
+
+  const articleRef = useRef(null);
+
+  const onMutate = () => {
+    hljs.highlightAll();
+  };
+
+  useEffect(() => {
+    const observer = new MutationObserver(onMutate);
+
+    if (articleRef?.current) {
+      observer.observe(articleRef.current, {
+        childList: true,
+      });
+    }
+
+    return () => observer.disconnect();
+  }, [articleRef]);
 
   return (
     <main className="blog-page-container">
@@ -145,9 +156,11 @@ export default function BlogPost() {
       <sub className="post-date">
         {post.date} ∙ {post.readingTime} minute read
       </sub>
-      <article dangerouslySetInnerHTML={{ __html: post.html }} />
+      <article
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        ref={articleRef}
+      />
       <CommentsSection slug={post.slug} url={pageUrl} />
-      <Highlight />
     </main>
   );
 }
