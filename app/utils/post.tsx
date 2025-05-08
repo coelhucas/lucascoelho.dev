@@ -133,11 +133,7 @@ export async function getPosts(limit?: number): Promise<Post[]> {
         slug: filename.replace(/\.md$/, ""),
         title: attributes.title,
         /** e.g.: Jun 24, 2022 */
-        date: new Date(attributes.date).toLocaleString(undefined, {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        }),
+        date: new Date(attributes.date).toISOString().split("T")[0],
         lastUpdate: attributes?.update
           ? new Date(attributes.update).toLocaleString(undefined, {
               year: "numeric",
